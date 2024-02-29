@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams } from "react-router-dom";
+import axios from "axios";
 import "./detalle.css";
 
 
@@ -8,18 +9,15 @@ const Detalle = () => {
   const [auto, setAuto] = useState(null);
 
   useEffect(() => {
-    const fetchAuto = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/autos");
-        const data = await response.json();
+    axios.get("http://localhost:5000/autos")
+      .then(response => {
+        const data = response.data;
         const prodAuto = data.find((auto) => auto.id === parseInt(id));
         setAuto(prodAuto);
-      } catch (error) {
+      })
+      .catch(error => {
         console.error("Error fetching auto:", error);
-      }
-    };
-
-    fetchAuto();
+      });
   }, [id]);
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MuiCard from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -16,13 +17,14 @@ const Card = ({ auto, handelLike }) => {
         subheader={auto.categoria}
         sx={{color : 'black'}}
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image={auto.imgUrl}
-        alt={auto.nombre}
-        
-      />
+      <Link to={`/detalle/${auto.id}`}>
+        <CardMedia
+          component="img"
+          height="194"
+          image={auto.imgUrl}
+          alt={auto.nombre}
+        />
+      </Link>
       <CardContent sx={{ width: 300 , height: 130 }}>
         <Typography variant="body2" color="text.secondary" sx={{color : 'black'}}>
           {auto.puertas}
