@@ -1,0 +1,69 @@
+.navbar-container {
+    /* position: fixed;
+    z-index: 10; */
+    background-color: #0C4D9C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-logo {
+    width: 120px; 
+    height: auto;
+}
+.navbar-buttons {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-right: 20px;
+}
+button {
+    color: #0C4D9C;
+    text-decoration: none;
+    font-size: 25px;
+    border: none;
+    background: #C3E0F9;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 10px;
+}
+button:last-child {
+    margin-right: 20; /* Elimina el margen derecho del último botón */
+}
+
+button::before {
+    margin-left: auto;
+}
+
+button::after, button::before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background:#FA5C00;
+    display: block;
+    transition: 0.5s;
+}
+
+button:hover::after, button:hover::before {
+    width: 100%;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar-buttons {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .navbar-buttons button {
+        margin-right: 0; /* Elimina el margen entre los botones en dispositivos móviles */
+        margin-bottom: 10px; /* Agrega espacio entre los botones */
+    }
+}
