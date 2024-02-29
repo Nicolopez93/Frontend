@@ -5,12 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import './TipoDeAuto.css';
 
 const TipoDeAuto = () => {
     
 
     return (
         <>
+        <div className='busca-container'>
         <h2 style={{ textAlign: 'center' }}>Busca por tipos de Veiculos</h2>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
         <Link to="/flotaDeAutos">
@@ -53,6 +55,7 @@ const TipoDeAuto = () => {
         </CardActionArea>
       </Card>
     </Link>
+      </div>
       </div>
       </>
     );

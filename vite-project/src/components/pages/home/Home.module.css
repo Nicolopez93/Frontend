@@ -1,10 +1,12 @@
 .containerCards{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 5fr);
+    grid-gap: 16px;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    min-height: 100vh;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.824);
+    align-self: center;
+    align-content: center;
+    padding-left: 12%;
+    padding-top: 10%;
+    background-image: linear-gradient(to left, #FA5C00, white);
 }

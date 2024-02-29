@@ -1,4 +1,4 @@
-.container {
+.container-auto {
     display: grid;
     grid-template-columns: repeat(2, 5fr);
     grid-gap: 16px;
@@ -7,5 +7,6 @@
     align-self: center;
     align-content: center;
     padding-left: 12%;
-    padding-top: 100%;
+    padding-top: 10%;
+    background-image: linear-gradient(to left, #FA5C00, white);
 }

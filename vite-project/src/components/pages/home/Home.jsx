@@ -47,7 +47,9 @@ const Home = () => {
             <div className={styles.container}>
             <TipoDeAuto/>
             </div>
-            
+            <div>
+                <h1>Recomendacion</h1>
+            </div>
             <div className={styles.containerCards}>
                 {searchResults.length > 0
                     ? searchResults.map((auto) => (
