@@ -33,7 +33,7 @@ const TipoDeAuto = () => {
             </CardActionArea>
           </Card>
         </Link>
-
+        <Link to="/flotaDeCamioneta">
       <Card sx={{ width: 300 , height: 400}}>
         <CardActionArea>
           <CardMedia
@@ -52,6 +52,7 @@ const TipoDeAuto = () => {
           </CardContent>
         </CardActionArea>
       </Card>
+    </Link>
       </div>
       </>
     );
