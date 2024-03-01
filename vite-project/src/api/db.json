@@ -20,7 +20,7 @@
       "personas": 5,
       "precio": 55,
       "categoria": "auto",
-      "isLiked": false
+      "isLiked": true
     },
     {
       "id": "3",
@@ -31,7 +31,7 @@
       "personas": 5,
       "precio": 45,
       "categoria": "camioneta",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "4",
@@ -53,7 +53,7 @@
       "personas": 5,
       "precio": 52,
       "categoria": "auto",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "6",
@@ -64,7 +64,7 @@
       "personas": 5,
       "precio": 65,
       "categoria": "camioneta",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "7",
@@ -75,7 +75,7 @@
       "personas": 5,
       "precio": 49,
       "categoria": "auto",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "8",

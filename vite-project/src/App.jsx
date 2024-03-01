@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/pages/home/Home';
 import IniciarSesion from './components/pages/inicioSesion/InicioSesion';
 import CrearCuenta from './components/pages/crearCuenta/CrearCuenta';
@@ -9,8 +9,7 @@ import FlotaDeAutos from './components/pages/flotaAutos/FlotaDeAutos';
 import FlotaDeCamioneta from './components/pages/flotaCamioneta/FlotaDeCamioneta';
 function App() {
   return (
-    <Router>
-      <React.Fragment>
+    <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -21,8 +20,7 @@ function App() {
           <Route path="/flotaDeAutos" element={<FlotaDeAutos />} />
           <Route path="/flotaDeCamioneta" element={<FlotaDeCamioneta />} />
         </Routes>
-      </React.Fragment>
-    </Router>
+    </BrowserRouter>
   );
 }
 

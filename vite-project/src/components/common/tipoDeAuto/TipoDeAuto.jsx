@@ -13,7 +13,7 @@ const TipoDeAuto = () => {
     return (
         <>
         <div className='busca-container'>
-        <h2 style={{ textAlign: 'center' }}>Busca por tipos de Veiculos</h2>
+        <h2 style={{ textAlign: 'center' }}>Busca por tipo de Vehículo</h2>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
         <Link to="/flotaDeAutos">
           <Card sx={{ width: 300 , height: 400}}>
