@@ -11,31 +11,37 @@ const Home = () => {
     const [autos, setAutos] = useState([]);
     const [dispatchLike, setDispatchLike] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         axios.get("http://localhost:5000/autos")
             .then(res => {
                 setAutos(res.data);
             })
-            .catch(err => console.log(err));
-            setDispatchLike(false)
+            .catch(err => {
+                console.error("Error al obtener los autos:", err);
+            });
+        setDispatchLike(false); // Resetear dispatchLike
     }, [dispatchLike]);
 
-    const handleLike = (auto) => {
-        axios.patch(`http://localhost:5000/autos/${auto.id}`, { isLiked: !auto.isLiked })
-            .then(res => setDispatchLike(true))
-            .catch(err => console.log(err));
-    };
-
-    const handleSearch = (searchTerm) => {
-        console.log(searchTerm);
+    useEffect(() => {
         const filteredAutos = autos.filter((auto) =>
             auto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setSearchResults(filteredAutos);
+    }, [searchTerm, autos]);
+
+    const handleLike = (auto) => {
+        axios.patch(`http://localhost:5000/autos/${auto.id}`, { isLiked: !auto.isLiked })
+            .then(res => setDispatchLike(true))
+            .catch(err => {
+                console.error("Error al actualizar el estado de like:", err);
+            });
     };
 
-
+    const handleSearch = (searchTerm) => {
+        setSearchTerm(searchTerm);
+    };
 
     return (
         <>
@@ -46,10 +52,11 @@ const Home = () => {
                 <Buscador onSearch={handleSearch} />
             </div>
             <div className={styles.container}>
-            <TipoDeAuto/>
+                <TipoDeAuto />
             </div>
             <div>
-            <Recomendacion/>
+                <h2 style={{ textAlign: 'center' }}>Recomendaciones</h2>
+                <Recomendacion />
             </div>
             <div className={styles.containerCards}>
                 {searchResults.length > 0
