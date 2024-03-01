@@ -1,50 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import MuiCard from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
+import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const Recomendacion = (autos) => {
+const Recomendacion = () => {
   return (
-    <MuiCard sx={{ width: 300 , height: 480 ,backgroundColor: '#FF8640'}}>
-      <CardHeader 
-        title={auto.nombre}
-        subheader={auto.categoria}
-        sx={{color : 'black'}}
-      />
-      <Link to={`/detalle/${auto.id}`}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+    <Card sx={{ display: 'flex', width: 600, height: 300 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component="div" variant="h5">
+            Audi
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+            Experimenta la verdadera definición de lujo y rendimiento con Audi
+          </Typography>
+        </CardContent>
+      </Box>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <CardMedia
           component="img"
-          height="194"
-          image={auto.imgUrl}
-          alt={auto.nombre}
+          sx={{ width: 350, maxHeight: 300, objectFit: 'contain' }}
+          image="http://pluspng.com/img-png/car-png-car-png-file-1766.png"
+          alt="Auto"
         />
-      </Link>
-      <CardContent sx={{ width: 300 , height: 130 }}>
-        <Typography variant="body2" color="text.secondary" sx={{color : 'black'}}>
-          Cantidad de puertas: {auto.puertas}
-        </Typography>
-        <Typography variant="body2" color="text.secondary"sx={{color : 'black'}}>
-          Maletas: {auto.valijas}
-        </Typography>
-        <Typography variant="body2" color="text.secondary"sx={{color : 'black'}}>
-          Capacidad: {auto.personas}
-        </Typography>
-        <Typography variant="body2" color="text.secondary"sx={{color : 'black'}}>
-          Precio: {auto.precio}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={() => handleLike(auto)}>
-          <FavoriteIcon color={auto.isLiked ? "info" : "disabled"}/>
-        </IconButton>
-      </CardActions>
-    </MuiCard>
+      </Box>
+    </Card>
+    <Card sx={{ display: 'flex', width: 600, height: 300 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component="div" variant="h5">
+          S10
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+          Brindarte la máxima comodidad y la experiencia de manejo por caminos de tierra.
+          </Typography>
+        </CardContent>
+      </Box>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <CardMedia
+          component="img"
+          sx={{ width: 350, maxHeight: 300, objectFit: 'contain' }}
+          image="https://pluspng.com/img-png/pickup-hd-png-chevrolet-png-picture-89798-2154.png"
+          alt="Auto"
+        />
+      </Box>
+    </Card>
+    </div>
   );
 };
 

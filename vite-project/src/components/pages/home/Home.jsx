@@ -5,6 +5,7 @@ import styles from '../home/home.module.css';
 import Navbar from '../../common/navbar/Navbar';
 import Buscador from '../../common/buscador/Buscador';
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto';
+import Recomendacion from '../../common/recomendacion/Recomendacion';
 
 const Home = () => {
     const [autos, setAutos] = useState([]);
@@ -48,7 +49,7 @@ const Home = () => {
             <TipoDeAuto/>
             </div>
             <div>
-            <h1>Recomendados</h1>
+            <Recomendacion/>
             </div>
             <div className={styles.containerCards}>
                 {searchResults.length > 0
