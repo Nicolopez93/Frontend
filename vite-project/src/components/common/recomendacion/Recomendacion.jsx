@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-const Card = ({ auto, handleLike }) => {
+const Recomendacion = (autos) => {
   return (
     <MuiCard sx={{ width: 300 , height: 480 ,backgroundColor: '#FF8640'}}>
       <CardHeader 
@@ -48,4 +48,4 @@ const Card = ({ auto, handleLike }) => {
   );
 };
 
-export default Card;
+export default Recomendacion;

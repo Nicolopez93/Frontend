@@ -16,13 +16,11 @@ const Home = () => {
             .then(res => {
                 setAutos(res.data);
             })
-            .catch(err => console.log(err))
-
-        setDispatchLike(false);
-
+            .catch(err => console.log(err));
+            setDispatchLike(false)
     }, [dispatchLike]);
 
-    const handelLike = (auto) => {
+    const handleLike = (auto) => {
         axios.patch(`http://localhost:5000/autos/${auto.id}`, { isLiked: !auto.isLiked })
             .then(res => setDispatchLike(true))
             .catch(err => console.log(err));
@@ -36,6 +34,8 @@ const Home = () => {
         setSearchResults(filteredAutos);
     };
 
+
+
     return (
         <>
             <div>
@@ -48,15 +48,15 @@ const Home = () => {
             <TipoDeAuto/>
             </div>
             <div>
-                <h1>Recomendacion</h1>
+            <h1>Recomendados</h1>
             </div>
             <div className={styles.containerCards}>
                 {searchResults.length > 0
                     ? searchResults.map((auto) => (
-                        <Card key={auto.id} auto={auto} handelLike={handelLike} />
+                        <Card key={auto.id} auto={auto} handleLike={handleLike} />
                     ))
                     : autos.map((auto) => (
-                        <Card key={auto.id} auto={auto} handelLike={handelLike} />
+                        <Card key={auto.id} auto={auto} handleLike={handleLike} />
                     ))}
             </div>
         </>
