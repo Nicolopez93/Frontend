@@ -121,5 +121,14 @@
       "precio": "50",
       "isLiked": false
     }
-  ]
+  ],
+  "users":[{
+    "id": "1",
+    "nombre": "nicolas",
+    "apellido": "hernandez",
+    "password": "1234",
+    "email": "9kI8t@example.com",
+    "usuarioRole": "admin"
+    }]
+  
 }
