@@ -56,7 +56,9 @@ const Home = () => {
             </div>
             <div>
                 <h2 style={{ textAlign: 'center' }}>Recomendaciones</h2>
-                <Recomendacion />
+                {autos.length > 0 && (
+                    <Recomendacion autos={autos.slice(0, 2)} />
+                )}
             </div>
             <div className={styles.containerCards}>
                 {searchResults.length > 0
