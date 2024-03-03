@@ -2,6 +2,7 @@ import React from 'react'
 import Button from '@mui/material/Button';
 import AgregarProducto from '../../common/agregarProducto/AgregarProducto';
 import Navbar from '../../common/navbar/Navbar';
+import TablaAdministrador from '../../common/tablaAdmin/TablaAdministrador';
 const Administrador = () => {
 
   const [open, setOpen] = React.useState(false);
@@ -12,6 +13,7 @@ const Administrador = () => {
       <Navbar/>
       <Button onClick={handleOpen}>Agregar Producto</Button>
       <AgregarProducto open ={open} handleClose ={handleClose} />
+      <TablaAdministrador/>
     </div>
   )
 }
