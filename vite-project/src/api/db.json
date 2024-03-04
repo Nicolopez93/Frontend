@@ -130,6 +130,22 @@
       "password": "1234",
       "email": "9kI8t@example.com",
       "usuarioRole": "admin"
+    },
+    {
+      "id": "77e8",
+      "nombre": "Nicolas",
+      "apellido": "lopez",
+      "password": "1234",
+      "email": "nicolopezarq@gmail.com",
+      "usuarioRole": "admin"
+    },
+    {
+      "id": "983a",
+      "nombre": "Nicolas",
+      "apellido": "lopez",
+      "password": "1234",
+      "email": "nicolopezarq@gmail.com",
+      "usuarioRole": "admin"
     }
   ]
 }
