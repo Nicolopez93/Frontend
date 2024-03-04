@@ -6,6 +6,7 @@ import Navbar from '../../common/navbar/Navbar';
 import Buscador from '../../common/buscador/Buscador';
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto';
 import Recomendacion from '../../common/recomendacion/Recomendacion';
+import Footer from '../../common/footer/Footer';
 
 const Home = () => {
     const [autos, setAutos] = useState([]);
@@ -68,6 +69,9 @@ const Home = () => {
                     : autos.map((auto) => (
                         <Card key={auto.id} auto={auto} handleLike={handleLike} />
                     ))}
+            </div>
+            <div>
+                <Footer/>
             </div>
         </>
     );
