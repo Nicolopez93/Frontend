@@ -11,7 +11,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Card = ({ auto, handleLike }) => {
   return (
-    <MuiCard sx={{ width: 300 , height: 480 ,backgroundColor: '#FF8640'}}>
+    <MuiCard sx={{ width: 300 , height: 480 ,backgroundColor: 'white'}}>
       <CardHeader 
         title={auto.nombre}
         subheader={auto.categoria}

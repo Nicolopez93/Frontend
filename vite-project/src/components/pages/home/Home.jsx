@@ -56,7 +56,7 @@ const Home = () => {
                 <TipoDeAuto />
             </div>
             <div>
-                <h2 style={{ textAlign: 'center' }}>Recomendaciones</h2>
+                <h2 style={{ textAlign: 'center', backgroundColor: '#F77B33' }}>Recomendaciones</h2>
                 {autos.length > 0 && (
                     <Recomendacion autos={autos.slice(0, 2)} />
                 )}
