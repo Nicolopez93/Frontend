@@ -7,6 +7,7 @@ import Administrador from './components/pages/administrador/Administrador';
 import Detalle from './components/pages/detalle/Detalle';
 import FlotaDeAutos from './components/pages/flotaAutos/FlotaDeAutos';
 import FlotaDeCamioneta from './components/pages/flotaCamioneta/FlotaDeCamioneta';
+
 function App() {
   return (
     <BrowserRouter>
