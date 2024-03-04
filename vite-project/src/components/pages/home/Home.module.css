@@ -1,12 +1,9 @@
-.containerCards{
-    display: grid;
-    grid-template-columns: repeat(2, 5fr);
-    grid-gap: 16px;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    align-content: center;
-    padding-left: 12%;
-    padding-top: 10%;
-    /* background-image: linear-gradient(to left, #FA5C00, white); */
+.containerCards {
+    display: grid; /* Usa Grid en lugar de Flexbox */
+    grid-template-columns: repeat(2, 1fr); /* Crea dos columnas, cada una tomando el 50% del ancho disponible */
+    grid-gap: 16px; /* Espacio entre las celdas de la cuadrícula */
+    justify-items: center; /* Alinea los ítems horizontalmente al centro de su celda */
+    align-items: center; /* Alinea los ítems verticalmente al centro de su celda */
+    max-width: 99%; /* O un ancho máximo que prefieras para el contenedor */
+    margin: 0 auto; /* Centra el contenedor en la página */
 }
