@@ -9,6 +9,7 @@ import Recomendacion from '../../common/recomendacion/Recomendacion';
 import Footer from '../../common/footer/Footer';
 
 const Home = () => {
+
     const [autos, setAutos] = useState([]);
     const [dispatchLike, setDispatchLike] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
@@ -22,7 +23,7 @@ const Home = () => {
             .catch(err => {
                 console.error("Error al obtener los autos:", err);
             });
-        setDispatchLike(false); // Resetear dispatchLike
+        setDispatchLike(false);
     }, [dispatchLike]);
 
     useEffect(() => {

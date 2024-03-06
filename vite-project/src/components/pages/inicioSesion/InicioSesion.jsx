@@ -48,9 +48,7 @@ const InicioSesion = () => {
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
-
   if (isLoggedIn) {
-    // Aquí podrías redirigir utilizando la lógica de tu aplicación
     console.log('Usuario inició sesión con éxito');
   }
 
