@@ -7,10 +7,12 @@ import Administrador from './components/pages/administrador/Administrador';
 import Detalle from './components/pages/detalle/Detalle';
 import FlotaDeAutos from './components/pages/flotaAutos/FlotaDeAutos';
 import FlotaDeCamioneta from './components/pages/flotaCamioneta/FlotaDeCamioneta';
+import AuthContextProvider from './context/AuthContext';
 
 function App() {
   return (
     <BrowserRouter>
+       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
@@ -20,7 +22,8 @@ function App() {
           <Route path="/detalle/:id" element={<Detalle />} />
           <Route path="/flotaDeAutos" element={<FlotaDeAutos />} />
           <Route path="/flotaDeCamioneta" element={<FlotaDeCamioneta />} />
-        </Routes>
+         </Routes>
+        </AuthContextProvider>
     </BrowserRouter>
   );
 }
