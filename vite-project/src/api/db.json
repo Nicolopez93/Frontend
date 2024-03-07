@@ -20,7 +20,7 @@
       "personas": 5,
       "precio": 55,
       "categoria": "auto",
-      "isLiked": false
+      "isLiked": true
     },
     {
       "id": "3",
@@ -42,7 +42,7 @@
       "personas": 5,
       "precio": 60,
       "categoria": "auto",
-      "isLiked": false
+      "isLiked": true
     },
     {
       "id": "5",
@@ -53,7 +53,7 @@
       "personas": 5,
       "precio": 52,
       "categoria": "auto",
-      "isLiked": false
+      "isLiked": true
     },
     {
       "id": "6",

@@ -1,6 +1,4 @@
 .navbar-container {
-    /* position: fixed;
-    z-index: 10; */
     background-color: #0C4D9C;
     display: flex;
     justify-content: space-between;
@@ -9,9 +7,10 @@
 }
 
 .navbar-logo {
-    width: 120px; 
+    width: 160px; 
     height: auto;
 }
+
 .navbar-buttons {
     list-style: none;
     display: flex;
@@ -19,34 +18,37 @@
     align-items: center;
     margin-right: 20px;
 }
+
 button {
-    color: #0C4D9C;
-    text-decoration: none;
-    font-size: 25px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    background: #C3E0F9;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    margin-right: 10px;
+    margin-right: 20px;
 }
-button:last-child {
-    margin-right: 20; /* Elimina el margen derecho del último botón */
-}
+
 
 button::before {
     margin-left: auto;
 }
 
-button::after, button::before {
+button::after,
+button::before {
     content: '';
     width: 0%;
     height: 2px;
-    background:#FA5C00;
+    background: #FA5C00;
     display: block;
     transition: 0.5s;
 }
 
-button:hover::after, button:hover::before {
+button:hover::after,
+button:hover::before {
     width: 100%;
 }
 
@@ -63,7 +65,7 @@ button:hover::after, button:hover::before {
     }
 
     .navbar-buttons button {
-        margin-right: 0; /* Elimina el margen entre los botones en dispositivos móviles */
-        margin-bottom: 10px; /* Agrega espacio entre los botones */
+        margin-right: 0; 
+        margin-bottom: 10px;
     }
 }

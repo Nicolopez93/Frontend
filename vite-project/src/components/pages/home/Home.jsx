@@ -57,10 +57,12 @@ const Home = () => {
                 <TipoDeAuto />
             </div>
             <div>
-                <h2 style={{ textAlign: 'center', backgroundColor: '#F77B33' }}>Recomendaciones</h2>
                 {autos.length > 0 && (
                     <Recomendacion autos={autos.slice(0, 2)} />
                 )}
+            </div>
+            <div>
+                <h2 style={{ textAlign: "center",fontSize: '2rem', backgroundColor: 'rgba( 145, 192, 243,0.3)', color: '#21408E' , fontWeight: 'bold',fontFamily: 'San Francisco' }}>Nuestros autos</h2>
             </div>
             <div className={styles.containerCards}>
                 {searchResults.length > 0

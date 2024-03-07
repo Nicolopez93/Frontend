@@ -1,14 +1,17 @@
 import React from 'react';
 import Card from '../card/Card';
-
-const Recomendacion = ({autos}) => {
+import './recomendacion.css';
+const Recomendacion = ({ autos }) => {
   return (
-   <div style={{backgroundColor: '#F77B33', display: 'flex', justifyContent: 'space-around'}}>
-    <Card auto ={autos[0]}/>
-    
-    <Card auto ={autos[1]}/>
+    <div className="recomendacion-container">
+      <h2 className="recomendacion-title">Recomendaciones</h2>
+      <div className="recomendacion-cards">
+        <Card auto={autos[0]} className="recomendacion-card" />
+        <Card auto={autos[1]} className="recomendacion-card" />
+      </div>
     </div>
   );
 };
 
 export default Recomendacion;
+

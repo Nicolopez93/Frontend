@@ -4,6 +4,7 @@
     grid-gap: 16px; /* Espacio entre las celdas de la cuadrícula */
     justify-items: center; /* Alinea los ítems horizontalmente al centro de su celda */
     align-items: center; /* Alinea los ítems verticalmente al centro de su celda */
-    max-width: 99%; /* O un ancho máximo que prefieras para el contenedor */
     margin: 0 auto; /* Centra el contenedor en la página */
+    background-color: rgb(145, 192, 243,0.3);
 }
+
