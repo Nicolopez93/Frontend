@@ -12,8 +12,7 @@ const Detalle = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/autos/${id}`)
       .then(response => {
-        const data = response.data;
-        setAuto(data);
+        setAuto(response.data);
       })
       .catch(error => {
         console.error("Error fetching auto:", error);
@@ -22,28 +21,27 @@ const Detalle = () => {
 
   return (
     <>
-    <Navbar/>
-    <section className="detalle-section">
-      <Link className="detalle-volver-btn" to="/home">Volver</Link>
-      <div className="detalle-container">
+      <Navbar />
+      <section className="detalle-section">
+        <Link className="detalle-volver-btn" to="/home">Volver</Link>
         {auto ? (
-          <div className="detalle-card">
-            <img className="detalle-img" src={auto.imgUrl} alt={auto.nombre} />
-            <h2 className="detalle-title">{auto.nombre}</h2>
-            <p className="detalle-info">Puertas: {auto.puertas}</p>
-            <p className="detalle-info">Valijas: {auto.valijas}</p>
-            <p className="detalle-info">Personas: {auto.personas}</p>
-            <p className="detalle-price">Precio: ${auto.precio}</p>
+          <div className="detalle-content">
+            <div className="detalle-info-container">
+              <h2 className="detalle-title">{auto.nombre}</h2>
+              <button className="detalle-btn">Ver Galería</button>
+              <button className="detalle-btn">Ver características</button>
+            </div>
+            <div className="detalle-img-container">
+              <img className="detalle-img" src={auto.imgUrl} alt={auto.nombre} />
+            </div>
           </div>
         ) : (
           <p>Cargando...</p>
         )}
-      </div>
-    </section>
-    <Footer/>
+      </section>
+      <Footer />
     </>
   );
 };
 
 export default Detalle;
-

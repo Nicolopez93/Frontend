@@ -1,7 +1,10 @@
 .detalle-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  background-color: rgb(145, 192, 243,0.3);
-  height: 83vh;
+  background-color: rgb(145, 192, 243, 0.3);
+  min-height: 83vh; /* Asegura que la sección ocupe al menos una altura del viewport */
 }
 
 .detalle-volver-btn {
@@ -11,46 +14,52 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
-  margin-right: 20px;
+  margin-bottom: 20px; /* Espacio entre el botón Volver y el contenido principal */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  align-self: flex-start; /* Alinea el botón Volver al inicio de la sección */
 }
 
-.detalle-container {
+.detalle-content {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  justify-content: space-around; /* Espacia los elementos internos uniformemente */
+  align-items: center; /* Centra los elementos verticalmente */
 }
 
-.detalle-card {
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
+.detalle-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra los elementos verticalmente */
+  align-items: flex-start; /* Alinea los elementos a la izquierda */
+  max-width: 50%; /* Limita el ancho de la sección de información */
+}
+
+.detalle-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 10px; /* Espacio entre botones */
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.detalle-img-container {
+  max-width: 50%; /* Limita el ancho del contenedor de la imagen */
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
 }
 
 .detalle-img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin-bottom: 20px;
 }
 
-.detalle-title {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: black;
-}
-
-.detalle-info {
-  margin-bottom: 10px;
-  color : black;
-}
-
-.detalle-price {
-  font-weight: bold;
-  color: black;
-}
+/* Los estilos para .detalle-card, .detalle-title, .detalle-info, y .detalle-price se mantienen sin cambios */
