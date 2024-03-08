@@ -139,5 +139,18 @@
       "email": "nicolopezarq@gmail.com",
       "usuarioRole": "admin"
     }
+  ],
+  "caracteristicas": [
+    {
+      "id": "id",
+      "imgUrl": "imgUrl",
+      "nombre": "nombre",
+      "puertas": "puertas",
+      "valijas": "valijas",
+      "personas": "personas",
+      "precio": "precio",
+      "categoria": "categoria"
+    }
   ]
+
 }

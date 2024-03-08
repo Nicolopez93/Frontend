@@ -10,6 +10,7 @@ import AuthContextProvider from './context/AuthContext';
 import PanelAdministrador from './components/pages/panelAdministrador/PanelAdministrador';
 import ListaDeProductos from './components/pages/listaDeProductos/ListaDeProductos';
 import ListaDeUsuarios from './components/pages/listaDeUsuarios/ListaDeUsuarios';
+import ListaDeCaracteristicas from './components/pages/listaDeCaracteristicas/ListaDeCaracteristicas';
 function App() {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/flotaDeCamioneta" element={<FlotaDeCamioneta />} />
           <Route path="/ListaDeProductos" element={<ListaDeProductos />} />
           <Route path="/ListaDeUsuarios" element={<ListaDeUsuarios />} />
+          <Route path="/ListaDeCaracteristicas" element={<ListaDeCaracteristicas />} />
          </Routes>
         </AuthContextProvider>
     </BrowserRouter>
