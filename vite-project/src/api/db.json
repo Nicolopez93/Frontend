@@ -138,6 +138,13 @@
       "password": "1234",
       "email": "nicolopezarq@gmail.com",
       "usuarioRole": "admin"
+    },
+    {
+      "id": "aa32",
+      "name": "juan",
+      "email": "juan@gmail.com",
+      "password": "1234",
+      "usuarioRole": "admin"
     }
   ],
   "caracteristicas": [
@@ -152,5 +159,4 @@
       "categoria": "categoria"
     }
   ]
-
 }

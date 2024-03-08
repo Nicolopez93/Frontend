@@ -1,10 +1,11 @@
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { Button, Grid, Link, TextField, Typography } from '@mui/material'
 import { AuthLayout } from '../layout/AuthLayout'
 import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
 export const LoginPage = () => {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([])
   const [user, setUser] = useState({})
   const [notFound, setNotFound] = useState(false)

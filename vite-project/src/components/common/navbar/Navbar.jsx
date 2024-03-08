@@ -32,7 +32,7 @@ const Navbar = () => {
         </Typography>
 
         {user?.usuarioRole === 'admin' ? (
-          <Link to='/Admin'>
+          <Link to='/PanelAdministrador'>
             <button>Administrador</button>
           </Link>
         ) : (

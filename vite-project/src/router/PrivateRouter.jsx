@@ -1,10 +1,16 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../auth/context/AuthContext'
 import { Navigate } from 'react-router-dom'
+import Navbar from '../components/common/navbar/Navbar'
+import Footer from '../components/common/footer/Footer'
 
 export const PrivateRouter = ({ children }) => {
 
   const { logged } = useContext(AuthContext)
 
-  return (logged) ? children : <Navigate to="/login" />
+  return (logged) ? <> 
+  <Navbar />
+  {children} 
+  <Footer/>
+  </> : <Navigate to="/login" />
 }
