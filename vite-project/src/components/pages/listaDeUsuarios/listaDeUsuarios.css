@@ -1,0 +1,12 @@
+.panel-users-title {
+    font-size: 2rem;
+    text-align: center;
+    color: #21408E;
+    margin-bottom: 80px;
+    font-family: 'San Francisco', Arial, sans-serif;
+    font-weight: bold;
+}
+
+.panel-users-container {
+    height: 80vh;
+}
