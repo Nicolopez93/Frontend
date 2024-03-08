@@ -9,6 +9,7 @@ import FlotaDeCamioneta from './components/pages/flotaCamioneta/FlotaDeCamioneta
 import AuthContextProvider from './context/AuthContext';
 import PanelAdministrador from './components/pages/panelAdministrador/PanelAdministrador';
 import ListaDeProductos from './components/pages/listaDeProductos/ListaDeProductos';
+import ListaDeUsuarios from './components/pages/listaDeUsuarios/ListaDeUsuarios';
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/flotaDeAutos" element={<FlotaDeAutos />} />
           <Route path="/flotaDeCamioneta" element={<FlotaDeCamioneta />} />
           <Route path="/ListaDeProductos" element={<ListaDeProductos />} />
+          <Route path="/ListaDeUsuarios" element={<ListaDeUsuarios />} />
          </Routes>
         </AuthContextProvider>
     </BrowserRouter>
