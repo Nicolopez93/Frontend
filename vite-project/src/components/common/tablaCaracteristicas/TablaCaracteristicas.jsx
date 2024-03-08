@@ -19,7 +19,7 @@ const TablaCaracteristicas = () => {
   }, []);
 
   const fetchCaracteristicas = () => {
-    axios.get('http://localhost:5000/caracteristicas')
+    axios.get('http://localhost:3000/caracteristicas')
       .then(response => setCaracteristicas(response.data.caracteristicas))
       .catch(error => console.error('Error fetching data:', error));
   };
@@ -31,7 +31,7 @@ const TablaCaracteristicas = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:5000/caracteristicas/${id}`, editFields)
+    axios.patch(`http://localhost:3000/caracteristicas/${id}`, editFields)
       .then(() => {
         setEditingId(null);
         fetchCaracteristicas();
@@ -44,7 +44,7 @@ const TablaCaracteristicas = () => {
   };
 
   const eliminarCaracteristica = (id) => {
-    axios.delete(`http://localhost:5000/caracteristicas/${id}`)
+    axios.delete(`http://localhost:3000/caracteristicas/${id}`)
       .then(() => {
         setCaracteristicas(caracteristicas.filter(caracteristica => caracteristica.id !== id));
       })

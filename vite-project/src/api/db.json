@@ -125,18 +125,25 @@
   "users": [
     {
       "id": "1",
-      "nombre": "nicolas",
+      "name": "nicolas",
       "apellido": "hernandez",
       "password": "1234",
-      "email": "9kI8t@example.com",
-      "usuarioRole": "admin"
+      "email": "pepe@pepe.com",
+      "usuarioRole": "user"
     },
     {
       "id": "77e8",
-      "nombre": "Nicolas",
+      "name": "Nicolas",
       "apellido": "lopez",
       "password": "1234",
       "email": "nicolopezarq@gmail.com",
+      "usuarioRole": "admin"
+    },
+    {
+      "id": "aa32",
+      "name": "juan",
+      "email": "juan@gmail.com",
+      "password": "1234",
       "usuarioRole": "admin"
     }
   ],
@@ -152,5 +159,4 @@
       "categoria": "categoria"
     }
   ]
-
 }
