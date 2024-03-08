@@ -145,6 +145,13 @@
       "email": "juan@gmail.com",
       "password": "1234",
       "usuarioRole": "admin"
+    },
+    {
+      "id": "3ad0",
+      "name": "martin",
+      "email": "martin@gmail.com",
+      "password": "1234",
+      "usuarioRole": "user"
     }
   ],
   "caracteristicas": [
