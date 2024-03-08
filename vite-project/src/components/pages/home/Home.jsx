@@ -9,7 +9,6 @@ import Recomendacion from '../../common/recomendacion/Recomendacion';
 import Footer from '../../common/footer/Footer';
 
 const Home = () => {
-
     const [autos, setAutos] = useState([]);
     const [dispatchLike, setDispatchLike] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
@@ -45,6 +44,9 @@ const Home = () => {
         setSearchTerm(searchTerm);
     };
 
+    // Limitar el número de autos mostrados a 10
+    const autosToDisplay = searchResults.length > 0 ? searchResults.slice(0, 10) : autos.slice(0, 10);
+
     return (
         <>
             <div>
@@ -58,20 +60,16 @@ const Home = () => {
             </div>
             <div>
                 {autos.length > 0 && (
-                    <Recomendacion autos={autos.slice(0, 2)} />
+                    <Recomendacion autos={autos.slice(0, 2)} handleLike={handleLike} />
                 )}
             </div>
             <div>
-                <h2 style={{ textAlign: "center",fontSize: '2rem', backgroundColor: 'rgba( 145, 192, 243,0.3)', color: '#21408E' , fontWeight: 'bold',fontFamily: 'San Francisco' }}>Nuestros autos</h2>
+                <h2 style={{ textAlign: "center", fontSize: '2rem', backgroundColor: 'rgba( 145, 192, 243,0.3)', color: '#21408E' , fontWeight: 'bold',fontFamily: 'San Francisco' }}>Nuestros autos</h2>
             </div>
             <div className={styles.containerCards}>
-                {searchResults.length > 0
-                    ? searchResults.map((auto) => (
-                        <Card key={auto.id} auto={auto} handleLike={handleLike} />
-                    ))
-                    : autos.map((auto) => (
-                        <Card key={auto.id} auto={auto} handleLike={handleLike} />
-                    ))}
+                {autosToDisplay.map((auto) => (
+                    <Card key={auto.id} auto={auto} handleLike={handleLike} />
+                ))}
             </div>
             <div>
                 <Footer/>

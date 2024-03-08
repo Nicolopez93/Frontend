@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./detalle.css";
+import Navbar from "../../common/navbar/Navbar";
+import Footer from "../../common/footer/Footer";
 
 const Detalle = () => {
   const { id } = useParams();
@@ -19,24 +21,29 @@ const Detalle = () => {
   }, [id]);
 
   return (
-    <section className="container">
-      <Link className="volver-btn" to="/home">Volver</Link>
+    <>
+    <Navbar/>
+    <section className="detalle-section">
+      <Link className="detalle-volver-btn" to="/home">Volver</Link>
       <div className="detalle-container">
         {auto ? (
-          <div className="card-container">
-            <img src={auto.imgUrl} alt={auto.nombre} />
-            <h2>{auto.nombre}</h2>
-            <p>Puertas: {auto.puertas}</p>
-            <p>Valijas: {auto.valijas}</p>
-            <p>Personas: {auto.personas}</p>
-            <p className="price">Precio: ${auto.precio}</p>
+          <div className="detalle-card">
+            <img className="detalle-img" src={auto.imgUrl} alt={auto.nombre} />
+            <h2 className="detalle-title">{auto.nombre}</h2>
+            <p className="detalle-info">Puertas: {auto.puertas}</p>
+            <p className="detalle-info">Valijas: {auto.valijas}</p>
+            <p className="detalle-info">Personas: {auto.personas}</p>
+            <p className="detalle-price">Precio: ${auto.precio}</p>
           </div>
         ) : (
           <p>Cargando...</p>
         )}
       </div>
     </section>
+    <Footer/>
+    </>
   );
 };
 
 export default Detalle;
+

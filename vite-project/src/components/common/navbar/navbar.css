@@ -1,4 +1,6 @@
 .navbar-container {
+    /* position: fixed;
+    z-index: 100; */
     background-color: #0C4D9C;
     display: flex;
     justify-content: space-between;
