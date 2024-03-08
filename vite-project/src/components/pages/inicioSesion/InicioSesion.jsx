@@ -5,6 +5,7 @@ import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import Navbar from '../../common/navbar/Navbar';
+import './inicioSesion.css';
 
 const style = {
   position: 'absolute',
@@ -53,20 +54,16 @@ const InicioSesion = () => {
   }
 
   return (
-    <div>
+    <>
+    
       <Navbar />
-      <Box sx={style}>
+      <div className='inicio-sesion-container'>
+      <img src="https://t-cf.bstatic.com/design-assets/assets/v3.109.3/illustrations-traveller/TripsCarRentalManageMyAccount.png" alt="munecooo" />
+      <Box className = 'inicio-sesion-form'>
         <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "300px"
-          }}
           onSubmit={handleSubmit}
         >
-          <TextField
+          <TextField 
             id="outlined-basic-email"
             label="Ingrese el email"
             variant="outlined"
@@ -75,7 +72,7 @@ const InicioSesion = () => {
             onChange={handleChange}
           />
 
-          <TextField
+          <TextField style={{ marginTop: "20px" }}
             id="outlined-basic-password"
             label="Ingrese la contraseña"
             variant="outlined"
@@ -85,11 +82,12 @@ const InicioSesion = () => {
             onChange={handleChange}
           />
 
-          <Button type='submit' variant='contained' color='primary'>Iniciar sesión</Button>
+          <Button style={{ marginTop: "20px" }} type='submit' variant='contained' color='primary'>Iniciar sesión</Button>
           {loginError && <p style={{ color: 'red' }}>{loginError}</p>}
         </form>
       </Box>
     </div>
+    </>
   );
 }
 

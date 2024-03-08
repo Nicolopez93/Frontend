@@ -5,7 +5,7 @@ import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import Navbar from '../../common/navbar/Navbar';
-
+import './crearCuenta.css'
 const style = {
   position: 'absolute',
   top: '50%',
@@ -50,18 +50,13 @@ const CrearCuenta = () => {
   });
 
   return (
-
-    <div>
+    <>
       <Navbar/>
-      <Box sx={style}>
+    
+    <div className="crear-cuenta-container">
+      <img src="https://t-cf.bstatic.com/design-assets/assets/v3.109.3/illustrations-traveller/TripsCarRentalManageMyAccount.png" alt="munecooo" />
+      <Box className = "crear-cuenta-form">
         <form
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "400px"
-          }}
           onSubmit={handleSubmit}
         >
           <TextField
@@ -73,7 +68,7 @@ const CrearCuenta = () => {
             onChange={handleChange}
           />
 
-          <TextField
+          <TextField style={{ marginTop: "20px" }}
             id="outlined-basic-apellido"
             label="Ingrese el apellido"
             variant="outlined"
@@ -82,7 +77,7 @@ const CrearCuenta = () => {
             onChange={handleChange}
           />
 
-          <TextField
+          <TextField style={{ marginTop: "20px" }}
             id="outlined-basic-email"
             label="Ingrese el email"
             variant="outlined"
@@ -93,7 +88,7 @@ const CrearCuenta = () => {
             helperText={emailError}
           />
 
-          <TextField
+          <TextField style={{ marginTop: "20px" }}
             id="outlined-basic-password"
             label="Ingrese la contraseña"
             variant="outlined"
@@ -103,7 +98,7 @@ const CrearCuenta = () => {
             onChange={handleChange}
           />
 
-          <TextField
+          <TextField style={{ marginTop: "20px" }}
             id="outlined-basic-usuarioRole"
             label="Ingrese el rol de usuario"
             variant="outlined"
@@ -112,10 +107,12 @@ const CrearCuenta = () => {
             onChange={handleChange}
           />
 
-          <Button type='submit' variant='contained' color='primary'>Agregar usuario</Button>
+          <Button style={{ marginTop: "20px"}} type='submit' variant='contained' color='primary'>Agregar usuario</Button>
         </form>
       </Box>
     </div>
+    
+    </>
   );
 }
 

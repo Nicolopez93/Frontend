@@ -1,0 +1,14 @@
+.crear-cuenta-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+}
+
+.crear-cuenta-form {
+    background-color: rgb(145, 192, 243,0.3);
+    padding: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+}
