@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import AgregarProducto from '../../common/agregarProducto/AgregarProducto';
 import Navbar from '../../common/navbar/Navbar';
 import TablaAdministrador from '../../common/tablaAdmin/TablaAdministrador';
+
 const Administrador = () => {
 
   const [open, setOpen] = React.useState(false);

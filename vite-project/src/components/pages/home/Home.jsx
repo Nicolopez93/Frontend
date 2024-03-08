@@ -16,7 +16,7 @@ const Home = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        axios.get("http://localhost:5000/autos")
+        axios.get("http://localhost:3000/autos")
             .then(res => {
                 setAutos(res.data);
             })
@@ -34,7 +34,7 @@ const Home = () => {
     }, [searchTerm, autos]);
 
     const handleLike = (auto) => {
-        axios.patch(`http://localhost:5000/autos/${auto.id}`, { isLiked: !auto.isLiked })
+        axios.patch(`http://localhost:3000/autos/${auto.id}`, { isLiked: !auto.isLiked })
             .then(res => setDispatchLike(true))
             .catch(err => {
                 console.error("Error al actualizar el estado de like:", err);
@@ -48,9 +48,6 @@ const Home = () => {
     return (
         <>
             <div>
-                <Navbar />
-            </div>
-            <div>
                 <Buscador onSearch={handleSearch} />
             </div>
             <div className={styles.container}>
@@ -62,7 +59,7 @@ const Home = () => {
                     <Recomendacion autos={autos.slice(0, 2)} />
                 )}
             </div>
-            <div className={styles.containerCards}>
+             {/* <div className={styles.containerCards}>
                 {searchResults.length > 0
                     ? searchResults.map((auto) => (
                         <Card key={auto.id} auto={auto} handleLike={handleLike} />
@@ -70,10 +67,8 @@ const Home = () => {
                     : autos.map((auto) => (
                         <Card key={auto.id} auto={auto} handleLike={handleLike} />
                     ))}
-            </div>
-            <div>
-                <Footer/>
-            </div>
+            </div>  */}
+          
         </>
     );
 };
