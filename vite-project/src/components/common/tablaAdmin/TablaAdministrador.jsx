@@ -20,7 +20,7 @@ const TablaAdministrador = () => {
   }, [isProductDeleted]);
 
   const fetchAutos = () => {
-    fetch('http://localhost:5000/autos')
+    fetch('http://localhost:3000/autos')
       .then(response => response.json())
       .then(data => setAutos(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -33,7 +33,7 @@ const TablaAdministrador = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:5000/autos/${id}`, editFields)
+    axios.patch(`http://localhost:3000/autos/${id}`, editFields)
       .then(res => {
         setEditFields(res.data);
         setIsProductDeleted(!isProductDeleted); // Actualiza el estado para desencadenar la recarga de datos
@@ -49,7 +49,7 @@ const TablaAdministrador = () => {
   };
 
   const eliminarProducto = (id) => {
-    axios.delete(`http://localhost:5000/autos/${id}`)
+    axios.delete(`http://localhost:3000/autos/${id}`)
       .then(res => setIsProductDeleted(true))
       .catch(err => console.error(err));
   }

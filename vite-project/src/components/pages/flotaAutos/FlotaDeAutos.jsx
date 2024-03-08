@@ -7,7 +7,7 @@ const FlotaDeAutos = () => {
   const [autos, setAutos] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/autos")
+    axios.get("http://localhost:3000/autos")
       .then(response => {
         const autosCategoriaAuto = response.data.filter(auto => auto.categoria === "auto");
         setAutos(autosCategoriaAuto);

@@ -31,7 +31,7 @@ const CrearCuenta = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users?email=${data.email}`);
+      const response = await axios.get(`http://localhost:3000/users?email=${data.email}`);
       if (response.data.length > 0) {
         setEmailError('Ya existe un usuario registrado con este correo electrónico.');
       } else {

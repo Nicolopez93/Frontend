@@ -10,7 +10,7 @@ const Detalle = () => {
   const [auto, setAuto] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/autos/${id}`)
+    axios.get(`http://localhost:3000/autos/${id}`)
       .then(response => {
         setAuto(response.data);
       })

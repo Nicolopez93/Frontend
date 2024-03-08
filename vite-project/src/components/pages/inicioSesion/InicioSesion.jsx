@@ -30,7 +30,7 @@ const InicioSesion = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.get(`http://localhost:5000/users?email=${data.email}&password=${data.password}`);
+      const response = await axios.get(`http://localhost:3000/users?email=${data.email}&password=${data.password}`);
       if (response.data.length > 0) {
         setIsLoggedIn(true);
       } else {
