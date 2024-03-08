@@ -1,4 +1,4 @@
-.panel-users-title {
+.panel-productos-title {
     font-size: 2rem;
     text-align: center;
     color: #21408E;
@@ -7,6 +7,6 @@
     font-weight: bold;
 }
 
-.panel-users-container {
+.panel-productos-container {
     height: 80vh;
 }

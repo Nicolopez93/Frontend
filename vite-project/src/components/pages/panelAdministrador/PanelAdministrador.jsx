@@ -12,9 +12,9 @@ const PanelAdministrador = () => {
       <Link to="/ListaDeProductos"><button className="panel-button">Lista De Productos</button></Link>
       <Link to="/ListaDeUsuarios"><button className="panel-button">Lista De Usuarios</button>
       </Link>
-      <button className="panel-button">Administrar Caracteristicas</button>
+      <Link to="/ListaDeCaracteristicas"><button className="panel-button">Administrar Caracteristicas</button>
+    </Link>
     </div>
-
       <Footer/>
     </>
   )
