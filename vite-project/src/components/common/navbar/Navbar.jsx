@@ -7,8 +7,12 @@ import { Typography } from '@mui/material'
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext)
-
+  
   const navigate = useNavigate()
+  const iniciar = (user) => {
+    const inicial = user ? user.name.charAt(0) : '';
+    return inicial;
+}
 
   const handleLogout = () => {
     logout()
@@ -27,8 +31,8 @@ const Navbar = () => {
       <div className='navbar-buttons'>
         <Typography
           variant='h4'
-          sx={{ mr: 4, color: '#fff', textTransform: 'capitalize' }}>
-          {user?.name}
+          sx={{ mr: 4, color: '#fff', textTransform: 'capitalize', borderRadius: '25px', backgroundColor: '#fa5c00', padding: '10px' }}>
+          {iniciar ? iniciar(user) : ''}
         </Typography>
 
         {user?.usuarioRole === 'admin' ? (

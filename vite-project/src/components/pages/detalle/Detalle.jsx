@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./detalle.css";
-import Navbar from "../../common/navbar/Navbar";
-import Footer from "../../common/footer/Footer";
 
 const Detalle = () => {
   const { id } = useParams();
@@ -21,9 +19,8 @@ const Detalle = () => {
 
   return (
     <>
-      <Navbar />
       <section className="detalle-section">
-        <Link className="detalle-volver-btn" to="/home">Volver</Link>
+        <Link className="detalle-volver-btn" to="/">Volver</Link>
         {auto ? (
           <div className="detalle-content">
             <div className="detalle-info-container">
@@ -39,7 +36,6 @@ const Detalle = () => {
           <p>Cargando...</p>
         )}
       </section>
-      <Footer />
     </>
   );
 };

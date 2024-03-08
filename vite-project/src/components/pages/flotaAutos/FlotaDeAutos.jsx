@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../common/card/Card';
-import Navbar from '../../common/navbar/Navbar';
 import './flotaDeAuto.css';
 const FlotaDeAutos = () => {
   const [autos, setAutos] = useState([]);
@@ -19,7 +18,6 @@ const FlotaDeAutos = () => {
 
   return (
     <>
-      <div><Navbar/></div>
       <div className="container-auto">
         {autos.map(auto => (
           <Card key={auto.id} auto={auto} />
