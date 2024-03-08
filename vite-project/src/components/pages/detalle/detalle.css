@@ -1,66 +1,56 @@
-/* styles/CardDetalle.css */
+.detalle-section {
+  padding: 20px;
+  background-color: rgb(145, 192, 243,0.3);
+  height: 83vh;
+}
 
-.card-container {
-    max-width: 400px;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-container img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .card-container h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .card-container p {
-    margin-bottom: 5px;
-  }
-  
-  .card-container .price {
-    font-weight: bold;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .detalle-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .volver-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #f0f0f0;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-decoration: none;
-    place-self: start;
-    margin-left: 2rem;
-  }
-  
-  .price {
-    font-size: 20px;
-    color: #ff6600;
-    display: flex;
-    justify-content: center;
-  }
-  
+.detalle-volver-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 25px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  margin-right: 20px;
+}
+
+.detalle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detalle-card {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.detalle-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.detalle-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.detalle-info {
+  margin-bottom: 10px;
+  color : black;
+}
+
+.detalle-price {
+  font-weight: bold;
+  color: black;
+}

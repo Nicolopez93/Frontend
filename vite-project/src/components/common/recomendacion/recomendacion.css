@@ -1,9 +1,9 @@
-.tipoDeAuto-container {
-    background-color: rgb(145, 192, 243,0.3);
+.recomendacion-container {
+    height: 570px;
     height: 73vh;
   }
   
-  .tipoDeAuto-titulo {
+  .recomendacion-title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 2rem;
@@ -12,18 +12,18 @@
     font-weight: bold;
   }
   
-  .tipoDeAuto-card-container {
+  .recomendacion-cards {
     display: flex;
     justify-content: space-around;
+    margin-bottom: 25px;
   }
   
-  .tipoDeAuto-card {
+  .recomendacion-card {
     width: 300px;
     height: 400px;
-    margin-bottom: 20px;
   }
   
-  .tipoDeAuto-card-link {
+  .recomendacion-card-link {
     text-decoration: none;
   }
   
