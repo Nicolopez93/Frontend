@@ -39,9 +39,10 @@ const AgregarProducto = ({open, handleClose}) => {
             precio: data.precio,
             isLiked: false
         }
-        axios.post('http://localhost:5000/autos', newData)
+        axios.post('http://localhost:3000/autos', newData)
         .then (res => {
             handleClose();
+            window.location.reload();
         })
         .cath (err => console.log(err))
     }

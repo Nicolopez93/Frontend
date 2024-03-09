@@ -4,6 +4,8 @@
     align-items: center;
     justify-content: center;
     height: 80vh;
+    background-color: rgb(145, 192, 243,0.3);
+
   }
 
   .panel-title {
