@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import imgAuto from '../../../assets/cronos.png'
+import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png'
 import './buscador.css'
 const Buscador = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');

@@ -41,7 +41,7 @@ const Card = ({ auto, handleLike }) => {
       </CardContent>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorites" onClick={() => handleLike(auto)}>
-          <FavoriteIcon color={auto.isLiked ? "info" : "disabled"}/>
+          <FavoriteIcon color={auto.isLiked ? "warning" : "disabled"}/>
         </IconButton>
       </CardActions>
     </MuiCard>
