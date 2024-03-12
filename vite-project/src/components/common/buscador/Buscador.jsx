@@ -15,6 +15,8 @@ const Buscador = ({ onSearch }) => {
     <div className="buscador-container">
        <div >
           <input type="text" placeholder="Buscar autos..." value={searchTerm} onChange={handleInputChange}/>
+          <input type="date" placeholder="Fecha de Retiro"  />
+          <input type="date" placeholder="Fecha de Devolución" />
           <button className="buscar-autos-button" onClick={handleSearch}>Buscar</button>
         </div>
       <div className="carNow-image-container">
