@@ -120,6 +120,17 @@
       "imgUrl": "https://pngimg.com/uploads/pickup_truck/pickup_truck_PNG102880.png",
       "precio": "50",
       "isLiked": false
+    },
+    {
+      "id": "041b",
+      "nombre": "Jeep",
+      "puertas": "5",
+      "valijas": "3",
+      "personas": "3",
+      "categoria": "camioneta",
+      "imgUrl": "https://centraljeep.divit.com.ar/wp-content/uploads/2022/07/Renegade_TrailHawk_P.Orange-modelizer.png.img_.2880.png",
+      "precio": "25",
+      "isLiked": false
     }
   ],
   "users": [
@@ -150,6 +161,13 @@
       "id": "3ad0",
       "name": "martin",
       "email": "martin@gmail.com",
+      "password": "1234",
+      "usuarioRole": "user"
+    },
+    {
+      "id": "8696",
+      "name": "juan",
+      "email": "juan1@gmail.com",
       "password": "1234",
       "usuarioRole": "user"
     }

@@ -5,5 +5,5 @@
     justify-items: center; /* Alinea los ítems horizontalmente al centro de su celda */
     align-items: center; /* Alinea los ítems verticalmente al centro de su celda */
     margin: 0 auto; /* Centra el contenedor en la página */
-    background-color: rgb(145, 192, 243,0.3);
+    
 }

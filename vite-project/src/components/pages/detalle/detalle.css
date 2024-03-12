@@ -3,10 +3,13 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: rgb(145, 192, 243, 0.3);
-  min-height: 83vh; /* Asegura que la sección ocupe al menos una altura del viewport */
+  background-color: rgb(255, 167, 117,0.5);
+  min-height: 83vh;
 }
-
+.detalle-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
 .detalle-volver-btn {
   padding: 10px 20px;
   background-color: #007bff;
@@ -17,24 +20,28 @@
   font-size: 16px;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 20px; /* Espacio entre el botón Volver y el contenido principal */
-  text-decoration: none; /* Elimina el subrayado del enlace */
-  align-self: flex-start; /* Alinea el botón Volver al inicio de la sección */
+  margin-bottom: 20px;
+  text-decoration: none; 
+  align-self: flex-start; 
 }
 
 .detalle-content {
   display: flex;
   width: 100%;
-  justify-content: space-around; /* Espacia los elementos internos uniformemente */
-  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-around; 
+  align-items: center; 
+
 }
 
 .detalle-info-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centra los elementos verticalmente */
-  align-items: flex-start; /* Alinea los elementos a la izquierda */
-  max-width: 50%; /* Limita el ancho de la sección de información */
+  justify-content: center; 
+  background-color: white;
+  height: 36vh;
+  width: 40vh;
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .detalle-btn {
@@ -46,14 +53,15 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 10px; /* Espacio entre botones */
-  text-decoration: none; /* Elimina el subrayado del enlace */
+  margin-top: 10px; 
+  width: 25vh;
+  text-decoration: none;
 }
 
 .detalle-img-container {
-  max-width: 50%; /* Limita el ancho del contenedor de la imagen */
+  max-width: 50%; 
   display: flex;
-  justify-content: center; /* Centra la imagen horizontalmente */
+  justify-content: center; 
 }
 
 .detalle-img {
@@ -61,5 +69,3 @@
   height: auto;
   border-radius: 8px;
 }
-
-/* Los estilos para .detalle-card, .detalle-title, .detalle-info, y .detalle-price se mantienen sin cambios */

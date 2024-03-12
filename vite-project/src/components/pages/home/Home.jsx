@@ -60,7 +60,7 @@ const Home = () => {
                 )}
             </div>
             <div>
-                <h2 style={{ textAlign: "center", fontSize: '2rem', backgroundColor: 'rgba( 145, 192, 243,0.3)', color: '#21408E' , fontWeight: 'bold',fontFamily: 'San Francisco' }}>Nuestros autos</h2>
+                <h2 style={{ textAlign: "center", fontSize: '2rem', color: '#21408E' , fontWeight: 'bold', fontFamily: 'San Francisco, Arial, sans-serif', }}>Nuestros autos</h2>
             </div>
             <div className={styles.containerCards}>
                 {autosToDisplay.map((auto) => (

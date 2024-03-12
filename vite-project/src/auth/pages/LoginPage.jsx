@@ -41,7 +41,7 @@ export const LoginPage = () => {
       setUser(user)
       setNotFound(false)
       login(user)
-      navigate('/', {
+      navigate('/PanelAdministrador', {
         replace: true,
       })
     } else {

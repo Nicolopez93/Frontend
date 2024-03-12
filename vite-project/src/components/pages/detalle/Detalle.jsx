@@ -27,6 +27,8 @@ const Detalle = () => {
               <h2 className="detalle-title">{auto.nombre}</h2>
               <button className="detalle-btn">Ver Galería</button>
               <button className="detalle-btn">Ver características</button>
+              <button className="detalle-btn">Fecha de Retiro</button>
+              <button className="detalle-btn">Fecha de Devolución</button>
             </div>
             <div className="detalle-img-container">
               <img className="detalle-img" src={auto.imgUrl} alt={auto.nombre} />
