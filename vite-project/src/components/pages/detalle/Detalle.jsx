@@ -25,10 +25,12 @@ const Detalle = () => {
           <div className="detalle-content">
             <div className="detalle-info-container">
               <h2 className="detalle-title">{auto.nombre}</h2>
-              <button className="detalle-btn">Ver Galería</button>
+              <Link to={`/GaleriaDeImagenes`} >
+                <button className="detalle-btn">Ver Galería</button>
+              </Link> 
               <button className="detalle-btn">Ver características</button>
               <button className="detalle-btn">Fecha de Retiro</button>
-              <button className="detalle-btn">Fecha de Devolución</button>
+              <button className="detalle-btn">Fecha de Devol</button>
             </div>
             <div className="detalle-img-container">
               <img className="detalle-img" src={auto.imgUrl} alt={auto.nombre} />

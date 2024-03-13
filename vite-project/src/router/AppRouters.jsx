@@ -4,7 +4,6 @@ import { CardRouters } from '../components/routers/CardRouters';
 import { PrivateRouter } from './PrivateRouter'
 import { PublicRouters } from './PublicRouters'
 import { RegisterPage } from '../auth/pages/RegisterPage'
-import { AdminRouters } from '../components/routers/AdminRouters';
 import PanelAdministrador from '../components/pages/panelAdministrador/PanelAdministrador';
 import ListaDeProductos from '../components/pages/listaDeProductos/ListaDeProductos';
 import ListaDeUsuarios from '../components/pages/listaDeUsuarios/ListaDeUsuarios';
