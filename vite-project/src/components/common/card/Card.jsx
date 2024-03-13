@@ -11,7 +11,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const Card = ({ auto, handleLike }) => {
   return (
-    <MuiCard sx={{ width: 300 , height: 480 ,backgroundColor: 'white', border : '1px solid #FFA775'}}>
+    <MuiCard sx={{ width: 400 , height: 500 ,backgroundColor: 'white', border : '1px solid #FFA775'}}>
       <CardHeader 
         title={auto.nombre}
         subheader={auto.categoria}
@@ -20,7 +20,7 @@ const Card = ({ auto, handleLike }) => {
       <Link to={`/detalle/${auto.id}`}>
         <CardMedia
           component="img"
-          height="194"
+          height="220"
           image={auto.imgUrl}
           alt={auto.nombre}
         />

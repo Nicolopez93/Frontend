@@ -28,7 +28,9 @@ const Detalle = () => {
               <Link to={`/GaleriaDeImagenes/${auto.id}`} >
                 <button className="detalle-btn">Ver Galería</button>
               </Link> 
+              <Link to={`/Caracteristicas/${auto.id}`} >
               <button className="detalle-btn">Ver características</button>
+              </Link>
               <button className="detalle-btn">Fecha de Retiro</button>
               <button className="detalle-btn">Fecha de Devol</button>
             </div>
