@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-around;
     background-color: rgb(255, 167, 117,0.5);
-    min-height: 83vh;
+    min-height: 75vh;
   }
   
   .caracteristicas-info {
@@ -28,4 +28,23 @@
     font-size: 2rem;
     margin-bottom: 5%;
     color: black;
+  }
+  .caracteristicas-volver {
+    height: 6vh; 
+    background-color: rgb(255, 167, 117,0.5);
+  }
+
+  .caracteristicas-volver-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'San Francisco', Arial, sans-serif;
+    margin-bottom: 20px;
+    text-decoration: none; 
+    align-self: flex-start; 
   }

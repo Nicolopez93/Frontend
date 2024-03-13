@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./caracteristicas.css";
 
 const Caracteristicas = () => {
+
     const { id } = useParams();
     const [auto, setAuto] = useState(null);
+
     useEffect(() => {
         axios
             .get(`http://localhost:3000/autos/${id}`)
@@ -20,6 +22,10 @@ const Caracteristicas = () => {
     console.log(auto);
 
   return (
+    <>
+    <div className="caracteristicas-volver">
+    <Link className="caracteristicas-volver-btn" to={`/detalle/${auto?.id}`}>Volver</Link>
+    </div>
     <div className="caracteristicas-container">
         <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "50%" }} />
         {auto ? (
@@ -34,6 +40,7 @@ const Caracteristicas = () => {
           <p>Loading...</p>
         )}
     </div>
+    </>
   )
 }
 
