@@ -6,6 +6,7 @@ import FlotaDeCamioneta from '../pages/flotaCamioneta/FlotaDeCamioneta'
 import Navbar from '../common/navbar/Navbar'
 import Footer from '../common/footer/Footer'
 import GaleriaDeImagenes from '../pages/galeriaDeImagenes/GaleriaDeImagenes'
+import Caracteristicas from '../pages/caracteristicas/Caracteristicas'
 
 export const CardRouters = () => {
   return (
@@ -21,6 +22,7 @@ export const CardRouters = () => {
           element={<Detalle />}
         />
         <Route path='/GaleriaDeImagenes/:id' element={<GaleriaDeImagenes />} />
+        <Route path='/Caracteristicas/:id' element={<Caracteristicas />} />
         <Route
           path='/flotaDeAutos'
           element={<FlotaDeAutos />}

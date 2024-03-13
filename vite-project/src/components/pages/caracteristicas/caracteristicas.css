@@ -1,0 +1,30 @@
+.caracteristicas-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 167, 117,0.5);
+    min-height: 83vh;
+  }
+  
+  .caracteristicas-info {
+    margin-top: 20px;
+    padding: 2%;
+    border: 1px solid #FA5C00;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+  }
+  
+  .caracteristicas-info h1 {
+    font-size: 3rem;
+    margin-bottom: 3%;
+    text-align: center;
+  }
+  
+  .caracteristicas-info p {
+    font-size: 2rem;
+    margin-bottom: 5%;
+    color: black;
+  }
