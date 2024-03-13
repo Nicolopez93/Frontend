@@ -20,7 +20,7 @@
       "personas": 5,
       "precio": 55,
       "categoria": "auto",
-      "isLiked": true
+      "isLiked": false
     },
     {
       "id": "3",
