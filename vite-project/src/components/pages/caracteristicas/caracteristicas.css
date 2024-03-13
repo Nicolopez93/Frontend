@@ -1,7 +1,8 @@
 .caracteristicas-container {
     display: flex;
+
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     background-color: rgb(255, 167, 117,0.5);
     min-height: 83vh;
   }
