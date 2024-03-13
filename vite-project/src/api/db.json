@@ -10,12 +10,12 @@
       "precio": 50,
       "categoria": "auto",
       "isLiked": false,
-      "imagenes": [{
-        "url": "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
-        "url1": "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
-        "url2": "https://www.autotrader.com/wp-content/uploads/2022/10/2023-toyota-corolla-xse-rear-seats.jpg",
-        "url3": "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior-1.jpg"
-      }]
+      "imagenes": [
+         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
+       "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
+         "https://www.autotrader.com/wp-content/uploads/2022/10/2023-toyota-corolla-xse-rear-seats.jpg",
+         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior-1.jpg"
+      ]
     },
     {
       "id": "2",

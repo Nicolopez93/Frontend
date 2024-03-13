@@ -25,7 +25,7 @@ const Detalle = () => {
           <div className="detalle-content">
             <div className="detalle-info-container">
               <h2 className="detalle-title">{auto.nombre}</h2>
-              <Link to={`/GaleriaDeImagenes`} >
+              <Link to={`/GaleriaDeImagenes/${auto.id}`} >
                 <button className="detalle-btn">Ver Galería</button>
               </Link> 
               <button className="detalle-btn">Ver características</button>

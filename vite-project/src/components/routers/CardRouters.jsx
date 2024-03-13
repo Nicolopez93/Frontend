@@ -20,7 +20,7 @@ export const CardRouters = () => {
           path='/detalle/:id'
           element={<Detalle />}
         />
-        <Route path='/GaleriaDeImagenes' element={<GaleriaDeImagenes />} />
+        <Route path='/GaleriaDeImagenes/:id' element={<GaleriaDeImagenes />} />
         <Route
           path='/flotaDeAutos'
           element={<FlotaDeAutos />}

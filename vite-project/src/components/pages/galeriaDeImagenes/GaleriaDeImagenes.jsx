@@ -1,45 +1,39 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import "./galeriaDeImagenes.css";
 const GaleriaDeImagenes = () => {
-  const [autos, setAutos] = useState(null);
+
+  const { id } = useParams();
+  const [auto, setAuto] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://ruta-de-tu-api/autos');
-        if (!response.ok) {
-          throw new Error('Error al obtener los datos');
-        }
-        const data = await response.json();
-        setAutos(data.autos);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
+    axios.get(`http://localhost:3000/autos/${id}`)
+      .then(response => {
+        setAuto(response.data);
+      })
+      .catch(error => {
+        console.error("Error fetching auto:", error);
+      });
+  }, [id]);
+ console.log(auto);
   return (
-    <div>
-      {autos ? (
-        <div>
-          {autos.map(auto => (
-            <div key={auto.id}>
-              {auto.imagenes.map((imagen, index) => (
-                <div key={index}>
-                  <img src={imagen.url} alt={`Imagen ${index + 1}`} />
-                  <img src={imagen.url1} alt={`Imagen ${index + 2}`} />
-                  <img src={imagen.url2} alt={`Imagen ${index + 3}`} />
-                  <img src={imagen.url3} alt={`Imagen ${index + 4}`} />
-                </div>
-              ))}
-            </div>
-          ))}
+    
+    <div className="galeria-container">
+        <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "600px", height: "600px" }} />
+        
+    <div className="galeria-img-container">
+        {auto ? (
+          <div>
+           
+            {auto?.imagenes.map((auto, id) => (
+              <img key={id} src={auto} alt={auto}  style={{ width: "200px", height: "200px" }}/>
+            ))}
+          </div>
+        ) : (
+          <p>Loading...</p>
+        )}
         </div>
-      ) : (
-        <p>Cargando...</p>
-      )}
     </div>
   );
 };
