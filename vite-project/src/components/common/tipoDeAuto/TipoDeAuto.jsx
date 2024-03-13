@@ -20,7 +20,7 @@ const TipoDeAuto = () => {
                         <CardActionArea>
                             <CardMedia
                                 component="img"
-                                height="200"
+                                height="250"
                                 image="https://garagem360.com.br/wp-content/uploads/2022/10/img-version-cronos-precision-13-at-2048x1306.png"
                                 alt="green iguana"
                             />
@@ -40,7 +40,7 @@ const TipoDeAuto = () => {
                         <CardActionArea>
                             <CardMedia
                                 component="img"
-                                height="200"
+                                height="250"
                                 image="https://www.pngall.com/wp-content/uploads/5/Ford-Pickup-Truck.png"
                                 alt="green iguana"
                             />
