@@ -20,14 +20,14 @@ const GaleriaDeImagenes = () => {
   return (
     
     <div className="galeria-container">
-        <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "600px", height: "600px" }} />
+        <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "50%" }} />
         
     <div className="galeria-img-container">
         {auto ? (
           <div>
            
             {auto?.imagenes.map((auto, id) => (
-              <img key={id} src={auto} alt={auto}  style={{ width: "200px", height: "200px" }}/>
+              <img key={id} src={auto} alt={auto}  style={{ width: "40vh", height: "30vh" , margin: "10px"}}/>
             ))}
           </div>
         ) : (
