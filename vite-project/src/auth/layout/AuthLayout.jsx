@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export const AuthLayout = ({ children, title = '' }) => {
   return (
     <>
-    <div style={{backgroundColor: 'rgb(145, 192, 243,0.3)'}}>
+    <div style={{backgroundColor: 'rgb(255, 167, 117,0.5)'}}>
     <Link to='/'> <button> Volver </button></Link>
     </div>
     <Grid
@@ -13,7 +13,7 @@ export const AuthLayout = ({ children, title = '' }) => {
       direction="row"
       alignItems="center"
       justifyContent="center"
-      sx={{ minHeight: '100vh', backgroundColor: 'rgb(145, 192, 243,0.3)', padding: 4 }}
+      sx={{ minHeight: '100vh', backgroundColor: 'rgb(255, 167, 117,0.5)', padding: 4 }}
     >
       <img src="https://t-cf.bstatic.com/design-assets/assets/v3.109.3/illustrations-traveller/TripsCarRentalManageMyAccount.png" alt="pibeee" />
       
