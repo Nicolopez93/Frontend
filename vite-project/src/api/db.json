@@ -3,7 +3,8 @@
     {
       "id": "1",
       "imgUrl": "https://autos.hamariweb.com/images/carimages/BBCQG0U.jpg",
-      "nombre": "Toyota Corolla",
+      "marca": "Toyota",
+      "nombre": "Corolla",
       "puertas": 4,
       "valijas": 3,
       "personas": 5,
@@ -20,7 +21,8 @@
     {
       "id": "2",
       "imgUrl": "https://garagem360.com.br/wp-content/uploads/2022/10/img-version-cronos-precision-13-at-2048x1306.png",
-      "nombre": "Fiat Cronos",
+      "marca": "Fiat",
+      "nombre": "Cronos",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -37,7 +39,8 @@
     {
       "id": "3",
       "imgUrl": "https://www.pngall.com/wp-content/uploads/5/Ford-Pickup-Truck.png",
-      "nombre": "Ford F100",
+      "marca": "Ford",
+      "nombre": "F100",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -54,6 +57,7 @@
     {
       "id": "4",
       "imgUrl": "https://pluspng.com/img-png/porsche-car-png-image-2048.png",
+      "marca": "Porche",
       "nombre": "Porche 120",
       "puertas": 4,
       "valijas": 2,
@@ -71,7 +75,8 @@
     {
       "id": "5",
       "imgUrl": "https://pngimg.com/uploads/chevrolet/%D1%81hevrolet_PNG20.png",
-      "nombre": "Chevrolet Cruze",
+      "marca": "Chevrolet",
+      "nombre": "Cruze",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -88,7 +93,8 @@
     {
       "id": "6",
       "imgUrl": "http://toyotasalinacruz.com.mx/wp-content/uploads/2020/12/toyota-hilux-exterior.png",
-      "nombre": "Toyota Hilux",
+      "marca": "Toyota",
+      "nombre": "Hilux",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -105,7 +111,8 @@
     {
       "id": "7",
       "imgUrl": "https://pngimg.com/uploads/hyundai/hyundai_PNG11217.png",
-      "nombre": "Hyundai Elantra",
+      "marca": "Hyundai",
+      "nombre": "Elantra",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -122,7 +129,8 @@
     {
       "id": "8",
       "imgUrl": "https://pngimg.com/uploads/mercedes/mercedes_PNG1870.png",
-      "nombre": "Mercedes Benz",
+      "marca": "Mercedes Benz",
+      "nombre": "C 300",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -139,7 +147,8 @@
     {
       "id": "9",
       "imgUrl": "https://www.autosphere.fr/assets/operation/LOA_208/2022-07/Peugeot-208.png",
-      "nombre": "Peugeot 208",
+      "marca": "Peugeot",
+      "nombre": "208",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -156,7 +165,8 @@
     {
       "id": "10",
       "imgUrl": "https://purepng.com/public/uploads/large/purepng.com-ram-1500-rebel-mountain-cararramvehicletransportram-truckmountain-car-961524661504ioj7u.png",
-      "nombre": "Ram 1500",
+      "marca": "Ram",
+      "nombre": "1500",
       "puertas": 4,
       "valijas": 2,
       "personas": 5,
@@ -172,7 +182,8 @@
     },
     {
       "id": "e696",
-      "nombre": "Suzuki",
+      "marca": "Suzuki",
+      "nombre": "Vitara",
       "puertas": "5",
       "valijas": "4",
       "personas": "5",
@@ -189,7 +200,8 @@
     },
     {
       "id": "041b",
-      "nombre": "Jeep",
+      "marca": "Jeep",
+      "nombre": "Renegade",
       "puertas": "5",
       "valijas": "3",
       "personas": "3",
@@ -254,6 +266,16 @@
       "personas": "personas",
       "precio": "precio",
       "categoria": "categoria"
+    }
+  ],
+  "reserva":[
+    {
+      "id": "1",
+      "usuario": "nicolas",
+      "auto": "Toyota Corolla",
+      "fechaInicio": "2022-11-01",
+      "fechaFin": "2022-11-10",
+      "precio": 500
     }
   ]
 }
