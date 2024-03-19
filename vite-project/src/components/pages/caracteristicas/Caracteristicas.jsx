@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams } from "react-router-dom";
 import axios from "axios";
-import "./caracteristicas.css";
+import "../detalle/detalle.css";
 
 const Caracteristicas = () => {
 
@@ -23,25 +23,27 @@ const Caracteristicas = () => {
 
   return (
     <>
-    <div className="caracteristicas-volver">
-    <Link className="caracteristicas-volver-btn" to={`/detalle/${auto?.id}`}>Volver</Link>
-    </div>
-    <div className="caracteristicas-container">
-        <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "50%" }} />
-        {auto ? (
-          <div className="caracteristicas-info">
-            <h1>{auto.nombre}</h1>
-            <p>Puertas : {auto.puertas}</p>
-            <p>Valijas : {auto.valijas}</p>
-            <p>Personas : {auto.personas}</p>
-            <p>Precio : ${auto.precio}</p>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-    </div>
+    <section className="detalle-section">
+    <Link className="detalle-volver-btn" to={`/detalle/${auto?.id}`}>Volver</Link>
+    {auto ? (
+      <div className="detalle-content">
+        <div className="detalle-info-container">
+          <h2 className="detalle-title">{auto?.nombre}</h2>
+          <p className="detalle-p">Puertas : {auto?.puertas}</p>
+          <p className="detalle-p">Valijas : {auto?.valijas}</p>
+          <p className="detalle-p">Personas : {auto?.personas}</p>
+          <p className="detalle-p">Precio : ${auto?.precio}</p>
+        </div>
+        <div className="detalle-img-container">
+          <img className="detalle-img" src={auto?.imgUrl} alt={auto?.nombre} />
+        </div>
+      </div>
+    ) : (
+      <p>Loading...</p>
+    )}
+    </section>
     </>
-  )
-}
-
+  );
+};
+    
 export default Caracteristicas
