@@ -7,6 +7,7 @@ import Navbar from '../common/navbar/Navbar'
 import Footer from '../common/footer/Footer'
 import GaleriaDeImagenes from '../pages/galeriaDeImagenes/GaleriaDeImagenes'
 import Caracteristicas from '../pages/caracteristicas/Caracteristicas'
+import Favoritos from '../pages/favoritos/Favoritos'
 
 export const CardRouters = () => {
   return (
@@ -21,6 +22,7 @@ export const CardRouters = () => {
           path='/detalle/:id'
           element={<Detalle />}
         />
+        <Route path='/Favoritos' element={<Favoritos/>} />
         <Route path='/GaleriaDeImagenes/:id' element={<GaleriaDeImagenes />} />
         <Route path='/Caracteristicas/:id' element={<Caracteristicas />} />
         <Route

@@ -5,7 +5,7 @@ import styles from '../home/home.module.css'
 import Buscador from '../../common/buscador/Buscador'
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto'
 import Recomendacion from '../../common/recomendacion/Recomendacion'
-import Footer from '../../common/footer/Footer'
+
 
 const Home = () => {
   const [autos, setAutos] = useState([])
@@ -47,7 +47,6 @@ const Home = () => {
     setSearchResults(results)
   }
 
-  // Limitar el número de autos mostrados a 10
   const autosToDisplay =
     searchResults.length > 0 ? searchResults.slice(0, 10) : autos.slice(0, 10)
 
@@ -88,7 +87,6 @@ const Home = () => {
           />
         ))}
       </div>
-      <div>{/* <Footer/> */}</div>
     </>
   )
 }
