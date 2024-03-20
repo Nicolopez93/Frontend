@@ -5,13 +5,16 @@ import styles from '../home/home.module.css'
 import Buscador from '../../common/buscador/Buscador'
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto'
 import Recomendacion from '../../common/recomendacion/Recomendacion'
-import Footer from '../../common/footer/Footer'
+
+
 
 const Home = () => {
   const [autos, setAutos] = useState([])
   const [dispatchLike, setDispatchLike] = useState(false)
   const [searchResults, setSearchResults] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
+
+  console.log(searchResults.length)
 
   useEffect(() => {
     axios
@@ -25,12 +28,12 @@ const Home = () => {
     setDispatchLike(false)
   }, [dispatchLike])
 
-  useEffect(() => {
-    const filteredAutos = autos.filter((auto) =>
-      auto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    setSearchResults(filteredAutos)
-  }, [searchTerm, autos])
+  // useEffect(() => {
+  //   const filteredAutos = autos.filter((auto) =>
+  //     auto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+  //   )
+  //   setSearchResults(filteredAutos)
+  // }, [searchTerm, autos])
 
   const handleLike = (auto) => {
     axios
@@ -80,7 +83,7 @@ const Home = () => {
         </h2>
       </div>
       <div className={styles.containerCards}>
-        {autosToDisplay.map((auto) => (
+        {autos.map((auto) => (
           <Card
             key={auto.id}
             auto={auto}

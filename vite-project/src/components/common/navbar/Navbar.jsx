@@ -125,7 +125,40 @@ const Navbar = () => {
             </Link>
           </MenuItem>
           <MenuItem onClick={handleClose}>
-            {user ? <Button onClick={handleLogout}>Cerrar sesión</Button> : ''}
+            {user ? (
+              <Link to={'/PanelAdministrador'}>
+                <p
+                  style={{
+                    textTransform: 'capitalize',
+                    fontWeight: 'normal',
+                    color: 'black',
+                    textDecoration: 'none',
+                    fontSize: '1.2rem',
+                  }}>
+                  Administrador
+                </p>
+              </Link>
+            ) : (
+              ''
+            )}
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            {user ? (
+              <Button
+                onClick={handleLogout}
+                style={{
+                  textTransform: 'capitalize',
+                  fontWeight: 'normal',
+                  color: 'black',
+                  textDecoration: 'none',
+                  fontSize: '1.2rem',
+                  padding: '0',
+                }}>
+                Cerrar sesión
+              </Button>
+            ) : (
+              ''
+            )}
           </MenuItem>
         </Menu>
 
