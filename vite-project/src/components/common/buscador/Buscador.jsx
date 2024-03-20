@@ -4,7 +4,6 @@ import './buscador.css'
 
 const Buscador = ({ onSearchResults }) => {
   const [formData, setFormData] = useState({
-    auto: '',
     fechaRetiro: '',
     fechaDevolucion: '',
   })
@@ -15,15 +14,14 @@ const Buscador = ({ onSearchResults }) => {
     fetch(`http://localhost:3000/autos`)
       .then((res) => res.json())
       .then((data) => {
-
-        const autos = data.filter( a => a.marca.toLowerCase() === vehiculo.toLowerCase() || a.nombre.toLowerCase() === vehiculo.toLowerCase())
-        setFilteredAutos(autos)
-        onSearchResults(autos)
-        // console.log(autos);
+        // const autos = data.filter( a => a.marca.toLowerCase() === vehiculo.toLowerCase() || a.nombre.toLowerCase() === vehiculo.toLowerCase())
+        setFilteredAutos(data)
+        onSearchResults(data)
+        console.log(data)
       })
       .catch((error) => {
-        console.error('Error fetching autos:', error);
-      });
+        console.error('Error fetching autos:', error)
+      })
   }
 
   const handleChange = (event) => {
@@ -39,7 +37,6 @@ const Buscador = ({ onSearchResults }) => {
     // console.log(formData)
     buscarVehiculo(formData.auto)
     setFormData({
-      auto: '',
       fechaRetiro: '',
       fechaDevolucion: '',
     })
@@ -51,14 +48,14 @@ const Buscador = ({ onSearchResults }) => {
     <div className='buscador-container'>
       <form onSubmit={handleSubmit}>
         <div className='select-container'>
-          <input
+          {/* <input
             name='auto'
             required
             type='text'
             placeholder='Buscar autos...'
             value={auto}
             onChange={handleChange}
-          />
+          /> */}
           <input
             name='fechaRetiro'
             required
@@ -69,7 +66,7 @@ const Buscador = ({ onSearchResults }) => {
           />
           <input
             name='fechaDevolucion'
-            required 
+            required
             type='date'
             placeholder='Fecha de Devolución'
             value={fechaDevolucion}
