@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../common/card/Card';
+import './favoritos.css';
 
 const Favoritos = () => {
   const [autos, setAutos] = useState([]);
@@ -20,7 +21,7 @@ const Favoritos = () => {
   return (
     <div>
       <h1>Favoritos</h1>
-      <div>
+      <div className='fav-container'>
         {autos.map((auto) => (
           <Card key={auto.id} auto={auto}/>
         ))}

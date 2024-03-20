@@ -13,7 +13,7 @@ const Card = ({ auto, handleLike }) => {
   return (
     <MuiCard sx={{ width: 400 , height: 500 ,backgroundColor: 'white', border : '1px solid #FFA775'}}>
       <CardHeader 
-        title={auto.nombre}
+        title={auto.marca + ' ' + auto.nombre}
         subheader={auto.categoria}
         sx={{color : 'black'}}
       />

@@ -24,7 +24,7 @@ const Detalle = () => {
         {auto ? (
           <div className="detalle-content">
             <div className="detalle-info-container">
-              <h2 className="detalle-title">{auto.nombre}</h2>
+              <h2 className="detalle-title">{auto.marca} {auto.nombre}</h2>
               <Link to={`/GaleriaDeImagenes/${auto.id}`} >
                 <button className="detalle-btn">Ver Galería</button>
               </Link> 
