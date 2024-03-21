@@ -28,7 +28,7 @@ const Caracteristicas = () => {
     {auto ? (
       <div className="detalle-content">
         <div className="detalle-info-container">
-          <h2 className="detalle-title">{auto?.nombre}</h2>
+          <h2 className="detalle-title">{auto?.marca} {auto?.nombre}</h2>
           <p className="detalle-p">Puertas : {auto?.puertas}</p>
           <p className="detalle-p">Valijas : {auto?.valijas}</p>
           <p className="detalle-p">Personas : {auto?.personas}</p>
