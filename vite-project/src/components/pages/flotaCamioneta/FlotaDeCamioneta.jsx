@@ -18,7 +18,7 @@ const FlotaDeCamioneta = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container-camioneta">
         {autos.map(auto => (
           <Card key={auto.id} auto={auto} />
         ))}

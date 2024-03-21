@@ -1,37 +1,35 @@
-import React, { useContext, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import imgLogo from '../../../assets/logotransp.png'
-import './navbar.css'
-import { AuthContext } from '../../../auth/context/AuthContext'
-import { Typography, Tooltip, IconButton, Avatar, Button } from '@mui/material'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import imgLogo from '../../../assets/logotransp.png';
+import './navbar.css';
+import { AuthContext } from '../../../auth/context/AuthContext';
+import { Typography, Tooltip, IconButton, Avatar, Button } from '@mui/material';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 const Navbar = () => {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
 
-  const { user, logout } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext);
 
-  console.log(user)
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const iniciar = (user) => {
-    const inicial = user ? user.name.charAt(0) : ''
-    return inicial
-  }
+    const inicial = user ? user.name.charAt(0) : '';
+    return inicial;
+  };
 
   const handleLogout = () => {
-    logout()
-    navigate('/', { replace: true })
-  }
+    logout();
+    navigate('/', { replace: true });
+  };
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <nav className='navbar-container'>
@@ -52,6 +50,9 @@ const Navbar = () => {
           alignItems: 'center',
           margin: '0 1rem',
         }}>
+          <Button component={Link} to='/Favoritos' variant="contained" color="primary" size="small" disableElevation>
+          Favoritos
+          </Button>
         <Tooltip title='Administrador de usuario'>
           <IconButton
             onClick={handleClick}
@@ -68,6 +69,8 @@ const Navbar = () => {
             </Avatar>
           </IconButton>
         </Tooltip>
+
+        
 
         <Menu
           anchorEl={anchorEl}
@@ -162,14 +165,6 @@ const Navbar = () => {
           </MenuItem>
         </Menu>
 
-        {/* {user?.usuarioRole === 'admin' ? (
-          <Link to='/PanelAdministrador'>
-            <button>Administrador</button>
-          </Link>
-        ) : (
-          ''
-        )} */}
-
         {user ? (
           ''
         ) : (
@@ -186,7 +181,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

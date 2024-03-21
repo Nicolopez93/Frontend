@@ -99,7 +99,6 @@ const Card = ({ auto, handleLike, reserva }) => {
             name='half-rating-read'
             defaultValue={2.5}
             precision={0.5}
-            readOnly
           />
         </Stack>
       </CardActions>
