@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png'
 import './buscador.css'
 
-const Buscador = ({ onSearchResults }) => {
+const Buscador = ({ onSearchResults, onFormSumit }) => {
   const [formData, setFormData] = useState({
     fechaRetiro: '',
     fechaDevolucion: '',
@@ -34,6 +34,7 @@ const Buscador = ({ onSearchResults }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    onFormSumit(formData)
     // console.log(formData)
     buscarVehiculo(formData.auto)
     setFormData({
@@ -42,7 +43,7 @@ const Buscador = ({ onSearchResults }) => {
     })
   }
 
-  const { auto, fechaDevolucion, fechaRetiro } = formData
+  const { fechaDevolucion, fechaRetiro } = formData
 
   return (
     <div className='buscador-container'>
