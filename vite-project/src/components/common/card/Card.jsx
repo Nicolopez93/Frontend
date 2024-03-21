@@ -22,7 +22,7 @@ import DialogTitle from '@mui/material/DialogTitle'
 import Rating from '@mui/material/Rating'
 import Stack from '@mui/material/Stack'
 
-const Card = ({ auto, handleLike }) => {
+const Card = ({ auto, handleLike, reserva }) => {
   const [openModal, setOpenModal] = useState(false)
 
   const shareOnTwitter = () => {}
@@ -59,7 +59,7 @@ const Card = ({ auto, handleLike }) => {
           alt={auto.nombre}
         />
       </Link>
-      <CardContent sx={{ width: 300, height: 130 }}>
+      <CardContent sx={{ width: 400, height: 130 }}>
         <Typography
           variant='body2'
           color='text.secondary'

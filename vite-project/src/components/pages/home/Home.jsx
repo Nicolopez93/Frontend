@@ -6,15 +6,13 @@ import Buscador from '../../common/buscador/Buscador'
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto'
 import Recomendacion from '../../common/recomendacion/Recomendacion'
 
-
-
 const Home = () => {
   const [autos, setAutos] = useState([])
   const [dispatchLike, setDispatchLike] = useState(false)
   const [searchResults, setSearchResults] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [fecha, setFecha] = useState({})
 
-  console.log(searchResults.length)
+  console.log('fecha', fecha)
 
   useEffect(() => {
     axios
@@ -50,6 +48,10 @@ const Home = () => {
     setSearchResults(results)
   }
 
+  const hadleFormSubmit = (formData) => {
+    setFecha(formData)
+  }
+
   // Limitar el número de autos mostrados a 10
   const autosToDisplay =
     searchResults.length > 0 ? searchResults.slice(0, 10) : autos.slice(0, 10)
@@ -57,40 +59,70 @@ const Home = () => {
   return (
     <>
       <div>
-        <Buscador onSearchResults={handleSearchResults} />
+        <Buscador
+          onSearchResults={handleSearchResults}
+          onFormSumit={hadleFormSubmit}
+        />
       </div>
-      <div className={styles.container}>
-        <TipoDeAuto />
-      </div>
-      <div>
-        {autos.length > 0 && (
-          <Recomendacion
-            autos={autos.slice(0, 2)}
-            handleLike={handleLike}
-          />
-        )}
-      </div>
-      <div>
-        <h2
-          style={{
-            textAlign: 'center',
-            fontSize: '2rem',
-            color: '#21408E',
-            fontWeight: 'bold',
-            fontFamily: 'San Francisco, Arial, sans-serif',
-          }}>
-          Nuestros autos
-        </h2>
-      </div>
-      <div className={styles.containerCards}>
-        {autos.map((auto) => (
-          <Card
-            key={auto.id}
-            auto={auto}
-            handleLike={handleLike}
-          />
-        ))}
-      </div>
+      {searchResults.length > 0 ? (
+        <>
+          <div className={styles.busqueda}>
+            <h1>Vehiculos disponibles para las</h1>
+            <p className={styles.subtitulo}>
+              Fecha de retiro: {fecha.fechaRetiro}
+            </p>
+            <p className={styles.subtitulo}>
+              Fecha de devolución: {fecha.fechaDevolucion}
+            </p>
+          </div>
+          <div className={styles.containerCards}>
+            {autosToDisplay.map((auto) => (
+              <Card
+                key={auto.id}
+                auto={auto}
+                handleLike={handleLike}
+                reserva={fecha}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={styles.container}>
+            <TipoDeAuto />
+          </div>
+          <div>
+            {autos.length > 0 && (
+              <Recomendacion
+                autos={autos.slice(0, 2)}
+                handleLike={handleLike}
+              />
+            )}
+          </div>
+          <div>
+            <h2
+              style={{
+                textAlign: 'center',
+                fontSize: '2rem',
+                color: '#21408E',
+                fontWeight: 'bold',
+                fontFamily: 'San Francisco, Arial, sans-serif',
+              }}>
+              Nuestros autos
+            </h2>
+          </div>
+          <div className={styles.containerCards}>
+            {autos.map((auto) => (
+              <Card
+                key={auto.id}
+                auto={auto}
+                handleLike={handleLike}
+              />
+            ))}
+          </div>
+        </>
+      )}
+
       <div>{/* <Footer/> */}</div>
     </>
   )
