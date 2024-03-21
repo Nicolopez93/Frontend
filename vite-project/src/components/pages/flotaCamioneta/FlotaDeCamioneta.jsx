@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../../common/card/Card';
+import { Link } from 'react-router-dom';
 import './flotaDeCamioneta.css';
 const FlotaDeCamioneta = () => {
   const [autos, setAutos] = useState([]);
@@ -18,11 +19,14 @@ const FlotaDeCamioneta = () => {
 
   return (
     <>
+     <section class = "detalle-section">
+     <Link className="detalle-volver-btn" to="/">Volver</Link>
       <div className="container-camioneta">
         {autos.map(auto => (
           <Card key={auto.id} auto={auto} />
         ))}
       </div>
+    </section>
     </>
   );
 };
