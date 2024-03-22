@@ -29,10 +29,11 @@ const Detalle = () => {
                 <button className="detalle-btn">Ver Galería</button>
               </Link> 
               <Link to={`/Caracteristicas/${auto.id}`} >
-              <button className="detalle-btn">Ver características</button>
+                <button className="detalle-btn">Ver características</button>
               </Link>
               <button className="detalle-btn">Fecha de Retiro</button>
-              <button className="detalle-btn">Fecha de Devol</button>
+              <button className="detalle-btn">Fecha de Devolucion</button>
+              <Link to={`/PoliticasDeUso/${auto.id}`}> <h4 className="detalle-politicas">Políticas de Uso</h4></Link>
             </div>
             <div className="detalle-img-container">
               <img className="detalle-img" src={auto.imgUrl} alt={auto.nombre} />

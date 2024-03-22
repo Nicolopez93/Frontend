@@ -10,7 +10,7 @@
       "personas": 5,
       "precio": 50,
       "categoria": "auto",
-      "isLiked": false,
+      "isLiked": true,
       "imagenes": [
         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
         "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
@@ -28,7 +28,7 @@
       "personas": 5,
       "precio": 55,
       "categoria": "auto",
-      "isLiked": true,
+      "isLiked": false,
       "imagenes": [
         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
         "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
