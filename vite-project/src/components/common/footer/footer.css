@@ -1,7 +1,7 @@
 .footer-container {
     background-color:  #0C4D9C;
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     bottom: 0;
@@ -15,8 +15,16 @@
     height: 40px;
 }
 
-p {
+.footer-p {
+    color: white;
+}
+
+.social-icons {
     display: flex;
-    align-items: center;
-    color:white;
+    gap: 20px; /* Espacio entre los íconos */
+}
+
+.social-icons a {
+    color: white;
+    font-size: 30px; /* Tamaño de los íconos */
 }

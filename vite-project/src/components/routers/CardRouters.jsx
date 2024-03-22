@@ -8,6 +8,7 @@ import Footer from '../common/footer/Footer'
 import GaleriaDeImagenes from '../pages/galeriaDeImagenes/GaleriaDeImagenes'
 import Caracteristicas from '../pages/caracteristicas/Caracteristicas'
 import Favoritos from '../pages/favoritos/Favoritos'
+import SobreNosotros from '../pages/sobreNosotros/SobreNosotros'
 
 export const CardRouters = () => {
   return (
@@ -33,6 +34,10 @@ export const CardRouters = () => {
           path='/flotaDeCamioneta'
           element={<FlotaDeCamioneta />}
         />
+        <Route
+        path='/SobreNosotros'
+        element={<SobreNosotros />}
+      />
       </Routes>
       <Footer />
     </>
