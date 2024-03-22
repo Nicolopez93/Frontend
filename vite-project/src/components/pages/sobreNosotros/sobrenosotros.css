@@ -1,0 +1,13 @@
+.sobreNosotros-img-container {
+    max-width: 70%; 
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Crea 5 columnas iguales */
+    grid-gap: 10px; /* Espacio entre los elementos */
+    justify-content: center;
+    align-items: center;
+}
+.sobreNosotros-img-container img {
+    width: 100%; /* Establece el ancho al 100% del contenedor */
+    height: auto; /* Mantén la proporción de aspecto */
+    display: block; /* Elimina el espacio adicional debajo de las imágenes */
+}
