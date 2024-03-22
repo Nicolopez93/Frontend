@@ -11,25 +11,39 @@ const Favoritos = () => {
     axios
       .get('http://localhost:3000/autos')
       .then((response) => {
-        const autosFavoritos = response.data.filter((auto) => auto.isLiked);
-        setAutos(autosFavoritos);
+        setAutos(response.data);
       })
       .catch((error) => {
         console.error('Error al obtener autos:', error);
       });
   }, []);
 
+  const handleLike = (auto) => {
+    const updatedAuto = { ...auto, isLiked: !auto.isLiked };
+    axios
+      .put(`http://localhost:3000/autos/${auto.id}`, updatedAuto)
+      .then(() => {
+        const updatedAutos = autos.map((a) => (a.id === auto.id ? updatedAuto : a));
+        setAutos(updatedAutos);
+      })
+      .catch((error) => {
+        console.error('Error al actualizar auto:', error);
+      });
+  };
+
   return (
     <>
-    <section className="detalle-section">
-    <Link className="detalle-volver-btn" to="/">Volver</Link>
-    <h2 className="detalle-title">Tus Vehiculos Favoritos</h2>
-      <div className='fav-container'>
-        {autos.map((auto) => (
-          <Card key={auto.id} auto={auto}/>
-        ))}
-      </div>
-    </section>
+      <section className="detalle-section">
+        <Link className="detalle-volver-btn" to="/">
+          Volver
+        </Link>
+        <h2 className="detalle-title">Tus Vehiculos Favoritos</h2>
+        <div className="fav-container">
+          {autos.filter((auto) => auto.isLiked).map((auto) => (
+            <Card key={auto.id} auto={auto} handleLike={handleLike} />
+          ))}
+        </div>
+      </section>
     </>
   );
 };
