@@ -9,6 +9,7 @@ import GaleriaDeImagenes from '../pages/galeriaDeImagenes/GaleriaDeImagenes'
 import Caracteristicas from '../pages/caracteristicas/Caracteristicas'
 import Favoritos from '../pages/favoritos/Favoritos'
 import SobreNosotros from '../pages/sobreNosotros/SobreNosotros'
+import PoliticasDeUso from '../pages/politicasDeUso/PoliticasDeUso'
 
 export const CardRouters = () => {
   return (
@@ -26,6 +27,8 @@ export const CardRouters = () => {
         <Route path='/Favoritos' element={<Favoritos/>} />
         <Route path='/GaleriaDeImagenes/:id' element={<GaleriaDeImagenes />} />
         <Route path='/Caracteristicas/:id' element={<Caracteristicas />} />
+        <Route path='/PoliticasDeUso/:id' element={<PoliticasDeUso />}
+      />
         <Route
           path='/flotaDeAutos'
           element={<FlotaDeAutos />}
@@ -38,6 +41,7 @@ export const CardRouters = () => {
         path='/SobreNosotros'
         element={<SobreNosotros />}
       />
+      
       </Routes>
       <Footer />
     </>

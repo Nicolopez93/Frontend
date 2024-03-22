@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import {  FaDoorOpen, FaSuitcase, FaUser} from 'react-icons/fa';
 import axios from "axios";
 import "../detalle/detalle.css";
 
@@ -29,10 +30,10 @@ const Caracteristicas = () => {
       <div className="detalle-content">
         <div className="detalle-info-container">
           <h2 className="detalle-title">{auto?.marca} {auto?.nombre}</h2>
-          <p className="detalle-p">Puertas : {auto?.puertas}</p>
-          <p className="detalle-p">Valijas : {auto?.valijas}</p>
-          <p className="detalle-p">Personas : {auto?.personas}</p>
-          <p className="detalle-p">Precio : ${auto?.precio}</p>
+          <p className="detalle-p"> Puertas : <FaDoorOpen /> {auto?.puertas}</p>
+          <p className="detalle-p"> Valijas : <FaSuitcase /> {auto?.valijas}</p>
+          <p className="detalle-p"> Personas : <FaUser /> {auto?.personas}</p>
+          <p className="detalle-p">Precio : $ {auto?.precio}</p>
         </div>
         <div className="detalle-img-container">
           <img className="detalle-img" src={auto?.imgUrl} alt={auto?.nombre} />
@@ -46,4 +47,4 @@ const Caracteristicas = () => {
   );
 };
     
-export default Caracteristicas
+export default Caracteristicas;
