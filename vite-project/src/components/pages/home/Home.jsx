@@ -1,88 +1,62 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
-import Card from '../../common/card/Card'
-import styles from '../home/home.module.css'
-import Buscador from '../../common/buscador/Buscador'
-import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto'
-import Recomendacion from '../../common/recomendacion/Recomendacion'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from '../../common/card/Card';
+import styles from '../home/home.module.css';
+import Buscador from '../../common/buscador/Buscador';
+import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto';
+import Recomendacion from '../../common/recomendacion/Recomendacion';
+import { ReservaContext } from '../../../context/ReservaContext';
 
 const Home = () => {
-  const [autos, setAutos] = useState([])
-  const [dispatchLike, setDispatchLike] = useState(false)
-  const [searchResults, setSearchResults] = useState([])
-  const [fecha, setFecha] = useState({})
-
-  console.log('fecha', fecha)
+  const [autos, setAutos] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
+  const [fecha, setFecha] = useState(null);
 
   useEffect(() => {
     axios
       .get('http://localhost:3000/autos')
       .then((res) => {
-        setAutos(res.data)
+        setAutos(res.data);
       })
       .catch((err) => {
-        console.error('Error al obtener los autos:', err)
-      })
-    setDispatchLike(false)
-  }, [dispatchLike])
-
-  // useEffect(() => {
-  //   const filteredAutos = autos.filter((auto) =>
-  //     auto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-  //   )
-  //   setSearchResults(filteredAutos)
-  // }, [searchTerm, autos])
-
-  const handleLike = (auto) => {
-    axios
-      .patch(`http://localhost:3000/autos/${auto.id}`, {
-        isLiked: !auto.isLiked,
-      })
-      .then((res) => setDispatchLike(true))
-      .catch((err) => {
-        console.error('Error al actualizar el estado de like:', err)
-      })
-  }
+        console.error('Error al obtener los autos:', err);
+      });
+  }, []);
 
   const handleSearchResults = (results) => {
-    setSearchResults(results)
-  }
+    setSearchResults(results);
+  };
 
-  const hadleFormSubmit = (formData) => {
-    setFecha(formData)
-  }
+  const handleFormSubmit = (formData) => {
+    setFecha(formData);
+  };
 
-  // Limitar el número de autos mostrados a 10
   const autosToDisplay =
-    searchResults.length > 0 ? searchResults.slice(0, 10) : autos.slice(0, 10)
+    searchResults.length > 0 ? searchResults.slice(0, 10) : autos.slice(0, 10);
 
   return (
     <>
       <div>
-        <Buscador
-          onSearchResults={handleSearchResults}
-          onFormSumit={hadleFormSubmit}
-        />
+        <Buscador onSearchResults={handleSearchResults} onFormSubmit={handleFormSubmit} />
       </div>
       {searchResults.length > 0 ? (
         <>
           <div className={styles.busqueda}>
-            <h1>Vehiculos disponibles para las</h1>
-            <p className={styles.subtitulo}>
-              Fecha de retiro: {fecha.fechaRetiro}
-            </p>
-            <p className={styles.subtitulo}>
-              Fecha de devolución: {fecha.fechaDevolucion}
-            </p>
+            <h1>Vehículos disponibles para las</h1>
+            {fecha && (
+              <>
+                <p className={styles.subtitulo}>
+                  Fecha de retiro: {fecha.fechaRetiro}
+                </p>
+                <p className={styles.subtitulo}>
+                  Fecha de devolución: {fecha.fechaDevolucion}
+                </p>
+              </>
+            )}
           </div>
           <div className={styles.containerCards}>
             {autosToDisplay.map((auto) => (
-              <Card
-                key={auto.id}
-                auto={auto}
-                handleLike={handleLike}
-                reserva={fecha}
-              />
+              <Card key={auto.id} auto={auto} reserva={fecha} />
             ))}
           </div>
         </>
@@ -92,14 +66,6 @@ const Home = () => {
             <TipoDeAuto />
           </div>
           <div>
-            {autos.length > 0 && (
-              <Recomendacion
-                autos={autos.slice(0, 2)}
-                handleLike={handleLike}
-              />
-            )}
-          </div>
-          <div>
             <h2
               style={{
                 textAlign: 'center',
@@ -107,25 +73,20 @@ const Home = () => {
                 color: '#21408E',
                 fontWeight: 'bold',
                 fontFamily: 'San Francisco, Arial, sans-serif',
-              }}>
+              }}
+            >
               Nuestros autos
             </h2>
           </div>
           <div className={styles.containerCards}>
             {autos.map((auto) => (
-              <Card
-                key={auto.id}
-                auto={auto}
-                handleLike={handleLike}
-              />
+              <Card key={auto.id} auto={auto} />
             ))}
           </div>
         </>
       )}
-
-      <div>{/* <Footer/> */}</div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
