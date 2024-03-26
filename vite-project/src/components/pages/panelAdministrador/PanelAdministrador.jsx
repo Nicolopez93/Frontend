@@ -11,6 +11,7 @@ const PanelAdministrador = () => {
       </Link>
       <Link to="/ListaDeCaracteristicas"><button className="panel-button">Administrar Caracteristicas</button>
     </Link>
+    <Link to="/ListaDeCategorias"><button className="panel-button">Administrar Categorias</button></Link>
     </div>
     </>
   )

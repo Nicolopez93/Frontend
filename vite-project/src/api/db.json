@@ -284,5 +284,23 @@
       "fechaFin": "2022-11-10",
       "precio": 500
     }
+  ],
+  "categorias": [
+    {
+      "id": "1",
+      "nombre": "Auto"
+    },
+    {
+      "id": "11",
+      "nombre": "Camioneta"
+    },
+    {
+      "id": "1111",
+      "nombre": "Motorhome"
+    },
+    {
+      "id": "11111",
+      "nombre": "Van"
+    }
   ]
 }
