@@ -21,7 +21,7 @@ const TablaCategorias = () => {
   }, []);
 
   const fetchCategorias = () => {
-    axios.get('http://localhost:3000/categorias')
+    axios.get('http://localhost:8080/categorias')
       .then(response => setCategorias(response.data))
       .catch(error => console.error('Error fetching data:', error));
   };
@@ -32,7 +32,7 @@ const TablaCategorias = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:3000/categorias/${id}`, editFields)
+    axios.patch(`http://localhost:8080/categorias/${id}`, editFields)
       .then(() => {
         setEditingId(null);
         fetchCategorias();
@@ -47,7 +47,7 @@ const TablaCategorias = () => {
   const eliminarCategoria = (id) => {
     const confirmarEliminar = window.confirm("¿Estás seguro que deseas eliminar esta categoría?");
     if (confirmarEliminar) {
-      axios.delete(`http://localhost:3000/categorias/${id}`)
+      axios.delete(`http://localhost:8080/categorias/${id}`)
         .then(() => {
           setCategorias(categorias.filter(cat => cat.id !== id));
         })
@@ -58,7 +58,7 @@ const TablaCategorias = () => {
   const agregarCategoria = () => {
     const nuevaCategoria = { nombre: newCategoria };
 
-    axios.post('http://localhost:3000/categorias', nuevaCategoria)
+    axios.post('http://localhost:8080/categorias', nuevaCategoria)
       .then(() => {
         setNewCategoria('');
         fetchCategorias();

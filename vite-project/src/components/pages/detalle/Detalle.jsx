@@ -14,7 +14,7 @@ const Detalle = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/autos/${id}`)
+      .get(`http://localhost:8080/autos/buscar/${id}`)
       .then((response) => {
         setAuto(response.data)
       })
@@ -36,7 +36,7 @@ const Detalle = () => {
           <div className='detalle-content'>
             <div className='detalle-info-container'>
               <h2 className='detalle-title'>
-                {auto.marca} {auto.nombre}
+                {auto.marca} {auto.modelo}
               </h2>
               <Link to={`/GaleriaDeImagenes/${auto.id}`}>
                 <button className='detalle-btn'>Ver Galería</button>
@@ -55,7 +55,7 @@ const Detalle = () => {
               <img
                 className='detalle-img'
                 src={auto.imgUrl}
-                alt={auto.nombre}
+                alt={auto.marca}
               />
             </div>
           </div>

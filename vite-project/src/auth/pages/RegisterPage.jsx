@@ -18,7 +18,7 @@ export const RegisterPage = () => {
   const postUser = async (user) => {
     const usuarioRole = 'user'
     user.usuarioRole = usuarioRole
-    const response = await fetch('http://localhost:3000/users', {
+    const response = await fetch('http://localhost:8080/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

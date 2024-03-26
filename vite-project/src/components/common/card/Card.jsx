@@ -56,7 +56,7 @@ const Card = ({ auto, handleLike, reserva }) => {
         border: '1px solid #FFA775',
       }}>
       <CardHeader
-        title={auto.nombre}
+        title={auto.modelo}
         subheader={auto.categoria}
         sx={{ color: 'black' }}
       />
@@ -65,7 +65,7 @@ const Card = ({ auto, handleLike, reserva }) => {
           component='img'
           height='220'
           image={auto.imgUrl}
-          alt={auto.nombre}
+          alt={auto.modelo}
         />
       </Link>
       {!!user && <Link to={`/detalle/${auto.id}`}>Reservar</Link>}

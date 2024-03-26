@@ -9,7 +9,7 @@ const GaleriaDeImagenes = () => {
   const [auto, setAuto] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/autos/${id}`)
+    axios.get(`http://localhost:8080/autos/${id}`)
       .then(response => {
         setAuto(response.data);
       })

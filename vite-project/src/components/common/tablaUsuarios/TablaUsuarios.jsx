@@ -20,7 +20,7 @@ const TablaUsuarios = () => {
   }, [isUsuarioDeleted]);
 
   const fetchUsuarios = () => {
-    axios.get('http://localhost:3000/users')
+    axios.get('http://localhost:8080/users')
       .then(response => setUsuarios(response.data))
       .catch(error => console.error('Error fetching data:', error));
   };
@@ -32,7 +32,7 @@ const TablaUsuarios = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:3000/users/${id}`, editFields)
+    axios.patch(`http://localhost:8080/users/${id}`, editFields)
       .then(res => {
         setEditFields(res.data);
         setIsUsuarioDeleted(!isUsuarioDeleted); // Actualiza el estado para desencadenar la recarga de datos
@@ -48,7 +48,7 @@ const TablaUsuarios = () => {
   };
 
   const eliminarUsuario = (id) => {
-    axios.delete(`http://localhost:3000/users/${id}`)
+    axios.delete(`http://localhost:8080/users/${id}`)
       .then(res => setIsUsuarioDeleted(true))
       .catch(err => console.error(err));
   }

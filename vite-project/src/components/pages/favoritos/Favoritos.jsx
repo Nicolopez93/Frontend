@@ -9,7 +9,7 @@ const Favoritos = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/autos')
+      .get('http://localhost:8080/autos')
       .then((response) => {
         setAutos(response.data);
       })
@@ -21,7 +21,7 @@ const Favoritos = () => {
   const handleLike = (auto) => {
     const updatedAuto = { ...auto, isLiked: !auto.isLiked };
     axios
-      .put(`http://localhost:3000/autos/${auto.id}`, updatedAuto)
+      .put(`http://localhost:8080/autos/${auto.id}`, updatedAuto)
       .then(() => {
         const updatedAutos = autos.map((a) => (a.id === auto.id ? updatedAuto : a));
         setAutos(updatedAutos);

@@ -20,7 +20,7 @@ const TablaAdministrador = () => {
   }, [isProductDeleted]);
 
   const fetchAutos = () => {
-    fetch('http://localhost:3000/autos')
+    fetch('http://localhost:8080/autos')
       .then(response => response.json())
       .then(data => setAutos(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -33,7 +33,7 @@ const TablaAdministrador = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:3000/autos/${id}`, editFields)
+    axios.patch(`http://localhost:8080/autos/${id}`, editFields)
       .then(res => {
         setEditFields(res.data);
         setIsProductDeleted(!isProductDeleted); // Actualiza el estado para desencadenar la recarga de datos
@@ -49,7 +49,7 @@ const TablaAdministrador = () => {
   };
 
   const eliminarProducto = (id) => {
-    axios.delete(`http://localhost:3000/autos/${id}`)
+    axios.delete(`http://localhost:8080/autos/${id}`)
       .then(res => setIsProductDeleted(true))
       .catch(err => console.error(err));
   }
@@ -60,9 +60,9 @@ const TablaAdministrador = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Nombre del Vehiculo</TableCell>
+              <TableCell>Modelo del Vehiculo</TableCell>
               <TableCell align="right">ID </TableCell>
-              <TableCell align="right">Categoria</TableCell>
+              <TableCell align="right">Tipo De Caja</TableCell>
               <TableCell align="right">Personas</TableCell>
               <TableCell align="right">Valijas</TableCell>
               <TableCell align="right">Puertas</TableCell>
@@ -77,22 +77,22 @@ const TablaAdministrador = () => {
                   {editingId === auto.id ? (
                     <input
                       type="text"
-                      value={editFields.nombre}
+                      value={editFields.modelo}
                       onChange={(e) => handleInputChange(e, 'nombre')}
                     />
                   ) : (
-                    auto.nombre
+                    auto.modelo
                   )}
                 </TableCell>
                 <TableCell align="right">{auto.id}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
                     type="text"
-                    value={editFields.categoria}
-                    onChange={(e) => handleInputChange(e, 'categoria')}
+                    value={editFields.tipoCaja}
+                    onChange={(e) => handleInputChange(e, 'tipoCaja')}
                   />
                 ) : (
-                  auto.categoria
+                  auto.tipoCaja
                 )}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
