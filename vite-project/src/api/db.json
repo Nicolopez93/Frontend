@@ -10,7 +10,7 @@
       "personas": 5,
       "precio": 50,
       "categoria": "auto",
-      "isLiked": true,
+      "isLiked": false,
       "imagenes": [
         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
         "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
@@ -28,7 +28,7 @@
       "personas": 5,
       "precio": 55,
       "categoria": "auto",
-      "isLiked": false,
+      "isLiked": true,
       "imagenes": [
         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
         "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
@@ -172,7 +172,7 @@
       "personas": 5,
       "precio": 53,
       "categoria": "camioneta",
-      "isLiked": true,
+      "isLiked": false,
       "imagenes": [
         "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
         "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
@@ -265,14 +265,39 @@
   ],
   "caracteristicas": [
     {
-      "id": "id",
-      "imgUrl": "imgUrl",
-      "nombre": "nombre",
-      "puertas": "puertas",
-      "valijas": "valijas",
-      "personas": "personas",
-      "precio": "precio",
-      "categoria": "categoria"
+      "id": "1",
+      "nombre": "id",
+      "icono": "id"
+    },
+    {
+      "id": "2",
+      "nombre": "marca",
+      "icono": "marca"
+    },
+    {
+      "id": "3",
+      "nombre": "puertas",
+      "icono": "puertas"
+    },
+    {
+      "id": "4",
+      "nombre": "valijas",
+      "icono": "valijas"
+    },
+    {
+      "id": "5",
+      "nombre": "personas",
+      "icono": "personas"
+    },
+    {
+      "id": "6",
+      "nombre": "imgUrl",
+      "icono": "imgUrl"
+    },
+    {
+      "id": "7",
+      "nombre": "precio",
+      "icono": "precio"
     }
   ],
   "reserva": [
