@@ -265,14 +265,39 @@
   ],
   "caracteristicas": [
     {
-      "id": "id",
-      "imgUrl": "imgUrl",
-      "nombre": "nombre",
-      "puertas": "puertas",
-      "valijas": "valijas",
-      "personas": "personas",
-      "precio": "precio",
-      "categoria": "categoria"
+      "id": "1",
+      "nombre": "id",
+      "icono": "id"
+    },
+    {
+      "id": "2",
+      "nombre": "marca",
+      "icono": "marca"
+    },
+    {
+      "id": "3",
+      "nombre": "puertas",
+      "icono": "puertas"
+    },
+    {
+      "id": "4",
+      "nombre": "valijas",
+      "icono": "valijas"
+    },
+    {
+      "id": "5",
+      "nombre": "personas",
+      "icono": "personas"
+    },
+    {
+      "id": "6",
+      "nombre": "imgUrl",
+      "icono": "imgUrl"
+    },
+    {
+      "id": "7",
+      "nombre": "precio",
+      "icono": "precio"
     }
   ],
   "reserva": [
