@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import MuiCard from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -21,9 +21,14 @@ import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import Rating from '@mui/material/Rating'
 import Stack from '@mui/material/Stack'
+import { AuthContext } from '../../../auth/context/AuthContext'
+import { ReservaContext } from '../../../context/ReservaContext'
 
 const Card = ({ auto, handleLike, reserva }) => {
   const [openModal, setOpenModal] = useState(false)
+
+  const { user } = useContext(AuthContext)
+  const { addReserva } = useContext(ReservaContext)
 
   const shareOnTwitter = () => {}
   const shareOnInstagram = () => {}
@@ -38,11 +43,15 @@ const Card = ({ auto, handleLike, reserva }) => {
     setOpenModal(false)
   }
 
+  const handleReserva = () => {
+    addReserva(auto)
+  }
+
   return (
     <MuiCard
       sx={{
         width: 400,
-        height: 500,
+        height: auto,
         backgroundColor: 'white',
         border: '1px solid #FFA775',
       }}>
@@ -59,6 +68,8 @@ const Card = ({ auto, handleLike, reserva }) => {
           alt={auto.nombre}
         />
       </Link>
+      {!!user && <Link to={`/detalle/${auto.id}`}>Reservar</Link>}
+
       <CardContent sx={{ width: 400, height: 130 }}>
         <Typography
           variant='body2'

@@ -1,62 +1,52 @@
-import React, { useState } from 'react'
-import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png'
-import './buscador.css'
+import React, { useContext, useState } from 'react';
+import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png';
+import './buscador.css';
+import { ReservaContext } from '../../../context/ReservaContext'
 
-const Buscador = ({ onSearchResults, onFormSumit }) => {
+const Buscador = ({ onSearchResults, onFormSubmit }) => {
   const [formData, setFormData] = useState({
     fechaRetiro: '',
     fechaDevolucion: '',
-  })
+  });
 
-  const [filteredAutos, setFilteredAutos] = useState([])
+  const { setFechaSeleccionada } = useContext(ReservaContext);
 
-  const buscarVehiculo = (vehiculo) => {
-    fetch(`http://localhost:3000/autos`)
-      .then((res) => res.json())
-      .then((data) => {
-        // const autos = data.filter( a => a.marca.toLowerCase() === vehiculo.toLowerCase() || a.nombre.toLowerCase() === vehiculo.toLowerCase())
-        setFilteredAutos(data)
-        onSearchResults(data)
-        console.log(data)
-      })
-      .catch((error) => {
-        console.error('Error fetching autos:', error)
-      })
-  }
+  console.log('formData:', formData)
 
   const handleChange = (event) => {
-    const { name, value } = event.target
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,
-    })
-  }
+    });
+  };
+
+  
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    onFormSumit(formData)
-    // console.log(formData)
-    buscarVehiculo(formData.auto)
-    setFormData({
-      fechaRetiro: '',
-      fechaDevolucion: '',
-    })
-  }
+    event.preventDefault();
+    onFormSubmit(formData); 
+    setFechaSeleccionada(formData) 
+    fetchAutos(formData); 
+  };
 
-  const { fechaDevolucion, fechaRetiro } = formData
+  const fetchAutos = (formData) => {
+    fetch(`http://localhost:3000/autos`)
+      .then((res) => res.json())
+      .then((data) => {
+        onSearchResults(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching autos:', error);
+      });
+  };
+
+  const { fechaDevolucion, fechaRetiro } = formData;
 
   return (
     <div className='buscador-container'>
       <form onSubmit={handleSubmit}>
         <div className='select-container'>
-          {/* <input
-            name='auto'
-            required
-            type='text'
-            placeholder='Buscar autos...'
-            value={auto}
-            onChange={handleChange}
-          /> */}
           <input
             name='fechaRetiro'
             required
@@ -73,19 +63,14 @@ const Buscador = ({ onSearchResults, onFormSumit }) => {
             value={fechaDevolucion}
             onChange={handleChange}
           />
-          <button
-            type='submit'
-            className='buscar-autos-button'>
+          <button type='submit' className='buscar-autos-button'>
             Buscar
           </button>
         </div>
       </form>
-      <img
-        src={imgAuto}
-        alt='auto'
-        className='auto-img'
-      />
+      <img src={imgAuto} alt='auto' className='auto-img' />
     </div>
-  )
-}
-export default Buscador
+  );
+};
+
+export default Buscador;
