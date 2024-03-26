@@ -14,6 +14,7 @@ const TablaCategorias = () => {
   const [categorias, setCategorias] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [editFields, setEditFields] = useState({ nombre: '' });
+  const [newCategoria, setNewCategoria] = useState('');
 
   useEffect(() => {
     fetchCategorias();
@@ -54,44 +55,70 @@ const TablaCategorias = () => {
     }
   };
 
+  const agregarCategoria = () => {
+    const nuevaCategoria = { nombre: newCategoria };
+
+    axios.post('http://localhost:3000/categorias', nuevaCategoria)
+      .then(() => {
+        setNewCategoria('');
+        fetchCategorias();
+      })
+      .catch(err => console.error(err));
+  };
+
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Categoría</TableCell>
-            <TableCell>Acciones</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {categorias.map(categoria => (
-            <TableRow key={categoria.id}>
+    <div>
+      <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Categoría</TableCell>
+              <TableCell>Acciones</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {categorias.map(categoria => (
+              <TableRow key={categoria.id}>
+                <TableCell>
+                  {editingId === categoria.id ? (
+                    <TextField
+                      fullWidth
+                      value={editFields.nombre}
+                      onChange={handleInputChange}
+                    />
+                  ) : (
+                    categoria.nombre
+                  )}
+                </TableCell>
+                <TableCell>
+                  {editingId === categoria.id ? (
+                    <Button variant="contained" color="primary" onClick={() => handleSave(categoria.id)}>Guardar</Button>
+                  ) : (
+                    <>
+                      <Button variant="contained" color="primary" onClick={() => handleEdit(categoria.id, categoria.nombre)}>Editar</Button>
+                      <Button variant="contained" color="error" onClick={() => eliminarCategoria(categoria.id)}>Eliminar</Button>
+                    </>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+            <TableRow>
               <TableCell>
-                {editingId === categoria.id ? (
-                  <TextField
-                    fullWidth
-                    value={editFields.nombre}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  categoria.nombre
-                )}
+                <TextField
+                  fullWidth
+                  label="Nueva Categoría"
+                  value={newCategoria}
+                  onChange={(e) => setNewCategoria(e.target.value)}
+                />
               </TableCell>
               <TableCell>
-                {editingId === categoria.id ? (
-                  <Button variant="contained" color="primary" onClick={() => handleSave(categoria.id)}>Guardar</Button>
-                ) : (
-                  <>
-                    <Button variant="contained" color="primary" onClick={() => handleEdit(categoria.id, categoria.nombre)}>Editar</Button>
-                    <Button variant="contained" color="error" onClick={() => eliminarCategoria(categoria.id)}>Eliminar</Button>
-                  </>
-                )}
+                <Button variant="contained" color="primary" onClick={agregarCategoria}>Agregar</Button>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 
