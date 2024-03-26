@@ -8,6 +8,7 @@ import PanelAdministrador from '../components/pages/panelAdministrador/PanelAdmi
 import ListaDeProductos from '../components/pages/listaDeProductos/ListaDeProductos';
 import ListaDeUsuarios from '../components/pages/listaDeUsuarios/ListaDeUsuarios';
 import ListaDeCaracteristicas from '../components/pages/listaDeCaracteristicas/ListaDeCaracteristicas';
+import ListaDeCategorias from '../components/pages/listaDeCategorias/ListaDeCategorias';
 
 export const AppRouters = () => {
   return(
@@ -44,6 +45,12 @@ export const AppRouters = () => {
         <Route path='/ListaDeCaracteristicas' element={
           <PrivateRouter>
             <ListaDeCaracteristicas/>
+          </PrivateRouter>
+        }/>
+
+        <Route path='ListaDeCategorias' element={
+          <PrivateRouter>
+            <ListaDeCategorias/>
           </PrivateRouter>
         }/>
 

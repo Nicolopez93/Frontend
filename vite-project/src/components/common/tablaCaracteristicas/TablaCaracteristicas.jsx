@@ -20,7 +20,7 @@ const TablaCaracteristicas = () => {
 
   const fetchCaracteristicas = () => {
     axios.get('http://localhost:3000/caracteristicas')
-      .then(response => setCaracteristicas(response.data.caracteristicas))
+      .then(response => setCaracteristicas(response.data))
       .catch(error => console.error('Error fetching data:', error));
   };
 
