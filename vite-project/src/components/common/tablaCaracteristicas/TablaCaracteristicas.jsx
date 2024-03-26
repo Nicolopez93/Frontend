@@ -51,12 +51,16 @@ const TablaCaracteristicas = () => {
   };
 
   const eliminarCaracteristica = (id) => {
-    axios.delete(`http://localhost:3000/caracteristicas/${id}`)
-      .then(() => {
-        setCaracteristicas(caracteristicas.filter(caracteristica => caracteristica.id !== id));
-      })
-      .catch(err => console.error(err));
+    const confirmarEliminar = window.confirm("¿Estás seguro que deseas eliminar esta característica?");
+    if (confirmarEliminar) {
+      axios.delete(`http://localhost:3000/caracteristicas/${id}`)
+        .then(() => {
+          setCaracteristicas(caracteristicas.filter(caracteristica => caracteristica.id !== id));
+        })
+        .catch(err => console.error(err));
+    }
   };
+  
 
   const handleNewCaracteristicaChange = (e, key) => {
     setNewCaracteristica({ ...newCaracteristica, [key]: e.target.value });
