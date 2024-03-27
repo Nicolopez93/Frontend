@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import imgLogo from '../../../assets/logotransp.png';
 import './navbar.css';
@@ -10,13 +10,15 @@ import MenuItem from '@mui/material/MenuItem';
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
   const { user, logout } = useContext(AuthContext);
-
   const navigate = useNavigate();
-  const iniciar = (user) => {
-    const inicial = user ? user.name.charAt(0) : '';
-    return inicial;
+
+  // Función para obtener la inicial del nombre del usuario
+  const obtenerInicial = () => {
+    if (user && user.nombre) {
+      return user.nombre.charAt(0).toUpperCase();
+    }
+    return '';
   };
 
   const handleLogout = () => {
@@ -27,6 +29,7 @@ const Navbar = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -40,19 +43,10 @@ const Navbar = () => {
           className='navbar-logo'
         />
       </a>
-      <div
-        className='navbar-buttons'
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          gap: '1rem',
-          justifyContent: 'center',
-          alignItems: 'center',
-          margin: '0 1rem',
-        }}>
-          <Button component={Link} to='/Favoritos' variant="contained" color="primary" size="small" disableElevation>
+      <div className='navbar-buttons'>
+        <Button component={Link} to='/Favoritos' variant="contained" color="primary" size="small" disableElevation>
           Favoritos
-          </Button>
+        </Button>
         <Tooltip title='Administrador de usuario'>
           <IconButton
             onClick={handleClick}
@@ -61,16 +55,13 @@ const Navbar = () => {
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup='true'
             aria-expanded={open ? 'true' : undefined}
-            style={{ backgroundColor: 'orange' }}>
-            <Avatar
-              sx={{ width: 48, height: 48 }}
-              style={{ backgroundColor: 'orange' }}>
-              {iniciar ? iniciar(user) : ''}
+            style={{ backgroundColor: 'orange' }}
+          >
+            <Avatar sx={{ width: 48, height: 48 }} style={{ backgroundColor: 'orange' }}>
+              {obtenerInicial()}
             </Avatar>
           </IconButton>
         </Tooltip>
-
-        
 
         <Menu
           anchorEl={anchorEl}
@@ -105,7 +96,8 @@ const Navbar = () => {
             },
           }}
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}>
+          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        >
           <MenuItem onClick={handleClose}>
             <Link to='/perfil'>
               <p
@@ -118,7 +110,7 @@ const Navbar = () => {
                 }}>
                 Usuario:
                 {user ? (
-                  user?.name + ' ' + user?.apellido
+                  `${user.nombre} ${user.apellido}`
                 ) : (
                   <Link to='/login'>
                     <Button>Iniciar sesión</Button>
@@ -165,16 +157,12 @@ const Navbar = () => {
           </MenuItem>
         </Menu>
 
-        {user ? (
-          ''
-        ) : (
+        {!user && (
           <Link to='/login'>
             <button>Iniciar sesión</button>
           </Link>
         )}
-        {user ? (
-          ''
-        ) : (
+        {!user && (
           <Link to='/register'>
             <button>Crear cuenta</button>
           </Link>

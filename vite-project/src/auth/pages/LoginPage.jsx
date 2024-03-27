@@ -18,7 +18,7 @@ export const LoginPage = () => {
   const { login } = useContext(AuthContext)
 
   const getUsers = async () => {
-    const response = await fetch('http://localhost:8080/users')
+    const response = await fetch('http://localhost:8080/usuario')
     const data = await response.json()
     setUsers(data)
   }
