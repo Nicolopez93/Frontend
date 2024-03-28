@@ -19,6 +19,12 @@ const TablaAdministrador = () => {
     fetchAutos();
   }, [isProductDeleted]);
 
+  useEffect(() => {
+    if (isProductDeleted) {
+      fetchAutos();
+    }
+  }, [isProductDeleted]);
+
   const fetchAutos = () => {
     fetch('http://localhost:8080/autos')
       .then(response => response.json())
@@ -32,16 +38,31 @@ const TablaAdministrador = () => {
     setEditFields(editingAuto);
   };
 
-  const handleSave = (id) => {
-    axios.patch(`http://localhost:8080/autos/${id}`, editFields)
-      .then(res => {
-        setEditFields(res.data);
-        setIsProductDeleted(!isProductDeleted); // Actualiza el estado para desencadenar la recarga de datos
-      })
-      .catch(err => console.error(err));
-    console.log('Guardar cambios del auto con ID:', id);
-    setEditingId(null);
-    fetchAutos(); // Actualiza los datos después de guardar
+  const handleSave = async (editFields) => {
+    try {
+      const url = 'http://localhost:8080/autos/actualizar';
+    
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editFields),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al actualizar el auto');
+      }
+  
+      const data = await response.text();
+      console.log('Datos actualizados:', data);
+      if (data.includes("actualizado")) {
+        fetchAutos();
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error('Error al guardar cambios:', error);
+    }
   };
 
   const handleInputChange = (e, key) => {
@@ -60,8 +81,9 @@ const TablaAdministrador = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
+              <TableCell>ID</TableCell>
               <TableCell>Modelo del Vehiculo</TableCell>
-              <TableCell align="right">ID </TableCell>
+              <TableCell>Marca</TableCell>
               <TableCell align="right">Tipo De Caja</TableCell>
               <TableCell align="right">Personas</TableCell>
               <TableCell align="right">Valijas</TableCell>
@@ -73,18 +95,19 @@ const TablaAdministrador = () => {
           <TableBody>
             {autos.map(auto => (
               <TableRow key={auto.id}>
+                <TableCell>{auto.id}</TableCell>
                 <TableCell component="th" scope="row">
                   {editingId === auto.id ? (
                     <input
                       type="text"
                       value={editFields.modelo}
-                      onChange={(e) => handleInputChange(e, 'nombre')}
+                      onChange={(e) => handleInputChange(e, 'modelo')}
                     />
                   ) : (
                     auto.modelo
                   )}
                 </TableCell>
-                <TableCell align="right">{auto.id}</TableCell>
+                <TableCell>{auto.marca}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
                     type="text"
@@ -96,7 +119,7 @@ const TablaAdministrador = () => {
                 )}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
-                    type="text"
+                    type="number"
                     value={editFields.personas}
                     onChange={(e) => handleInputChange(e, 'personas')}
                   />
@@ -105,7 +128,7 @@ const TablaAdministrador = () => {
                 )}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
-                    type="text"
+                    type="number"
                     value={editFields.valijas}
                     onChange={(e) => handleInputChange(e, 'valijas')}
                   />
@@ -114,7 +137,7 @@ const TablaAdministrador = () => {
                 )}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
-                    type="text"
+                    type="number"
                     value={editFields.puertas}
                     onChange={(e) => handleInputChange(e, 'puertas')}
                   />
@@ -123,7 +146,7 @@ const TablaAdministrador = () => {
                 )}</TableCell>
                 <TableCell align="right">{editingId === auto.id ? (
                   <input
-                    type="text"
+                    type="number"
                     value={editFields.precio}
                     onChange={(e) => handleInputChange(e, 'precio')}
                   />
@@ -132,7 +155,7 @@ const TablaAdministrador = () => {
                 )}</TableCell>
                 <TableCell align="right">
                   {editingId === auto.id ? (
-                    <Button variant="contained" color="primary" onClick={() => handleSave(auto.id)}>Guardar</Button>
+                    <Button variant="contained" color="primary" onClick={() => handleSave(editFields)}>Guardar</Button>
                   ) : (
                     <>
                       <Button variant="contained" color="primary" onClick={() => handleEdit(auto.id)}>Editar</Button>

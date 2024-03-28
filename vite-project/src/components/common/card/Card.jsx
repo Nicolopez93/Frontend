@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MuiCard from '@mui/material/Card'
 import CardHeader from '@mui/material/CardHeader'
@@ -23,29 +23,73 @@ import Rating from '@mui/material/Rating'
 import Stack from '@mui/material/Stack'
 import { AuthContext } from '../../../auth/context/AuthContext'
 import { ReservaContext } from '../../../context/ReservaContext'
+import axios from 'axios'
 
-const Card = ({ auto, handleLike, reserva }) => {
+const Card = ({ auto, reserva }) => {
   const [openModal, setOpenModal] = useState(false)
-
-  const { user } = useContext(AuthContext)
   const { addReserva } = useContext(ReservaContext)
+  const [isFavorito, setIsFavorito] = useState(false);
+  const { user } = useContext(AuthContext);
 
-  const shareOnTwitter = () => {}
-  const shareOnInstagram = () => {}
+  const handleLike = (auto) => {
+    const updatedAuto = {
+      usuarioId : user?.id,
+      autoId : auto
+    };
 
-  const shareOnFacebook = () => {}
+    axios
+      .post('http://localhost:8080/favoritos/agregar-auto', updatedAuto)
+      .then(() => {
+        console.log('Auto actualizado con éxito');
+        setIsFavorito(true);
+        
+      })
+      .catch((error) => {
+        console.error('Error al actualizar auto:', error);
+      });
+  };
+
+  const eliminarFavorito = (auto) => {
+
+    const deleteAuto = {
+      usuarioId : user?.id,
+      autoId : auto
+    };
+    console.log("auto a eliminar:", deleteAuto);
+
+    axios
+    .delete('http://localhost:8080/favoritos/eliminar-auto', {
+      data: deleteAuto
+    })
+    
+      .then(() => {
+        console.log('Auto eliminado de favoritos con éxito');
+        setIsFavorito(false);
+        window.location.reload();
+      })
+      
+      .catch((error) => {
+        console.error('Error al eliminar auto de favoritos:', error);
+      });
+  };
+
+  const shareOnTwitter = () => {};
+  const shareOnInstagram = () => {};
+  const shareOnFacebook = () => {};
 
   const handleShareButtonClicked = () => {
-    setOpenModal(true)
-  }
+    setOpenModal(true);
+  };
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+  };
 
   const handleReserva = () => {
-    addReserva(auto)
-  }
+    addReserva(auto);
+  };
+useEffect(() => {
+} , [isFavorito])
 
   return (
     <MuiCard
@@ -99,8 +143,14 @@ const Card = ({ auto, handleLike, reserva }) => {
       <CardActions disableSpacing>
         <IconButton
           aria-label='add to favorites'
-          onClick={() => handleLike(auto)}>
-          <FavoriteIcon color={auto.isLiked ? 'warning' : 'disabled'} />
+          onClick={() => {
+            if (isFavorito) {
+              eliminarFavorito(auto.id);
+            } else {
+              handleLike(auto.id);
+            }
+          }}>
+          <FavoriteIcon color={isFavorito ? 'warning' : 'disabled'} />
         </IconButton>
         <IconButton onClick={handleShareButtonClicked}>
           <ShareOutlined />
@@ -133,7 +183,7 @@ const Card = ({ auto, handleLike, reserva }) => {
           <IconButton onClick={shareOnInstagram}>
             <Instagram />
           </IconButton>
-          <IconButton onClick={() => {}}>
+          <IconButton onClick={shareOnFacebook}>
             <FacebookOutlined />
           </IconButton>
         </DialogContent>
@@ -145,4 +195,4 @@ const Card = ({ auto, handleLike, reserva }) => {
   )
 }
 
-export default Card
+export default Card;
