@@ -20,7 +20,7 @@ const TablaUsuarios = () => {
   }, [isUsuarioDeleted]);
 
   const fetchUsuarios = () => {
-    axios.get('http://localhost:3000/users')
+    axios.get('http://localhost:8080/usuario')
       .then(response => setUsuarios(response.data))
       .catch(error => console.error('Error fetching data:', error));
   };
@@ -32,15 +32,12 @@ const TablaUsuarios = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:3000/users/${id}`, editFields)
+    axios.patch(`http://localhost:8080/usuario/${id}`, editFields)
       .then(res => {
-        setEditFields(res.data);
         setIsUsuarioDeleted(!isUsuarioDeleted); // Actualiza el estado para desencadenar la recarga de datos
+        setEditingId(null);
       })
       .catch(err => console.error(err));
-    console.log('Guardar cambios del usuario con ID:', id);
-    setEditingId(null);
-    fetchUsuarios(); // Actualiza los datos después de guardar
   };
 
   const handleInputChange = (e, key) => {
@@ -48,13 +45,12 @@ const TablaUsuarios = () => {
   };
 
   const eliminarUsuario = (id) => {
-    axios.delete(`http://localhost:3000/users/${id}`)
+    axios.delete(`http://localhost:8080/usuario/${id}`)
       .then(res => setIsUsuarioDeleted(true))
       .catch(err => console.error(err));
-  }
+  };
 
   return (
-    
     <div>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -72,22 +68,22 @@ const TablaUsuarios = () => {
                   {editingId === usuario.id ? (
                     <input
                       type="text"
-                      value={editFields.name}
+                      value={editFields.nombre}
                       onChange={(e) => handleInputChange(e, 'nombre')}
                     />
                   ) : (
-                    usuario.name
+                    usuario.nombre
                   )}
                 </TableCell>
                 <TableCell>
                   {editingId === usuario.id ? (
                     <input
                       type="text"
-                      value={editFields.usuarioRole}
-                      onChange={(e) => handleInputChange(e, 'usuarioRole')}
+                      value={editFields.usuarioRol}
+                      onChange={(e) => handleInputChange(e, 'usuarioRol')}
                     />
                   ) : (
-                    usuario.usuarioRole
+                    usuario.usuarioRol
                   )}
                 </TableCell>
                 <TableCell>
@@ -107,6 +103,6 @@ const TablaUsuarios = () => {
       </TableContainer>
     </div>
   );
-}
+};
 
 export default TablaUsuarios;

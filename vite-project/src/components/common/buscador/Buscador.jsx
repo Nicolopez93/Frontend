@@ -31,7 +31,7 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
   };
 
   const fetchAutos = (formData) => {
-    fetch(`http://localhost:3000/autos`)
+    fetch(`http://localhost:8080/autos`)
       .then((res) => res.json())
       .then((data) => {
         onSearchResults(data);

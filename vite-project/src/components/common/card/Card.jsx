@@ -1,51 +1,94 @@
-import React, { useState, useContext } from 'react'
-import { Link } from 'react-router-dom'
-import MuiCard from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import {
-  FacebookOutlined,
-  Instagram,
-  ShareOutlined,
-  Twitter,
-} from '@mui/icons-material'
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
-import DialogTitle from '@mui/material/DialogTitle'
-import Rating from '@mui/material/Rating'
-import Stack from '@mui/material/Stack'
-import { AuthContext } from '../../../auth/context/AuthContext'
-import { ReservaContext } from '../../../context/ReservaContext'
+import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import MuiCard from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { ShareOutlined, Twitter, Instagram, FacebookOutlined } from '@mui/icons-material';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import { AuthContext } from '../../../auth/context/AuthContext';
+import { ReservaContext } from '../../../context/ReservaContext';
+import axios from 'axios';
 
-const Card = ({ auto, handleLike, reserva }) => {
-  const [openModal, setOpenModal] = useState(false)
+const Card = ({ auto }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const { addReserva } = useContext(ReservaContext);
+  const [isFavorito, setIsFavorito] = useState(false);
+  const { user } = useContext(AuthContext);
 
-  const { user } = useContext(AuthContext)
-  const { addReserva } = useContext(ReservaContext)
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      const favorites = JSON.parse(storedFavorites);
+      setIsFavorito(favorites.includes(auto.id));
+    }
+  }, []);
 
-  const shareOnTwitter = () => {}
-  const shareOnInstagram = () => {}
+  const handleLike = () => {
+    const updatedAuto = {
+      usuarioId: user?.id,
+      autoId: auto.id
+    };
 
-  const shareOnFacebook = () => {}
+    axios.post('http://localhost:8080/favoritos/agregar-auto', updatedAuto)
+      .then(() => {
+        console.log('Auto actualizado con éxito');
+        setIsFavorito(true);
+        updateLocalStorage(auto.id, true);
+      })
+      .catch((error) => {
+        console.error('Error al actualizar auto:', error);
+      });
+  };
+
+  const eliminarFavorito = () => {
+    const deleteAuto = {
+      usuarioId: user?.id,
+      autoId: auto.id
+    };
+
+    axios.delete('http://localhost:8080/favoritos/eliminar-auto', { data: deleteAuto })
+      .then(() => {
+        console.log('Auto eliminado de favoritos con éxito');
+        setIsFavorito(false);
+        updateLocalStorage(auto.id, false);
+      })
+      .catch((error) => {
+        console.error('Error al eliminar auto de favoritos:', error);
+      });
+  };
+
+  const updateLocalStorage = (autoId, isFav) => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const updatedFavorites = isFav ? [...storedFavorites, autoId] : storedFavorites.filter(id => id !== autoId);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
+  const shareOnTwitter = () => { };
+  const shareOnInstagram = () => { };
+  const shareOnFacebook = () => { };
 
   const handleShareButtonClicked = () => {
-    setOpenModal(true)
-  }
+    setOpenModal(true);
+  };
 
   const handleCloseModal = () => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+  };
 
   const handleReserva = () => {
-    addReserva(auto)
-  }
+    addReserva(auto);
+  };
 
   return (
     <MuiCard
@@ -56,7 +99,7 @@ const Card = ({ auto, handleLike, reserva }) => {
         border: '1px solid #FFA775',
       }}>
       <CardHeader
-        title={auto.nombre}
+        title={auto.modelo}
         subheader={auto.categoria}
         sx={{ color: 'black' }}
       />
@@ -65,7 +108,7 @@ const Card = ({ auto, handleLike, reserva }) => {
           component='img'
           height='220'
           image={auto.imgUrl}
-          alt={auto.nombre}
+          alt={auto.modelo}
         />
       </Link>
       {!!user && <Link to={`/detalle/${auto.id}`}>Reservar</Link>}
@@ -99,8 +142,14 @@ const Card = ({ auto, handleLike, reserva }) => {
       <CardActions disableSpacing>
         <IconButton
           aria-label='add to favorites'
-          onClick={() => handleLike(auto)}>
-          <FavoriteIcon color={auto.isLiked ? 'warning' : 'disabled'} />
+          onClick={() => {
+            if (isFavorito) {
+              eliminarFavorito();
+            } else {
+              handleLike();
+            }
+          }}>
+          <FavoriteIcon color={isFavorito ? 'warning' : 'disabled'} />
         </IconButton>
         <IconButton onClick={handleShareButtonClicked}>
           <ShareOutlined />
@@ -133,7 +182,7 @@ const Card = ({ auto, handleLike, reserva }) => {
           <IconButton onClick={shareOnInstagram}>
             <Instagram />
           </IconButton>
-          <IconButton onClick={() => {}}>
+          <IconButton onClick={shareOnFacebook}>
             <FacebookOutlined />
           </IconButton>
         </DialogContent>
@@ -145,4 +194,4 @@ const Card = ({ auto, handleLike, reserva }) => {
   )
 }
 
-export default Card
+export default Card;

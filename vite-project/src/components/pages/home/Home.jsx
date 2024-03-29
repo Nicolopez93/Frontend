@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/autos')
+      .get('http://localhost:8080/autos')
       .then((res) => {
         setAutos(res.data);
       })

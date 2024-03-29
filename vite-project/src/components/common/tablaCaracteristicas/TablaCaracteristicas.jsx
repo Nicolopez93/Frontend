@@ -11,68 +11,47 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios';
 
 const TablaCaracteristicas = () => {
+  const [autos, setAutos] = useState([]);
   const [caracteristicas, setCaracteristicas] = useState([]);
-  const [editingIds, setEditingIds] = useState({});
   const [editFields, setEditFields] = useState({});
-  const [newCaracteristica, setNewCaracteristica] = useState({});
+  const [isCaracteristicasDeleted, setCaracteristicasDeleted] = useState(false);
 
   useEffect(() => {
     fetchCaracteristicas();
   }, []);
 
   const fetchCaracteristicas = () => {
-    axios.get('http://localhost:3000/caracteristicas')
-      .then(response => setCaracteristicas(response.data))
+    axios.get('http://localhost:8080/autos')
+      .then(response => {
+        if (response.data.length > 0) {
+          const primerAuto = response.data[0];
+          const nombresCaracteristicas = Object.keys(primerAuto);
+          setCaracteristicas(nombresCaracteristicas);
+        }
+
+        setAutos(response.data);
+      })
       .catch(error => console.error('Error fetching data:', error));
   };
 
-  const handleEdit = (id, caracteristica) => {
-    setEditingIds({...editingIds, [id]: true});
-    setEditFields({ ...editFields, [id]: { ...caracteristica }});
+  const handleEditarCaracteristica = (caracteristica) => {
+    const index = caracteristicas.indexOf(caracteristica);
+    setEditFields({ ...editFields, [index]: caracteristica });
   };
 
-  const handleSave = (id) => {
-    axios.patch(`http://localhost:3000/caracteristicas/${id}`, editFields[id])
-      .then(() => {
-        setEditingIds({...editingIds, [id]: false});
-        fetchCaracteristicas();
-      })
-      .catch(err => console.error(err));
+  const handleGuardarCaracteristica = (index, newValue) => {
+    const nuevasCaracteristicas = [...caracteristicas];
+    nuevasCaracteristicas[index] = newValue;
+    setCaracteristicas(nuevasCaracteristicas);
+    setEditFields({});
+    // Aquí puedes realizar una solicitud para actualizar la característica en la base de datos si es necesario
   };
 
-  const handleInputChange = (e, id, key) => {
-    setEditFields({
-      ...editFields,
-      [id]: {
-        ...editFields[id],
-        [key]: e.target.value
-      }
-    });
-  };
-
-  const eliminarCaracteristica = (id) => {
-    const confirmarEliminar = window.confirm("¿Estás seguro que deseas eliminar esta característica?");
-    if (confirmarEliminar) {
-      axios.delete(`http://localhost:3000/caracteristicas/${id}`)
-        .then(() => {
-          setCaracteristicas(caracteristicas.filter(caracteristica => caracteristica.id !== id));
-        })
-        .catch(err => console.error(err));
-    }
-  };
-  
-
-  const handleNewCaracteristicaChange = (e, key) => {
-    setNewCaracteristica({ ...newCaracteristica, [key]: e.target.value });
-  };
-
-  const agregarNuevaCaracteristica = () => {
-    axios.post('http://localhost:3000/caracteristicas', newCaracteristica)
-      .then(() => {
-        setNewCaracteristica({});
-        fetchCaracteristicas();
-      })
-      .catch(err => console.error(err));
+  const handleEliminarCaracteristica = (index) => {
+    const nuevasCaracteristicas = [...caracteristicas];
+    nuevasCaracteristicas.splice(index, 1);
+    setCaracteristicas(nuevasCaracteristicas);
+    // Aquí puedes realizar una solicitud para eliminar la característica de la base de datos si es necesario
   };
 
   return (
@@ -82,64 +61,52 @@ const TablaCaracteristicas = () => {
           <TableHead>
             <TableRow>
               <TableCell>Nombre</TableCell>
-              <TableCell>Icono</TableCell>
               <TableCell>Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {caracteristicas.map((caracteristica) => (
-              <TableRow key={caracteristica.id}>
+            {caracteristicas.map((caracteristica, index) => (
+              <TableRow key={index}>
                 <TableCell>
-                  {editingIds[caracteristica.id] ? (
+                  {editFields[index] !== undefined ? (
                     <TextField
-                      value={editFields[caracteristica.id]?.nombre || caracteristica.nombre}
-                      onChange={(e) => handleInputChange(e, caracteristica.id, 'nombre')}
+                      value={editFields[index]}
+                      onChange={(e) => setEditFields({ ...editFields, [index]: e.target.value })}
                     />
                   ) : (
-                    caracteristica.nombre
+                    caracteristica
                   )}
                 </TableCell>
                 <TableCell>
-                  {editingIds[caracteristica.id] ? (
-                    <TextField
-                      value={editFields[caracteristica.id]?.icono || caracteristica.icono}
-                      onChange={(e) => handleInputChange(e, caracteristica.id, 'icono')}
-                    />
-                  ) : (
-                    caracteristica.icono
-                  )}
-                </TableCell>
-                <TableCell>
-                  {editingIds[caracteristica.id] ? (
-                    <Button variant="contained" color="primary" onClick={() => handleSave(caracteristica.id)}>Guardar</Button>
+                  {editFields[index] !== undefined ? (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleGuardarCaracteristica(index, editFields[index])}
+                    >
+                      Guardar
+                    </Button>
                   ) : (
                     <>
-                      <Button variant="contained" color="primary" onClick={() => handleEdit(caracteristica.id, caracteristica)}>Editar</Button>
-                      <Button variant="contained" color="error" onClick={() => eliminarCaracteristica(caracteristica.id)}>Eliminar</Button>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleEditarCaracteristica(caracteristica)}
+                      >
+                        Editar
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => handleEliminarCaracteristica(index)}
+                      >
+                        Eliminar
+                      </Button>
                     </>
                   )}
                 </TableCell>
               </TableRow>
             ))}
-            <TableRow>
-              <TableCell>
-                <TextField
-                  label="Nombre"
-                  value={newCaracteristica.nombre || ''}
-                  onChange={(e) => handleNewCaracteristicaChange(e, 'nombre')}
-                />
-              </TableCell>
-              <TableCell>
-                <TextField
-                  label="Icono"
-                  value={newCaracteristica.icono || ''}
-                  onChange={(e) => handleNewCaracteristicaChange(e, 'icono')}
-                />
-              </TableCell>
-              <TableCell>
-                <Button variant="contained" color="primary" onClick={agregarNuevaCaracteristica}>Agregar</Button>
-              </TableCell>
-            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
