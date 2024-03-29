@@ -1,81 +1,82 @@
-import React, { useState, useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import MuiCard from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import FavoriteIcon from '@mui/icons-material/Favorite'
-import {
-  FacebookOutlined,
-  Instagram,
-  ShareOutlined,
-  Twitter,
-} from '@mui/icons-material'
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
-import DialogTitle from '@mui/material/DialogTitle'
-import Rating from '@mui/material/Rating'
-import Stack from '@mui/material/Stack'
-import { AuthContext } from '../../../auth/context/AuthContext'
-import { ReservaContext } from '../../../context/ReservaContext'
-import axios from 'axios'
+import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import MuiCard from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { ShareOutlined, Twitter, Instagram, FacebookOutlined } from '@mui/icons-material';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
+import { AuthContext } from '../../../auth/context/AuthContext';
+import { ReservaContext } from '../../../context/ReservaContext';
+import axios from 'axios';
 
-const Card = ({ auto, reserva }) => {
-  const [openModal, setOpenModal] = useState(false)
-  const { addReserva } = useContext(ReservaContext)
+const Card = ({ auto }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const { addReserva } = useContext(ReservaContext);
   const [isFavorito, setIsFavorito] = useState(false);
   const { user } = useContext(AuthContext);
 
-  const handleLike = (auto) => {
+  useEffect(() => {
+    const storedFavorites = localStorage.getItem('favorites');
+    if (storedFavorites) {
+      const favorites = JSON.parse(storedFavorites);
+      setIsFavorito(favorites.includes(auto.id));
+    }
+  }, []);
+
+  const handleLike = () => {
     const updatedAuto = {
-      usuarioId : user?.id,
-      autoId : auto
+      usuarioId: user?.id,
+      autoId: auto.id
     };
 
-    axios
-      .post('http://localhost:8080/favoritos/agregar-auto', updatedAuto)
+    axios.post('http://localhost:8080/favoritos/agregar-auto', updatedAuto)
       .then(() => {
         console.log('Auto actualizado con éxito');
         setIsFavorito(true);
-        
+        updateLocalStorage(auto.id, true);
       })
       .catch((error) => {
         console.error('Error al actualizar auto:', error);
       });
   };
 
-  const eliminarFavorito = (auto) => {
-
+  const eliminarFavorito = () => {
     const deleteAuto = {
-      usuarioId : user?.id,
-      autoId : auto
+      usuarioId: user?.id,
+      autoId: auto.id
     };
-    console.log("auto a eliminar:", deleteAuto);
 
-    axios
-    .delete('http://localhost:8080/favoritos/eliminar-auto', {
-      data: deleteAuto
-    })
-    
+    axios.delete('http://localhost:8080/favoritos/eliminar-auto', { data: deleteAuto })
       .then(() => {
         console.log('Auto eliminado de favoritos con éxito');
         setIsFavorito(false);
-        window.location.reload();
+        updateLocalStorage(auto.id, false);
       })
-      
       .catch((error) => {
         console.error('Error al eliminar auto de favoritos:', error);
       });
   };
 
-  const shareOnTwitter = () => {};
-  const shareOnInstagram = () => {};
-  const shareOnFacebook = () => {};
+  const updateLocalStorage = (autoId, isFav) => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+    const updatedFavorites = isFav ? [...storedFavorites, autoId] : storedFavorites.filter(id => id !== autoId);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
+  const shareOnTwitter = () => { };
+  const shareOnInstagram = () => { };
+  const shareOnFacebook = () => { };
 
   const handleShareButtonClicked = () => {
     setOpenModal(true);
@@ -88,8 +89,6 @@ const Card = ({ auto, reserva }) => {
   const handleReserva = () => {
     addReserva(auto);
   };
-useEffect(() => {
-} , [isFavorito])
 
   return (
     <MuiCard
@@ -145,9 +144,9 @@ useEffect(() => {
           aria-label='add to favorites'
           onClick={() => {
             if (isFavorito) {
-              eliminarFavorito(auto.id);
+              eliminarFavorito();
             } else {
-              handleLike(auto.id);
+              handleLike();
             }
           }}>
           <FavoriteIcon color={isFavorito ? 'warning' : 'disabled'} />
