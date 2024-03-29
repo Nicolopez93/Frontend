@@ -6,15 +6,11 @@ import './flotaDeCamioneta.css';
 
 const FlotaDeCamioneta = () => {
   const [autos, setAutos] = useState([]);
-
   useEffect(() => {
-    axios.get('http://localhost:8080/categoria/buscar/2')
+    axios.get("http://localhost:8080/autos")
       .then(response => {
-        if (response.data && response.data.autos) {
-          setAutos(response.data.autos);
-        } else {
-          console.error("No se encontraron autos en la categoría especificada.");
-        }
+        const autosCategoriaAuto = response.data.filter(auto => auto.categoria === "camioneta");
+        setAutos(autosCategoriaAuto);
       })
       .catch(error => {
         console.error("Error fetching autos:", error);

@@ -4,9 +4,8 @@ import Card from '../../common/card/Card';
 import styles from '../home/home.module.css';
 import Buscador from '../../common/buscador/Buscador';
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto';
-import Recomendacion from '../../common/recomendacion/Recomendacion';
 import { ReservaContext } from '../../../context/ReservaContext';
-
+import Recomendacion from '../../common/recomendacion/Recomendacion';
 const Home = () => {
   const [autos, setAutos] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
@@ -39,6 +38,7 @@ const Home = () => {
       <div>
         <Buscador onSearchResults={handleSearchResults} onFormSubmit={handleFormSubmit} />
       </div>
+      
       {searchResults.length > 0 ? (
         <>
           <div className={styles.busqueda}>
@@ -65,6 +65,7 @@ const Home = () => {
           <div className={styles.container}>
             <TipoDeAuto />
           </div>
+          <Recomendacion />
           <div>
             <h2
               style={{
