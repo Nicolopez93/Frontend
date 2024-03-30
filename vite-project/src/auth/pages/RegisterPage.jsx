@@ -8,7 +8,7 @@ import './LoginPage.css' // Agrega un archivo CSS para los estilos
 export const RegisterPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
+    nombre: '',
     email: '',
     password: '',
   })
@@ -18,7 +18,7 @@ export const RegisterPage = () => {
   const postUser = async (user) => {
     const usuarioRole = 'user'
     user.usuarioRole = usuarioRole
-    const response = await fetch('http://localhost:8080/usuarios', {
+    const response = await fetch('http://localhost:8080/usuario', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -33,12 +33,12 @@ export const RegisterPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (formData.name === '' || formData.email === '' || formData.password === '') {
+    if (formData.nombre === '' || formData.email === '' || formData.password === '') {
       alert('Todos los campos son requeridos')
       return
     }
     postUser(formData)
-    setFormData({ name: '', email: '', password: '' })
+    setFormData({ nombre: '', email: '', password: '' })
   }
 
   return (
@@ -54,8 +54,8 @@ export const RegisterPage = () => {
             placeholder='Nombre'
             fullWidth
             className="input"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.nombre}
+            onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
           />
           <TextField
             id='email'
