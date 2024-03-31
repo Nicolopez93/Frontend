@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../auth/context/AuthContext';
 import './perfil.css';
 import Avatar from '@mui/material/Avatar';
-
+import { Link } from 'react-router-dom';
 const Perfil = () => {
   const { user } = useContext(AuthContext);
 
@@ -14,10 +14,13 @@ const Perfil = () => {
   };
 
   return (
-    <div >
-      <h2 className="perfil-heading">Datos de Usuario</h2>
-      <div className="perfil-container">
-        
+    <>
+    <section className="detalle-section" >
+      <Link className="detalle-volver-btn" to="/">
+          Volver
+        </Link>
+      <h2 className="detalle-title">Datos de Usuario</h2>
+      <div className="perfil-subcontainer">
         <ul className="perfil-list">
           <li className="perfil-item">Nombre: {user.nombre}</li>
           <li className="perfil-item">Email: {user.email}</li>
@@ -26,11 +29,12 @@ const Perfil = () => {
         <div>
       <Avatar sx={{ width: 200, height: 200,fontSize: 100 }} style={{ backgroundColor: 'orange' }}>
       {obtenerInicial()}
-            </Avatar>
+      </Avatar>
       </div>
       </div>
       
-    </div>
+    </section>
+    </>
   );
 };
 

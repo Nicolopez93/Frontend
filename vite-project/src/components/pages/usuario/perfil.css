@@ -1,13 +1,22 @@
-.perfil-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 2%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    padding: 8%;
-  }
+.perfil-container{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 167, 117, 0.5);
+  min-height: 83vh;
+}
+
+.perfil-subcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  padding: 8%;
+  width: 100%; 
+}
+
   
   .perfil-heading {
     text-align: center;
