@@ -3,7 +3,9 @@ import axios from 'axios';
 import Card from '../../common/card/Card';
 import { Link } from 'react-router-dom';
 import './flotaDeAuto.css';
+
 const FlotaDeAutos = () => {
+
   const [autos, setAutos] = useState([]);
 
   useEffect(() => {
@@ -19,14 +21,14 @@ const FlotaDeAutos = () => {
 
   return (
     <>
-    <section class = "detalle-section">
-      <Link className="detalle-volver-btn" to="/">Volver</Link>
-      <div className="container-auto">
-        {autos.map(auto => (
-          <Card key={auto.id} auto={auto} />
-        ))}
-      </div>
-    </section>
+      <section className="detalle-section">
+        <Link className="detalle-volver-btn" to="/">Volver</Link>
+        <div className="container-auto">
+          {autos.map(auto => (
+            <Card key={auto.id} auto={auto} />
+          ))}
+        </div>
+      </section>
     </>
   );
 };

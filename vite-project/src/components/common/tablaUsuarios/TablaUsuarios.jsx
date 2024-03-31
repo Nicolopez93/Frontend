@@ -34,7 +34,7 @@ const TablaUsuarios = () => {
   const handleSave = (id) => {
     axios.patch(`http://localhost:8080/usuario/${id}`, editFields)
       .then(res => {
-        setIsUsuarioDeleted(!isUsuarioDeleted); // Actualiza el estado para desencadenar la recarga de datos
+        setIsUsuarioDeleted(!isUsuarioDeleted);
         setEditingId(null);
       })
       .catch(err => console.error(err));

@@ -10,6 +10,7 @@ import Caracteristicas from '../pages/caracteristicas/Caracteristicas'
 import Favoritos from '../pages/favoritos/Favoritos'
 import SobreNosotros from '../pages/sobreNosotros/SobreNosotros'
 import PoliticasDeUso from '../pages/politicasDeUso/PoliticasDeUso'
+import Perfil from '../pages/usuario/Perfil'
 
 export const CardRouters = () => {
   return (
@@ -40,6 +41,10 @@ export const CardRouters = () => {
         <Route
         path='/SobreNosotros'
         element={<SobreNosotros />}
+      />
+      <Route
+        path='/perfil'
+        element={<Perfil />}
       />
       
       </Routes>

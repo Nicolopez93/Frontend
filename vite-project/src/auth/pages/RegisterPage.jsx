@@ -1,45 +1,44 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom'
-import { Button, Grid, Link, TextField, Typography } from '@mui/material'
-import { AuthLayout } from '../layout/AuthLayout'
-import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from '../context/AuthContext'
-import './LoginPage.css' // Agrega un archivo CSS para los estilos
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Button, Grid, Link, TextField, Typography } from '@mui/material';
+import { AuthLayout } from '../layout/AuthLayout';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import './LoginPage.css';
 
 export const RegisterPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
+    nombre: '',
     email: '',
     password: '',
-  })
+    usuarioRol: 'ROLE_USER', // Agregar el rol de usuario al objeto formData
+  });
 
-  const { login } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
 
   const postUser = async (user) => {
-    const usuarioRole = 'user'
-    user.usuarioRole = usuarioRole
-    const response = await fetch('http://localhost:8080/usuarios', {
+    const response = await fetch('http://localhost:8080/usuario', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(user),
-    })
-    const data = await response.json()
-    console.log(data)
-    login(data)
-    navigate('/', { replace: true, })
-  }
+    });
+    const data = await response.json();
+    console.log(data);
+    login(data);
+    navigate('/', { replace: true });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if (formData.name === '' || formData.email === '' || formData.password === '') {
-      alert('Todos los campos son requeridos')
-      return
+    e.preventDefault();
+    if (formData.nombre === '' || formData.email === '' || formData.password === '') {
+      alert('Todos los campos son requeridos');
+      return;
     }
-    postUser(formData)
-    setFormData({ name: '', email: '', password: '' })
-  }
+    postUser(formData);
+    setFormData({ nombre: '', email: '', password: '', usuarioRol: 'ROLE_USER' }); // Reiniciar formData incluyendo usuarioRol
+  };
 
   return (
     <AuthLayout>
@@ -54,8 +53,8 @@ export const RegisterPage = () => {
             placeholder='Nombre'
             fullWidth
             className="input"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            value={formData.nombre}
+            onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
           />
           <TextField
             id='email'
@@ -83,7 +82,8 @@ export const RegisterPage = () => {
             variant='contained'
             fullWidth
             type='submit'
-            className="login-button">
+            className="login-button"
+          >
             Crear cuenta
           </Button>
         </form>
@@ -92,6 +92,7 @@ export const RegisterPage = () => {
         container
         direction='row'
         justifyContent='end'
+        alignItems='center'
       >
         <Typography sx={{ mr: 1 }}>¿Ya tienes cuenta?</Typography>
         <Link
@@ -99,9 +100,9 @@ export const RegisterPage = () => {
           color='inherit'
           to='/login'
         >
-          ingresar
+          Ingresar
         </Link>
       </Grid>
     </AuthLayout>
-  )
-}
+  );
+};

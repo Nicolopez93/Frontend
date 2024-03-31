@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Button from '@mui/material/Button';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import axios from "axios";
+import { InputLabel, MenuItem, Select } from "@mui/material";
 
 const TablaAdministrador = () => {
   const [autos, setAutos] = useState([]);
@@ -26,54 +27,58 @@ const TablaAdministrador = () => {
   }, [isProductDeleted]);
 
   const fetchAutos = () => {
-    fetch('http://localhost:8080/autos')
-      .then(response => response.json())
-      .then(data => setAutos(data))
-      .catch(error => console.error('Error fetching data:', error));
+    fetch("http://localhost:8080/autos")
+      .then((response) => response.json())
+      .then((data) => setAutos(data))
+      .catch((error) => console.error("Error fetching data:", error));
   };
+
+
 
   const handleEdit = (id) => {
     setEditingId(id);
-    const editingAuto = autos.find(auto => auto.id === id);
+    const editingAuto = autos.find((auto) => auto.id === id);
     setEditFields(editingAuto);
   };
 
   const handleSave = async (editFields) => {
     try {
-      const url = 'http://localhost:8080/autos/actualizar';
-    
+      const url = "http://localhost:8080/autos/actualizar";
+
       const response = await fetch(url, {
         method: "PUT",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(editFields),
       });
-  
+
       if (!response.ok) {
-        throw new Error('Error al actualizar el auto');
+        throw new Error("Error al actualizar el auto");
       }
-  
+
       const data = await response.text();
-      console.log('Datos actualizados:', data);
+      console.log("Datos actualizados:", data);
       if (data.includes("actualizado")) {
         fetchAutos();
         window.location.reload();
       }
     } catch (error) {
-      console.error('Error al guardar cambios:', error);
+      console.error("Error al guardar cambios:", error);
     }
   };
 
   const handleInputChange = (e, key) => {
     setEditFields({ ...editFields, [key]: e.target.value });
+    console.log(e.target.value);
   };
 
   const eliminarProducto = (id) => {
-    axios.delete(`http://localhost:8080/autos/${id}`)
-      .then(res => setIsProductDeleted(true))
-      .catch(err => console.error(err));
-  }
+    axios
+      .delete(`http://localhost:8080/autos/${id}`)
+      .then((res) => setIsProductDeleted(true))
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div>
@@ -89,11 +94,12 @@ const TablaAdministrador = () => {
               <TableCell align="right">Valijas</TableCell>
               <TableCell align="right">Puertas</TableCell>
               <TableCell align="right">Precio</TableCell>
+              <TableCell align="right">Categoria</TableCell>
               <TableCell align="right">Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {autos.map(auto => (
+            {autos.map((auto) => (
               <TableRow key={auto.id}>
                 <TableCell>{auto.id}</TableCell>
                 <TableCell component="th" scope="row">
@@ -101,65 +107,104 @@ const TablaAdministrador = () => {
                     <input
                       type="text"
                       value={editFields.modelo}
-                      onChange={(e) => handleInputChange(e, 'modelo')}
+                      onChange={(e) => handleInputChange(e, "modelo")}
                     />
                   ) : (
                     auto.modelo
                   )}
                 </TableCell>
                 <TableCell>{auto.marca}</TableCell>
-                <TableCell align="right">{editingId === auto.id ? (
-                  <input
-                    type="text"
-                    value={editFields.tipoCaja}
-                    onChange={(e) => handleInputChange(e, 'tipoCaja')}
-                  />
-                ) : (
-                  auto.tipoCaja
-                )}</TableCell>
-                <TableCell align="right">{editingId === auto.id ? (
-                  <input
-                    type="number"
-                    value={editFields.personas}
-                    onChange={(e) => handleInputChange(e, 'personas')}
-                  />
-                ) : (
-                  auto.personas
-                )}</TableCell>
-                <TableCell align="right">{editingId === auto.id ? (
-                  <input
-                    type="number"
-                    value={editFields.valijas}
-                    onChange={(e) => handleInputChange(e, 'valijas')}
-                  />
-                ) : (
-                  auto.valijas
-                )}</TableCell>
-                <TableCell align="right">{editingId === auto.id ? (
-                  <input
-                    type="number"
-                    value={editFields.puertas}
-                    onChange={(e) => handleInputChange(e, 'puertas')}
-                  />
-                ) : (
-                  auto.puertas
-                )}</TableCell>
-                <TableCell align="right">{editingId === auto.id ? (
-                  <input
-                    type="number"
-                    value={editFields.precio}
-                    onChange={(e) => handleInputChange(e, 'precio')}
-                  />
-                ) : (
-                  auto.precio
-                )}</TableCell>
                 <TableCell align="right">
                   {editingId === auto.id ? (
-                    <Button variant="contained" color="primary" onClick={() => handleSave(editFields)}>Guardar</Button>
+                    <input
+                      type="text"
+                      value={editFields.tipoCaja}
+                      onChange={(e) => handleInputChange(e, "tipoCaja")}
+                    />
+                  ) : (
+                    auto.tipoCaja
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {editingId === auto.id ? (
+                    <input
+                      type="number"
+                      value={editFields.personas}
+                      onChange={(e) => handleInputChange(e, "personas")}
+                    />
+                  ) : (
+                    auto.personas
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {editingId === auto.id ? (
+                    <input
+                      type="number"
+                      value={editFields.valijas}
+                      onChange={(e) => handleInputChange(e, "valijas")}
+                    />
+                  ) : (
+                    auto.valijas
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {editingId === auto.id ? (
+                    <input
+                      type="number"
+                      value={editFields.puertas}
+                      onChange={(e) => handleInputChange(e, "puertas")}
+                    />
+                  ) : (
+                    auto.puertas
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {editingId === auto.id ? (
+                    <input
+                      type="number"
+                      value={editFields.precio}
+                      onChange={(e) => handleInputChange(e, "precio")}
+                    />
+                  ) : (
+                    auto.precio
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                {editingId === auto.id ? (
+                    <input
+                      type="text"
+                      value={editFields.categoria}
+                      onChange={(e) => handleInputChange(e, "categoria")}
+                    />
+                  ) : (
+                    auto.categoria
+                  )}
+                </TableCell>
+                <TableCell align="right">
+                  {editingId === auto.id ? (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => handleSave(editFields)}
+                    >
+                      Guardar
+                    </Button>
                   ) : (
                     <>
-                      <Button variant="contained" color="primary" onClick={() => handleEdit(auto.id)}>Editar</Button>
-                      <Button variant="contained" color="error" onClick={() => eliminarProducto(auto.id)}>Eliminar</Button>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => handleEdit(auto.id)}
+                      >
+                        Editar
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => eliminarProducto(auto.id)}
+                      >
+                        Eliminar
+                      </Button>
                     </>
                   )}
                 </TableCell>
@@ -170,6 +215,6 @@ const TablaAdministrador = () => {
       </TableContainer>
     </div>
   );
-}
+};
 
 export default TablaAdministrador;
