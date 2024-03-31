@@ -1,0 +1,32 @@
+.perfil-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    padding: 8%;
+  }
+  
+  .perfil-heading {
+    text-align: center;
+    font-size: 2.5em;
+    color: black;
+    align-items: center;
+    padding: 5%;
+  }
+  
+  .perfil-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1.6em;
+    
+  }
+  
+  .perfil-item {
+    margin-bottom: 6%;
+    color: black;
+    
+  }
+  
