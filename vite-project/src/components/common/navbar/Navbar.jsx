@@ -6,7 +6,7 @@ import { AuthContext } from '../../../auth/context/AuthContext';
 import { Typography, Tooltip, IconButton, Avatar, Button } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Perfil from '../../pages/usuario/Perfil';
+
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -14,7 +14,7 @@ const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Función para obtener la inicial del nombre del usuario
+
   const obtenerInicial = () => {
     if (user && user.nombre) {
       return user.nombre.charAt(0).toUpperCase();

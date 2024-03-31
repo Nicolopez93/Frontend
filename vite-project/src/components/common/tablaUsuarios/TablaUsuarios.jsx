@@ -32,7 +32,7 @@ const TablaUsuarios = () => {
   };
 
   const handleSave = (id) => {
-    axios.patch(`http://localhost:8080/usuario/${id}`, editFields)
+    axios.put('http://localhost:8080/usuario', editFields) 
       .then(res => {
         setIsUsuarioDeleted(!isUsuarioDeleted);
         setEditingId(null);

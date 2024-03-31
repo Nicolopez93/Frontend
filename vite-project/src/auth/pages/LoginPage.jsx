@@ -51,11 +51,10 @@ export const LoginPage = () => {
       console.log('Usuario no encontrado')
       setNotFound(true)
     }
-
     setFormData({ email: '', password: '' })
     e.target.reset()
   }
-
+ 
   return (
 
     <AuthLayout>
