@@ -19,6 +19,7 @@
 
   .panel-button {
     padding: 20px ;
+    width: 600px;
     background-color: #007bff;
     color: white;
     cursor: pointer;
