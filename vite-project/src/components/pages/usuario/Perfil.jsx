@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../auth/context/AuthContext';
+import './perfil.css';
+import Avatar from '@mui/material/Avatar';
+import { Link } from 'react-router-dom';
 const Perfil = () => {
-  const [userData, setUserData] = useState({
-    password: '',
-    email: '',
-    nombre: '',
-    usuarioRol: ''
-  });
+  const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/usuario');
-        if (!response.ok) {
-          throw new Error('Failed to fetch user data');
-        }
-        const userData = await response.json();
-        setUserData(userData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchUserData();
-  }, []);
+  const obtenerInicial = () => {
+    if (user && user.nombre) {
+      return user.nombre.charAt(0).toUpperCase();
+    }
+    return '';
+  };
 
   return (
-    <div>
-      <h2>Datos de Usuario</h2>
-      <ul>
-        <li>Nombre: {userData.nombre}</li>
-        <li>Email: {userData.email}</li>
-        <li>Rol de Usuario: {userData.usuarioRol}</li>
-      </ul>
-    </div>
+    <>
+    <section className="detalle-section" >
+      <Link className="detalle-volver-btn" to="/">
+          Volver
+        </Link>
+      <h2 className="detalle-title">Datos de Usuario</h2>
+      <div className="perfil-subcontainer">
+        <ul className="perfil-list">
+          <li className="perfil-item">Nombre: {user.nombre}</li>
+          <li className="perfil-item">Email: {user.email}</li>
+          <li className="perfil-item">Rol de Usuario: {user.usuarioRol}</li>
+        </ul>
+        <div>
+      <Avatar sx={{ width: 200, height: 200,fontSize: 100 }} style={{ backgroundColor: 'orange' }}>
+      {obtenerInicial()}
+      </Avatar>
+      </div>
+      </div>
+      
+    </section>
+    </>
   );
 };
 
 export default Perfil;
-

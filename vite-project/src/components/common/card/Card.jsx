@@ -74,9 +74,19 @@ const Card = ({ auto }) => {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
-  const shareOnTwitter = () => { };
-  const shareOnInstagram = () => { };
-  const shareOnFacebook = () => { };
+  const shareOnTwitter = () => {
+    const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank');
+  };
+  const shareOnInstagram = () => {
+    const url = `https://www.instagram.com/?url=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank');
+  };
+  
+  const shareOnFacebook = () => {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    window.open(url, '_blank');
+  };
 
   const handleShareButtonClicked = () => {
     setOpenModal(true);
