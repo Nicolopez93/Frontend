@@ -99,7 +99,8 @@ const Detalle = () => {
                     Iniciar sesión
                   </button>
                 </Link>
-              )}
+                )}
+                <Link to={`/PoliticasDeUso/${auto.id}`}>Políticas de uso</Link>
             </div>
             <div className='detalle-img-container'>
               <img

@@ -1,7 +1,7 @@
 .navbar-container {
     background-color: #0C4D9C;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
 }

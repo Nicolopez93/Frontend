@@ -10,6 +10,7 @@ import ListaDeUsuarios from '../components/pages/listaDeUsuarios/ListaDeUsuarios
 import ListaDeCaracteristicas from '../components/pages/listaDeCaracteristicas/ListaDeCaracteristicas';
 import ListaDeCategorias from '../components/pages/listaDeCategorias/ListaDeCategorias';
 import { Reserva } from '../components/pages/reserva/Reserva'
+import PoliticasDeUso from '../components/pages/politicasDeUso/PoliticasDeUso';
 
 export const AppRouters = () => {
   return(
@@ -63,7 +64,6 @@ export const AppRouters = () => {
             </PrivateRouter>
           }
         />
-
       </Routes>
     </>
   )
