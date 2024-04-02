@@ -18,16 +18,12 @@ const style = {
   p: 4,
 };
 
-const AgregarProducto = ({ open, handleClose }) => {
+const AgregarUsuario = ({ open, handleClose }) => {
   const [formData, setFormData] = useState({
-    imgUrl: "",
-    marca: "",
-    modelo: "",
-    puertas: "",
-    valijas: "",
-    personas: "",
-    precio: "",
-    tipoCaja: "",
+    password: '',
+    email: '',
+    nombre: '',
+    usuarioRol: 'ROLE_USER',
   });
 
   const handleChange = (e) => {
@@ -38,10 +34,10 @@ const AgregarProducto = ({ open, handleClose }) => {
   };
 
   const handleSubmit = () => {
-    axios.post('http://localhost:8080/autos', formData)
+    axios.post('http://localhost:8080/usuario', formData)
       .then(res => {
         handleClose();
-        window.location.reload();
+        window.location.reload(); 
       })
       .catch(err => console.log(err));
   };
@@ -65,24 +61,29 @@ const AgregarProducto = ({ open, handleClose }) => {
             }}
             onSubmit={handleSubmit}
           >
-            {Object.keys(formData).map((key) => (
-              <TextField
-                key={key}
-                id={`outlined-${key}`}
-                label={key}
-                variant="outlined"
-                name={key}
-                fullWidth
-                value={formData[key]}
-                onChange={handleChange}
-              />
-            ))}
-            <Button type='submit' variant='contained' color='primary'>Agregar producto</Button>
+            {Object.keys(formData).map((key) => {
+              if (key === 'usuarioRol') {
+                return null; 
+              }
+              return (
+                <TextField
+                  key={key}
+                  id={`outlined-${key}`}
+                  label={key}
+                  variant="outlined"
+                  name={key}
+                  fullWidth
+                  value={formData[key]}
+                  onChange={handleChange}
+                />
+              );
+            })}
+            <Button type='submit' variant='contained' color='primary'>Agregar usuario</Button>
           </form>
         </Box>
       </Modal>
     </div>
-  )
+  );
 }
 
-export default AgregarProducto;
+export default AgregarUsuario;

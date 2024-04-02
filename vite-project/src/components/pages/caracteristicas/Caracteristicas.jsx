@@ -11,7 +11,7 @@ const Caracteristicas = () => {
 
     useEffect(() => {
         axios
-            .get(`http://localhost:3000/autos/${id}`)
+            .get(`http://localhost:8080/autos/buscar/${id}`)
             .then((response) => {
                 setAuto(response.data);
             })

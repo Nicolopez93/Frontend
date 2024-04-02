@@ -20,11 +20,13 @@ export const AuthProvider = ({ children }) => {
   const [authState, dispatch] = useReducer(authReducer, {}, init)
 
   const login = (userLogin) => {
-    const { name, apellido, usuarioRole } = userLogin
+    const { nombre, apellido, usuarioRol, id, email } = userLogin
     const user = {
-      name,
+      id,
+      nombre,
       apellido,
-      usuarioRole,
+      usuarioRol,
+      email
     }
     const action = {
       type: types.login,

@@ -18,8 +18,10 @@ export const LoginPage = () => {
   const { login } = useContext(AuthContext)
 
   const getUsers = async () => {
-    const response = await fetch('http://localhost:3000/users')
+    const response = await fetch('http://localhost:8080/usuario')
+    
     const data = await response.json()
+    console.log(response);
     setUsers(data)
   }
 
@@ -36,7 +38,7 @@ export const LoginPage = () => {
     const user = users.find(
       (user) => user.email === email && user.password === password
     )
-
+    
     if (user) {
       console.log('Usuario logueado')
       setUser(user)
@@ -49,11 +51,10 @@ export const LoginPage = () => {
       console.log('Usuario no encontrado')
       setNotFound(true)
     }
-
     setFormData({ email: '', password: '' })
     e.target.reset()
   }
-
+ 
   return (
 
     <AuthLayout>

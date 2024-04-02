@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Card from '../../common/card/Card';
 import styles from '../home/home.module.css';
 import Buscador from '../../common/buscador/Buscador';
 import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto';
-import Recomendacion from '../../common/recomendacion/Recomendacion';
 import { ReservaContext } from '../../../context/ReservaContext';
+import Recomendacion from '../../common/recomendacion/Recomendacion';
 
 const Home = () => {
   const [autos, setAutos] = useState([]);
@@ -14,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/autos')
+      .get('http://localhost:8080/autos')
       .then((res) => {
         setAutos(res.data);
       })
@@ -39,6 +41,7 @@ const Home = () => {
       <div>
         <Buscador onSearchResults={handleSearchResults} onFormSubmit={handleFormSubmit} />
       </div>
+      
       {searchResults.length > 0 ? (
         <>
           <div className={styles.busqueda}>
@@ -65,6 +68,7 @@ const Home = () => {
           <div className={styles.container}>
             <TipoDeAuto />
           </div>
+          <Recomendacion />
           <div>
             <h2
               style={{
@@ -85,6 +89,20 @@ const Home = () => {
           </div>
         </>
       )}
+
+      <FontAwesomeIcon
+        icon={faWhatsapp}
+        size="3x"
+        style={{
+          color: '#25D366',
+          position: 'fixed',
+          bottom: '70px',
+          right: '20px',
+          cursor: 'pointer',
+          zIndex: '9999',
+        }}
+        onClick={() => window.open('https://web.whatsapp.com', '_blank')}
+      />
     </>
   );
 };
