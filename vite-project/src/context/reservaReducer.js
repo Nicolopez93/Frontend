@@ -20,7 +20,7 @@ export const reservaReducer = (state = {}, action) => {
           (reserva) => reserva.id !== action.payload
         ),
       }
-      localStorage.setItem(
+      localStorage.removeItem(
         'reservas',
         JSON.stringify(newStateAfterDelete.reservas)
       )

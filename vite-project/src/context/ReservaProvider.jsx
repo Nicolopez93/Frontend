@@ -70,16 +70,14 @@ export const ReservaProvider = ({ children }) => {
   }
 
   const formatDate = (dateString) => {
-    const dateObject = new Date(dateString)
-    const day = dateObject.getDate()
-    const month = dateObject.getMonth() + 1
-    const year = dateObject.getFullYear()
-
-    return `${day < 10 ? '0' + day : day}-${
-      month < 10 ? '0' + month : month
-    }-${year}`
-  }
-
+    const dateObject = new Date(dateString);
+    const day = String(dateObject.getDate()).padStart(2, '0'); // Asegura que haya dos dígitos para el día
+    const month = String(dateObject.getMonth() + 1).padStart(2, '0'); // Asegura que haya dos dígitos para el mes
+    const year = dateObject.getFullYear();
+  
+    return `${year}-${month}-${day}`;
+  };
+  
   return (
     <ReservaContext.Provider
       value={{
