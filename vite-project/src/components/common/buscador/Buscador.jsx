@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png'
 import './buscador.css'
 import { ReservaContext } from '../../../context/ReservaContext'
 
@@ -66,11 +65,6 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
           </button>
         </div>
       </form>
-      <img
-        src={imgAuto}
-        alt='auto'
-        className='auto-img'
-      />
     </div>
   )
 }

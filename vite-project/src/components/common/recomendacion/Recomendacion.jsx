@@ -19,9 +19,9 @@ const Recomendacion = () => { // Elimina los paréntesis vacíos del componente
 
   return (
     <div className="recomendacion-container">
-      <h2 className="recomendacion-title">Recomendaciones</h2>
+      <h2 className="recomendacion-title">LOS RECOMENDADOS DE LA SEMANA</h2>
       <div className="recomendacion-cards">
-        {autos.slice(0, 2).map(auto => (
+        {autos.slice(8, 10).map(auto => (
           <Card key={auto.id} auto={auto} className="recomendacion-card" />
         ))}
       </div>
