@@ -99,7 +99,7 @@ const Card = ({ auto }) => {
   return (
     <div className="flex flex-row max-w-xs md:max-w-3xl mx-auto rounded-xl shadow-lg border border-gray-200 overflow-hidden h-96">
       <div className="w-2/3 bg-gray-200">
-        <img src={auto.imgUrl} alt={auto.modelo} className="w-full h-auto object-cover" />
+        <Link to={`/detalle/${auto.id}`} ><img src={auto.imgUrl} alt={auto.modelo} className="w-full h-auto object-cover" /></Link>
       </div>
       <div className="w-2/3 p-4">
         <div className="flex justify-between items-center">
