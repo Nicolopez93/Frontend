@@ -74,12 +74,13 @@ const Home = () => {
               style={{
                 textAlign: 'center',
                 fontSize: '2rem',
-                color: '#21408E',
-                fontWeight: 'bold',
+                color: 'white',
+                backgroundColor: '#0C4D9C',
+                fontWeight: '600',
                 fontFamily: 'San Francisco, Arial, sans-serif',
               }}
             >
-              Nuestros autos
+              NUESTROS AUTOS
             </h2>
           </div>
           <div className={styles.containerCards}>
