@@ -50,7 +50,7 @@
   box-sizing: border-box;
 }
 
-.login-container button {
+/* .login-container button {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -63,7 +63,7 @@
 
 .login-container button:hover {
   background-color: #0056b3;
-}
+} */
 
 .error-message {
   color: red;
