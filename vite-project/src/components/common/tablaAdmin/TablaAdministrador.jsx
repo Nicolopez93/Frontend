@@ -8,13 +8,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import axios from "axios";
-import { InputLabel, MenuItem, Select } from "@mui/material";
 
 const TablaAdministrador = () => {
   const [autos, setAutos] = useState([]);
   const [isProductDeleted, setIsProductDeleted] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [editFields, setEditFields] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   useEffect(() => {
     fetchAutos();
@@ -33,15 +33,15 @@ const TablaAdministrador = () => {
       .catch((error) => console.error("Error fetching data:", error));
   };
 
-
-
   const handleEdit = (id) => {
     setEditingId(id);
     const editingAuto = autos.find((auto) => auto.id === id);
     setEditFields(editingAuto);
+    setSelectedCategory(editingAuto.categoria.nombre);
   };
 
   const handleSave = async (editFields) => {
+    console.log(editFields);
     try {
       const url = "http://localhost:8080/autos/actualizar";
 
@@ -68,9 +68,28 @@ const TablaAdministrador = () => {
     }
   };
 
+  const categoriaSelected = (nombre) => {
+    if (nombre === "Auto") {
+      return { id: 1, nombre: "Auto" };
+    } else if (nombre === "Camioneta") {
+      return { id: 2, nombre: "Camioneta" };
+    }
+  };
+
   const handleInputChange = (e, key) => {
-    setEditFields({ ...editFields, [key]: e.target.value });
-    console.log(e.target.value);
+    const value = e.target.value;
+    if (key === "categoria") {
+      setEditFields((prevFields) => ({
+        ...prevFields,
+        categoria: categoriaSelected(value),
+      }));
+    } else {
+      setEditFields((prevFields) => ({
+        ...prevFields,
+        [key]: value,
+      }));
+    }
+    setSelectedCategory(value);
   };
 
   const eliminarProducto = (id) => {
@@ -170,16 +189,17 @@ const TablaAdministrador = () => {
                   )}
                 </TableCell>
                 <TableCell align="right">
-                {editingId === auto.id ? (
+                  {editingId === auto.id ? (
                     <input
                       type="text"
-                      value={editFields.categoria}
+                      value={editFields.categoria?.nombre}
                       onChange={(e) => handleInputChange(e, "categoria")}
                     />
                   ) : (
-                    auto.categoria
+                    auto.categoria?.nombre
                   )}
                 </TableCell>
+
                 <TableCell align="right">
                   {editingId === auto.id ? (
                     <Button

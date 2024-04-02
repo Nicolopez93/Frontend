@@ -28,7 +28,6 @@ const AgregarProducto = ({ open, handleClose }) => {
     personas: "",
     precio: "",
     tipoCaja: "",
-    categoria: "",
   });
 
   const handleChange = (e) => {

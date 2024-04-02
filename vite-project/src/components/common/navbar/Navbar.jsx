@@ -111,7 +111,7 @@ const Navbar = () => {
                 }}>
                 Usuario:
                 {user ? (
-                  `${user.nombre} ${user.apellido}`
+                  `${user.nombre}`
                 ) : (
                   <Link to='/login'>
                     <Button>Iniciar sesión</Button>

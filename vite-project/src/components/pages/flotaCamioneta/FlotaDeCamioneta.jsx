@@ -9,8 +9,8 @@ const FlotaDeCamioneta = () => {
   useEffect(() => {
     axios.get("http://localhost:8080/autos")
       .then(response => {
-        const autosCategoriaAuto = response.data.filter(auto => auto.categoria === "camioneta");
-        setAutos(autosCategoriaAuto);
+        const autosCategoriaCamioneta = response.data.filter(auto => auto.categoria && auto.categoria.nombre === "Camioneta");
+        setAutos(autosCategoriaCamioneta);
       })
       .catch(error => {
         console.error("Error fetching autos:", error);

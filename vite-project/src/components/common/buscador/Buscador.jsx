@@ -1,47 +1,43 @@
-import React, { useContext, useState } from 'react';
-import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png';
-import './buscador.css';
+import React, { useContext, useState } from 'react'
+import imgAuto from '../../../assets/renegade-jelly-2023-576x340-1-1.png'
+import './buscador.css'
 import { ReservaContext } from '../../../context/ReservaContext'
 
 const Buscador = ({ onSearchResults, onFormSubmit }) => {
   const [formData, setFormData] = useState({
     fechaRetiro: '',
     fechaDevolucion: '',
-  });
+  })
 
-  const { setFechaSeleccionada } = useContext(ReservaContext);
-
-  console.log('formData:', formData)
+  const { setFechaSeleccionada } = useContext(ReservaContext)
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setFormData({
       ...formData,
       [name]: value,
-    });
-  };
-
-  
+    })
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    onFormSubmit(formData); 
-    setFechaSeleccionada(formData) 
-    fetchAutos(formData); 
-  };
+    event.preventDefault()
+    onFormSubmit(formData)
+    setFechaSeleccionada(formData)
+    fetchAutos(formData)
+  }
 
   const fetchAutos = (formData) => {
     fetch(`http://localhost:8080/autos`)
       .then((res) => res.json())
       .then((data) => {
-        onSearchResults(data);
+        onSearchResults(data)
       })
       .catch((error) => {
-        console.error('Error fetching autos:', error);
-      });
-  };
+        console.error('Error fetching autos:', error)
+      })
+  }
 
-  const { fechaDevolucion, fechaRetiro } = formData;
+  const { fechaDevolucion, fechaRetiro } = formData
 
   return (
     <div className='buscador-container'>
@@ -63,14 +59,20 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
             value={fechaDevolucion}
             onChange={handleChange}
           />
-          <button type='submit' className='buscar-autos-button'>
+          <button
+            type='submit'
+            className='buscar-autos-button'>
             Buscar
           </button>
         </div>
       </form>
-      <img src={imgAuto} alt='auto' className='auto-img' />
+      <img
+        src={imgAuto}
+        alt='auto'
+        className='auto-img'
+      />
     </div>
-  );
-};
+  )
+}
 
-export default Buscador;
+export default Buscador
