@@ -9,6 +9,7 @@ import ListaDeProductos from '../components/pages/listaDeProductos/ListaDeProduc
 import ListaDeUsuarios from '../components/pages/listaDeUsuarios/ListaDeUsuarios';
 import ListaDeCaracteristicas from '../components/pages/listaDeCaracteristicas/ListaDeCaracteristicas';
 import ListaDeCategorias from '../components/pages/listaDeCategorias/ListaDeCategorias';
+import { Reserva } from '../components/pages/reserva/Reserva'
 
 export const AppRouters = () => {
   return(
@@ -53,8 +54,18 @@ export const AppRouters = () => {
             <ListaDeCategorias/>
           </PrivateRouter>
         }/>
+        
+        <Route
+          path='/reserva'
+          element={
+            <PrivateRouter>
+              <Reserva />
+            </PrivateRouter>
+          }
+        />
 
       </Routes>
     </>
   )
 }
+
