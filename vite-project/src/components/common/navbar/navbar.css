@@ -19,7 +19,7 @@
     margin-right: 20px;
 }
 
-button {
+/* button {
     padding: 10px 20px;
     background-color: #007bff;
     color: white;
@@ -30,9 +30,9 @@ button {
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     margin-right: 20px;
-}
+} */
 
-
+/* 
 button::before {
     margin-left: auto;
 }
@@ -50,7 +50,7 @@ button::before {
 button:hover::after,
 button:hover::before {
     width: 100%;
-}
+} */
 
 /* Media query para dispositivos móviles */
 @media (max-width: 768px) {
