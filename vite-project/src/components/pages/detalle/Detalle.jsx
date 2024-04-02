@@ -1,35 +1,70 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
-import './detalle.css'
-import { ReservaContext } from '../../../context/ReservaContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './detalle.css';
+import { ReservaContext } from '../../../context/ReservaContext';
+import { AuthContext } from '../../../auth/context/AuthContext';
 
 const Detalle = () => {
-  const { id } = useParams()
-  const [auto, setAuto] = useState(null)
+  const { id } = useParams();
+  const [auto, setAuto] = useState(null);
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+  const { addReserva } = useContext(ReservaContext);
 
-  const { fechaSeleccionada } = useContext(ReservaContext)
-
-  console.log(fechaSeleccionada)
+  const fechaRetiro = JSON.parse(localStorage.getItem('fechaReserva'))?.fechaRetiro;
+  const fechaDevolucion = JSON.parse(localStorage.getItem('fechaReserva'))?.fechaDevolucion;
 
   useEffect(() => {
     axios
       .get(`http://localhost:3000/autos/${id}`)
       .then((response) => {
-        setAuto(response.data)
+        setAuto(response.data);
       })
       .catch((error) => {
-        console.error('Error fetching auto:', error)
-      })
-  }, [id])
+        console.error('Error fetching auto:', error);
+      });
+  }, [id]);
+
+  const handleReserva = async () => {
+    await addReserva({
+      auto: auto,
+      fecha: {
+        fechaRetiro: fechaRetiro,
+        fechaDevolucion: fechaDevolucion,
+      },
+    });
+
+    try {
+      const userReserva = {
+        id: user.id,
+        nombre: user.nombre,
+        apellido: user.apellido,
+        email: user.email,
+        telefono: user.telefono,
+        auto: auto,
+        fecha: {
+          fechaRetiro: fechaRetiro,
+          fechaDevolucion: fechaDevolucion,
+        },
+      };
+
+      const response = await axios.post(
+        'http://localhost:3000/reserva',
+        userReserva
+      );
+
+      console.log(response.data);
+      navigate('/reserva');
+    } catch (error) {
+      console.error('Error creating reservation:', error);
+    }
+  };
 
   return (
     <>
       <section className='detalle-section'>
-        <p>Fecha seleccionada: {fechaSeleccionada.fechaRetiro}</p>
-        <Link
-          className='detalle-volver-btn'
-          to='/'>
+        <Link className='detalle-volver-btn' to='/'>
           Volver
         </Link>
         {auto ? (
@@ -45,18 +80,27 @@ const Detalle = () => {
                 <button className='detalle-btn'>Ver características</button>
               </Link>
               <button className='detalle-btn'>
-               Retiro {fechaSeleccionada.fechaRetiro}
+                Retiro {fechaRetiro ? fechaRetiro : ''}
               </button>
               <button className='detalle-btn'>
-               Devolución {fechaSeleccionada.fechaDevolucion}
+                Devolución {fechaDevolucion ? fechaDevolucion : ''}
               </button>
+              {user ? (
+                <button
+                  className='py-2 px-4 w-[15rem] bg-orange-500 my-2 text-[1.15rem]'
+                  onClick={handleReserva}>
+                  Reservar
+                </button>
+              ) : (
+                <Link to='/login'>
+                  <button className='py-2 px-4 w-[15rem] bg-orange-500 my-2 text-[1.15rem]'>
+                    Iniciar sesión
+                  </button>
+                </Link>
+              )}
             </div>
             <div className='detalle-img-container'>
-              <img
-                className='detalle-img'
-                src={auto.imgUrl}
-                alt={auto.nombre}
-              />
+              <img className='detalle-img' src={auto.imgUrl} alt={auto.nombre} />
             </div>
           </div>
         ) : (
@@ -64,7 +108,7 @@ const Detalle = () => {
         )}
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Detalle
+export default Detalle;

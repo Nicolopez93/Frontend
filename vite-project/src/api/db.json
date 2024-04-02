@@ -277,12 +277,30 @@
   ],
   "reserva": [
     {
-      "id": "1",
-      "usuario": "nicolas",
-      "auto": "Toyota Corolla",
-      "fechaInicio": "2022-11-01",
-      "fechaFin": "2022-11-10",
-      "precio": 500
+      "id": "c28a",
+      "apellido": "lopez",
+      "auto": {
+        "id": "1",
+        "imgUrl": "https://autos.hamariweb.com/images/carimages/BBCQG0U.jpg",
+        "marca": "Toyota",
+        "nombre": "Corolla 1.8 XEI Pack CVT",
+        "puertas": 4,
+        "valijas": 3,
+        "personas": 5,
+        "precio": 50,
+        "categoria": "auto",
+        "isLiked": true,
+        "imagenes": [
+          "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior.jpg",
+          "https://dealerinspire-image-library-prod.s3.us-east-1.amazonaws.com/images/VuAeIMBKSnZtFwjy8OunID9WqlLy1UOXVFM6zR6W.jpg",
+          "https://www.autotrader.com/wp-content/uploads/2022/10/2023-toyota-corolla-xse-rear-seats.jpg",
+          "https://www.megautos.com/wp-content/uploads/2018/03/Toyota-Corolla-2019-interior-1.jpg"
+        ]
+      },
+      "fecha": {
+        "fechaRetiro": "01-04-2024",
+        "fechaDevolucion": "27-04-2024"
+      }
     }
   ]
 }

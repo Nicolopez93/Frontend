@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: rgb(255, 167, 117,0.5);
+  background-color: rgb(255, 167, 117, 0.5);
   min-height: 83vh;
 }
 .detalle-title {
@@ -21,25 +21,23 @@
   font-weight: 600;
   font-family: 'San Francisco', Arial, sans-serif;
   margin-bottom: 20px;
-  text-decoration: none; 
-  align-self: flex-start; 
+  text-decoration: none;
+  align-self: flex-start;
 }
 
 .detalle-content {
   display: flex;
   width: 100%;
-  justify-content: space-around; 
-  align-items: center; 
-
+  justify-content: space-around;
+  align-items: center;
 }
 
 .detalle-info-container {
   display: flex;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   background-color: white;
-  height: 40vh;
   width: 44vh;
   padding: 20px;
   border-radius: 8px;
@@ -55,15 +53,15 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 10px; 
+  margin-top: 10px;
   width: 25vh;
   text-decoration: none;
 }
 
 .detalle-img-container {
-  max-width: 50%; 
+  max-width: 50%;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
 }
 
 .detalle-img {
@@ -74,6 +72,6 @@
 
 .detalle-p {
   font-size: 1.2rem;
-  color : black;
+  color: black;
   margin-top: 10px;
 }
