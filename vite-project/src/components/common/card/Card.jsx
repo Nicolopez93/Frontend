@@ -110,7 +110,7 @@ const Card = ({ auto }) => {
       }}>
       <CardHeader
         title={auto.modelo}
-        subheader={auto.categoria}
+        subheader={auto.marca}
         sx={{ color: 'black' }}
       />
       <Link to={`/detalle/${auto.id}`}>

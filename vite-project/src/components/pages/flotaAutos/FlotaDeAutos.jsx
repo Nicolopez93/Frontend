@@ -11,14 +11,14 @@ const FlotaDeAutos = () => {
   useEffect(() => {
     axios.get("http://localhost:8080/autos")
       .then(response => {
-        const autosCategoriaAuto = response.data.filter(auto => auto.categoria === "auto");
+        const autosCategoriaAuto = response.data.filter(auto => auto.categoria && auto.categoria.nombre === "Auto");
         setAutos(autosCategoriaAuto);
       })
       .catch(error => {
         console.error("Error fetching autos:", error);
       });
   }, []);
-
+  
   return (
     <>
       <section className="detalle-section">
