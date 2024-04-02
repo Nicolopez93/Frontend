@@ -86,11 +86,13 @@ const Detalle = () => {
                 Devolución {fechaDevolucion ? fechaDevolucion : ''}
               </button>
               {user ? (
-                <button
+                <Link to ='/reserva'>
+                  <button
                   className='py-2 px-4 w-[15rem] bg-orange-500 my-2 text-[1.15rem]'
                   onClick={handleReserva}>
                   Reservar
                 </button>
+                </Link>
               ) : (
                 <Link to='/login'>
                   <button className='py-2 px-4 w-[15rem] bg-orange-500 my-2 text-[1.15rem]'>
