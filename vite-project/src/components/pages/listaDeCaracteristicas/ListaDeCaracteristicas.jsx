@@ -6,7 +6,7 @@ import Button from "../../common/button/Button";
 const ListaDeCaracteristicas = () => {
   return (
     <>
-      <div className="mx-[4vw] pt-8 h-screen mb-40">
+      <div className="mx-[4vw] pt-8 h-screen mb-40  ">
         <Link to="/PanelAdministrador">
           <Button>Volver</Button>
         </Link>

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import './buscador.css'
 import { ReservaContext } from '../../../context/ReservaContext'
 
 const Buscador = ({ onSearchResults, onFormSubmit }) => {
@@ -39,9 +38,9 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
   const { fechaDevolucion, fechaRetiro } = formData
 
   return (
-    <div className='buscador-container'>
+    <div className='flex justify-center items-center h-[calc(12vh-10px)] bg-[#91c0f34d]'>
       <form onSubmit={handleSubmit}>
-        <div className='select-container'>
+        <div className='flex items-center space-x-4 '>
           <input
             name='fechaRetiro'
             required
@@ -49,6 +48,7 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
             placeholder='Fecha de Retiro'
             value={fechaRetiro}
             onChange={handleChange}
+            className='border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500'
           />
           <input
             name='fechaDevolucion'
@@ -57,10 +57,11 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
             placeholder='Fecha de Devolución'
             value={fechaDevolucion}
             onChange={handleChange}
+            className='border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500'
           />
           <button
             type='submit'
-            className='buscar-autos-button'>
+            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
             Buscar
           </button>
         </div>
