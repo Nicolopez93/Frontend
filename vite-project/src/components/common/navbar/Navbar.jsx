@@ -45,9 +45,7 @@ const Navbar = () => {
         />
       </a>
       <div className='navbar-buttons'>
-        <Button component={Link} to='/Favoritos' variant="contained" color="primary" size="small" disableElevation>
-          Favoritos
-        </Button>
+        
         <Tooltip title='Administrador de usuario'>
           <IconButton
             onClick={handleClick}
@@ -119,6 +117,42 @@ const Navbar = () => {
                 )}
               </p>
             </Link>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            {user ? (
+              <Link to={'/Favoritos'}>
+                <p
+                  style={{
+                    textTransform: 'capitalize',
+                    fontWeight: 'normal',
+                    color: 'black',
+                    textDecoration: 'none',
+                    fontSize: '1.2rem',
+                  }}>
+                  Favoritos
+                </p>
+              </Link>
+            ) : (
+              ''
+            )}
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            {user ? (
+              <Link to={'/reserva'}>
+                <p
+                  style={{
+                    textTransform: 'capitalize',
+                    fontWeight: 'normal',
+                    color: 'black',
+                    textDecoration: 'none',
+                    fontSize: '1.2rem',
+                  }}>
+                  Reservas
+                </p>
+              </Link>
+            ) : (
+              ''
+            )}
           </MenuItem>
           <MenuItem onClick={handleClose}>
             {user ? (

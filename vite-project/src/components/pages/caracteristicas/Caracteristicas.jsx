@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {  FaDoorOpen, FaSuitcase, FaUser} from 'react-icons/fa';
 import axios from "axios";
-import "../detalle/detalle.css";
+import Button from "../../common/button/Button";
 
 const Caracteristicas = () => {
 
@@ -24,19 +24,23 @@ const Caracteristicas = () => {
 
   return (
     <>
-    <section className="detalle-section">
-    <Link className="detalle-volver-btn" to={`/detalle/${auto?.id}`}>Volver</Link>
+    <section className=" bg-[#f5f5f5] min-h-screen">
+    <div className='mx-[4vw] pt-8 '>
+        <Link to={`/detalle/${auto?.id}`}>
+          <Button>Volver</Button>
+        </Link>
+    </div>
     {auto ? (
-      <div className="detalle-content">
-        <div className="detalle-info-container">
-          <h2 className="detalle-title">{auto?.marca} {auto?.nombre}</h2>
-          <p className="detalle-p"> Puertas : <FaDoorOpen /> {auto?.puertas}</p>
-          <p className="detalle-p"> Valijas : <FaSuitcase /> {auto?.valijas}</p>
-          <p className="detalle-p"> Personas : <FaUser /> {auto?.personas}</p>
-          <p className="detalle-p">Precio : $ {auto?.precio}</p>
+      <div className="flex gap-20 justify-between items-center mx-[4vw] ">
+        <div className=" basis-1/2 flex flex-col gap-4 p-4 shadow-lg border-2 border-[#0C4D9C] rounded-xl bg-slate-200">
+          <h2 className="text-2xl font-medium text-gray-900 ">{auto?.marca} {auto?.modelo}</h2>
+          <p className="text-lg font-medium text-gray-900"> Puertas :  {auto?.puertas}</p>
+          <p className="text-lg font-medium text-gray-900"> Valijas :  {auto?.valijas}</p>
+          <p className="text-lg font-medium text-gray-900"> Personas : {auto?.personas}</p>
+          <p className="text-lg font-medium text-gray-900">Precio : $ {auto?.precio}</p>
         </div>
-        <div className="detalle-img-container">
-          <img className="detalle-img" src={auto?.imgUrl} alt={auto?.nombre} />
+        <div className="basis-1/2">
+          <img className="" src={auto?.imgUrl} alt={auto?.nombre} />
         </div>
       </div>
     ) : (
