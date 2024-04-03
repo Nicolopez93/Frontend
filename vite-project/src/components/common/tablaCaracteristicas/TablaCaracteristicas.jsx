@@ -66,7 +66,7 @@ const TablaCaracteristicas = () => {
           </TableHead>
           <TableBody>
             {caracteristicas.map((caracteristica, index) => (
-              <TableRow key={index}>
+              <TableRow key={index} >
                 <TableCell>
                   {editFields[index] !== undefined ? (
                     <TextField
@@ -77,7 +77,7 @@ const TablaCaracteristicas = () => {
                     caracteristica
                   )}
                 </TableCell>
-                <TableCell>
+                <TableCell >
                   {editFields[index] !== undefined ? (
                     <Button
                       variant="contained"
