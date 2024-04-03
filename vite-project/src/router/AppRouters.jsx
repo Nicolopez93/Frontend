@@ -10,6 +10,8 @@ import ListaDeUsuarios from '../components/pages/listaDeUsuarios/ListaDeUsuarios
 import ListaDeCaracteristicas from '../components/pages/listaDeCaracteristicas/ListaDeCaracteristicas';
 import ListaDeCategorias from '../components/pages/listaDeCategorias/ListaDeCategorias';
 import { Reserva } from '../components/pages/reserva/Reserva'
+import PoliticasDeUso from '../components/pages/politicasDeUso/PoliticasDeUso';
+import { UserRouters } from './UserRouters';
 
 export const AppRouters = () => {
   return(
@@ -28,7 +30,9 @@ export const AppRouters = () => {
         
         <Route path='/PanelAdministrador' element={
           <PrivateRouter>
+            <UserRouters>
             <PanelAdministrador/>
+            </UserRouters>
           </PrivateRouter>
         }/>
 
@@ -63,7 +67,6 @@ export const AppRouters = () => {
             </PrivateRouter>
           }
         />
-
       </Routes>
     </>
   )

@@ -1,21 +1,16 @@
 import React from 'react'
 import TablaCaracteristicas from '../../common/tablaCaracteristicas/TablaCaracteristicas'
 import { Link } from 'react-router-dom'
+import Button from "../../common/button/Button";
 
 const ListaDeCaracteristicas = () => {
   return (
     <>
-      <div>
-        <Link to='/PanelAdministrador'>
-          <button
-            style={{
-              marginTop: '20px',
-              marginLeft: '20px',
-            }}>
-            Volver
-          </button>
+      <div className="mx-[4vw] pt-8 h-screen mb-40">
+        <Link to="/PanelAdministrador">
+          <Button>Volver</Button>
         </Link>
-        <h1>Lista de Caracteristicas</h1>
+        <h1 className="text-3xl font-bold text-center my-8 ">Lista de Caracteristicas</h1>
         <TablaCaracteristicas />
       </div>
     </>

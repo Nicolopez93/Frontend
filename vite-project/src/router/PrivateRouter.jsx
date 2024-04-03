@@ -6,7 +6,7 @@ import Footer from '../components/common/footer/Footer'
 
 export const PrivateRouter = ({ children }) => {
 
-  const { logged } = useContext(AuthContext)
+  const { user, logged } = useContext(AuthContext)
 
   return (logged) ? <> 
   <Navbar />

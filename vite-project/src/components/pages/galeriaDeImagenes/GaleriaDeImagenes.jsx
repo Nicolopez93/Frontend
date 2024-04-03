@@ -1,45 +1,53 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import "./galeriaDeImagenes.css";
+import Button from "../../common/button/Button";
 
 const GaleriaDeImagenes = () => {
-
   const { id } = useParams();
   const [auto, setAuto] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:8080/autos/${id}`)
-      .then(response => {
+    axios
+      .get(`http://localhost:8080/autos/buscar/${id}`)
+      .then((response) => {
         setAuto(response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching auto:", error);
       });
   }, [id]);
- console.log(auto);
+  console.log(auto);
+
   return (
-  <> 
-    <div className="detalle-section">
-      <Link className="detalle-volver-btn" to={`/detalle/${auto?.id}`}>Volver</Link>
-        <div className="detalle-content">
-        <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "50%" }} />
-        
-    <div className="galeria-img-container">
-        {auto ? (
-          <div>
-           
-            {auto?.imagenes.map((auto, id) => (
-              <img key={id} src={auto} alt={auto}  style={{ width: "40vh", height: "30vh" , margin: "10px"}}/>
-            ))}
+    <>
+      <div className=" bg-[#f5f5f5] min-h-[calc(100vh-110px)] ">
+        <div className='mx-[4vw] pt-8 '>
+        <Link to={`/detalle/${auto?.id}`}>
+          <Button>Volver</Button>
+        </Link>
+        <div className="flex justify-between items-center">
+          <img src={auto?.imgUrl} alt={auto?.nombre} style={{ width: "50%" }} />
+          <div className="">
+            {auto ? (
+              <div className="flex flex-wrap">
+                {auto?.imagenes.map((imagen, id) => (
+                  <img
+                    className="h-auto max-w-full rounded-lg"
+                    key={id}
+                    src={imagen.urlImg}
+                    alt={`Imagen ${id}`}
+                    style={{ width: "40vh", height: "30vh", margin: "10px" }}
+                  />
+                ))}
+              </div>
+            ) : (
+              <p>Loading...</p>
+            )}
           </div>
-          
-        ) : (
-          <p>Loading...</p>
-        )}
+        </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

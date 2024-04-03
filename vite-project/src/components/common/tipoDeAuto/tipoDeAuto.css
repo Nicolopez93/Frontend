@@ -1,19 +1,18 @@
 .tipoDeAuto-container {
     height: 60vh;
+    background-image: url("https://media.kasperskydaily.com/wp-content/uploads/sites/87/2015/05/05201736/rentacar-featured.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.9;
   }
   
   .tipoDeAuto-titulo {
     text-align: center;
-    margin-bottom: 20px;
     font-size: 2rem;
     color: #21408E;
     font-family: 'San Francisco', Arial, sans-serif;
-    font-weight: bold;
-  }
-  
-  .tipoDeAuto-card-container {
-    display: flex;
-    justify-content: space-around;
+    font-weight: 700;
+    padding: 40px;
   }
   
   .tipoDeAuto-card {
@@ -24,5 +23,11 @@
   
   .tipoDeAuto-card-link {
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
   }
+
+
   

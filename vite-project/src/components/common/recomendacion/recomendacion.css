@@ -1,16 +1,16 @@
 .recomendacion-container {
-    background-color: rgb(255, 167, 117,0.5);
-    height: 570px;
-    height: 73vh;
+    background-color: white;
+    padding: 0 0 20px 0;
   }
   
   .recomendacion-title {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #21408E;
+    font-size: 1.9rem;
+    background-color: #0C4D9C;
+    color:white;
     font-family: 'San Francisco', Arial, sans-serif;
-    font-weight: bold;
+    font-weight: 650;
+    padding: 20px;
   }
   
   .recomendacion-cards {
