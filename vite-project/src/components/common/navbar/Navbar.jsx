@@ -154,7 +154,8 @@ const Navbar = () => {
               ''
             )}
           </MenuItem>
-          <MenuItem onClick={handleClose}>
+          {user && user?.usuarioRol === 'ROLE_ADMIN'? (
+            <MenuItem onClick={handleClose}>
             {user ? (
               <Link to={'/PanelAdministrador'}>
                 <p
@@ -172,6 +173,8 @@ const Navbar = () => {
               ''
             )}
           </MenuItem>
+          ):" " }
+          
           <MenuItem onClick={handleClose}>
             {user ? (
               <Button
