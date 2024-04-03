@@ -1,14 +1,3 @@
-.containerCards {
-  display: grid; /* Usa Grid en lugar de Flexbox */
-  grid-template-columns: repeat(
-    2,
-    1fr
-  ); /* Crea dos columnas, cada una tomando el 50% del ancho disponible */
-  grid-gap: 16px; /* Espacio entre las celdas de la cuadrícula */
-  justify-items: center; /* Alinea los ítems horizontalmente al centro de su celda */
-  align-items: center; /* Alinea los ítems verticalmente al centro de su celda */
-  margin: 40px auto; /* Centra el contenedor en la página */
-}
 
 .subtitulo {
   font-size: 1.5rem; /* Tamaño de fuente 1.5 veces el tamaño predeterminado */

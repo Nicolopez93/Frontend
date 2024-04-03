@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Importa axios
+import axios from 'axios';
 import Card from '../card/Card';
-import './recomendacion.css';
 
-const Recomendacion = () => { // Elimina los paréntesis vacíos del componente
+const Recomendacion = () => { 
 
   const [autos, setAutos] = useState([]);
 
@@ -18,12 +17,14 @@ const Recomendacion = () => { // Elimina los paréntesis vacíos del componente
   }, []);
 
   return (
-    <div className="recomendacion-container">
-      <h2 className="recomendacion-title">LOS RECOMENDADOS DE LA SEMANA</h2>
-      <div className="recomendacion-cards">
+    <div className=" bg-[#91c0f34d] min-h-[calc(75vh-110px)] ">
+      <div className='mx-[4vw] pt-8 '>
+      <h2 className="text-4xl  font-bold my-8 text-center  ">LOS RECOMENDADOS DE LA SEMANA</h2>
+      <div className="flex flex-wrap gap-4 justify-between items-center w-full">
         {autos.slice(8, 10).map(auto => (
           <Card key={auto.id} auto={auto} className="recomendacion-card" />
         ))}
+      </div>
       </div>
     </div>
   );

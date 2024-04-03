@@ -69,24 +69,17 @@ const Home = () => {
             <TipoDeAuto />
           </div>
           <Recomendacion />
-          <div>
-            <h2
-              style={{
-                textAlign: 'center',
-                fontSize: '2rem',
-                color: 'white',
-                backgroundColor: '#0C4D9C',
-                fontWeight: '600',
-                fontFamily: 'San Francisco, Arial, sans-serif',
-              }}
-            >
+          <div className='bg-[#91c0f34d]'>
+            <div className='mx-[4vw] pt-8 '>
+            <h2 className='text-4xl font-bold text-center '>
               NUESTROS AUTOS
             </h2>
-          </div>
-          <div className={styles.containerCards}>
+          <div className="flex flex-wrap gap-4 justify-between items-center w-full">
             {autos.map((auto) => (
               <Card key={auto.id} auto={auto} />
             ))}
+            </div >
+          </div>
           </div>
         </>
       )}
