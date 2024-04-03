@@ -112,7 +112,7 @@ const Navbar = () => {
                   `${user.nombre}`
                 ) : (
                   <Link to='/login'>
-                    <Button>Iniciar sesión</Button>
+                    <button>Iniciar sesión</button>
                   </Link>
                 )}
               </p>
@@ -191,17 +191,18 @@ const Navbar = () => {
             )}
           </MenuItem>
         </Menu>
-
+        <div className='flex flex-row  gap-4'>
         {!user && (
           <Link to='/login'>
-            <button>Iniciar sesión</button>
+            <button  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Iniciar sesión</button>
           </Link>
         )}
         {!user && (
           <Link to='/register'>
-            <button>Crear cuenta</button>
+            <button  className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Crear cuenta</button>
           </Link>
         )}
+        </div>
       </div>
     </nav>
   );
