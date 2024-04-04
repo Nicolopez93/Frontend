@@ -116,8 +116,8 @@ const Card = ({ auto }) => {
   };
 
   return (
-    <div className="flex flex-row max-w-xs md:max-w-3xl mx-auto rounded-xl shadow-lg border border-gray-200 overflow-hidden h-96 ">
-      <div className="w-2/3 bg-gray-200">
+    <div className="flex flex-col max-w-xs mx-auto rounded-xl shadow-lg border border-gray-200 overflow-hidden md:max-w-3xl md:flex-row md:h-96">
+      <div className="md:w-2/3 bg-gray-200">
         <Link to={`/detalle/${auto.id}`}>
           <img
             src={auto.imgUrl}
@@ -126,7 +126,7 @@ const Card = ({ auto }) => {
           />
         </Link>
       </div>
-      <div className="w-1/3 p-4 bg-white">
+      <div className="md:w-1/3 p-4 bg-white">
         <div className="flex justify-between items-center">
           <Typography
             variant="h5"
@@ -161,7 +161,6 @@ const Card = ({ auto }) => {
             color="text.secondary"
             className="text-gray-600"
           >
-            {" "}
             Puertas: {auto.puertas}
           </Typography>
           <Typography
@@ -169,7 +168,6 @@ const Card = ({ auto }) => {
             color="text.secondary"
             className="text-gray-600"
           >
-            {" "}
             Valijas: {auto.valijas}
           </Typography>
           <Typography
@@ -177,10 +175,15 @@ const Card = ({ auto }) => {
             color="text.secondary"
             className="text-gray-600"
           >
-            {" "}
             Personas: {auto.personas}
           </Typography>
-          <Typography variant="body2" color="text.secondary" className="text-gray-600"> Tipo de Caja: {auto.tipoCaja}</Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            className="text-gray-600"
+          >
+            Tipo de Caja: {auto.tipoCaja}
+          </Typography>
           <div className="flex items-center">
             <Typography
               variant="h6"

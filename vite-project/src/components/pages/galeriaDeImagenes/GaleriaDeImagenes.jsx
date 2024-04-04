@@ -31,7 +31,7 @@ const GaleriaDeImagenes = () => {
           <div className="">
             {auto ? (
               <div className="flex flex-wrap">
-                {auto?.imagenes.map((imagen, id) => (
+                {auto?.imagenes.slice(0, 4).map((imagen, id) => (
                   <img
                     className="h-auto max-w-full rounded-lg"
                     key={id}
