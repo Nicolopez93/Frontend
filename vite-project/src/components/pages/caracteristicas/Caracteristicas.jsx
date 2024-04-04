@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { FaDoorOpen, FaSuitcase, FaUser } from "react-icons/fa";
 import axios from "axios";
 import Button from "../../common/button/Button";
-
+import './caracteristicas.css';
 const Caracteristicas = () => {
   const { id } = useParams();
   const [auto, setAuto] = useState(null);
@@ -50,7 +50,7 @@ const Caracteristicas = () => {
                 Precio : $ {auto?.precio}
               </p>
             </div>
-            <div className="basis-1/2">
+            <div className=" basis-1/2">
               <img className="" src={auto?.imgUrl} alt={auto?.nombre} />
             </div>
           </div>

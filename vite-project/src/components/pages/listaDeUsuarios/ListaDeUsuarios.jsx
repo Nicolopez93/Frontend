@@ -12,19 +12,19 @@ const ListaDeUsuarios = () => {
 
   return (
     <>
-      <div className='bg-[#91c0f34d] h-screen'>
-      <div className='mx-[4vw] pt-8 h-screen mb-40'>
-      <Link to="/PanelAdministrador">
-          <Button>Volver</Button>
-        </Link>
-        <h1 className="text-3xl font-bold text-center my-8 ">Lista de usuarios</h1>
-        <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded' onClick={handleOpen}>Agregar Usuario</button>
-        <AgregarUsuario
-          open={open}
-          handleClose={handleClose}
-        />
-        <TablaUsuarios />
-      </div>
+      <div className='bg-[#91c0f34d] min-h-screen'>
+        <div className='mx-4 sm:mx-8 pt-8 mb-16 sm:mb-40'>
+          <Link to="/PanelAdministrador">
+            <Button>Volver</Button>
+          </Link>
+          <h1 className="text-3xl font-bold text-center my-8 ">Lista de usuarios</h1>
+          <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 sm:mb-8 w-full sm:w-auto' onClick={handleOpen}>Agregar Usuario</button>
+          <AgregarUsuario
+            open={open}
+            handleClose={handleClose}
+          />
+          <TablaUsuarios />
+        </div>
       </div>
     </>
   );
