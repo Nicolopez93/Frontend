@@ -116,7 +116,7 @@ const Card = ({ auto }) => {
   };
 
   return (
-    <div className="flex flex-col max-w-xs mx-auto rounded-xl shadow-lg border border-gray-200 overflow-hidden md:max-w-3xl md:flex-row md:h-96">
+    <div className="flex flex-col max-w-xs mx-auto rounded-xl shadow-lg border border-gray-200 overflow-hidden md:max-w-2xl md:flex-row md:h-96">
       <div className="md:w-2/3 bg-gray-200">
         <Link to={`/detalle/${auto.id}`}>
           <img
