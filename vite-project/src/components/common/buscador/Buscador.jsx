@@ -38,7 +38,7 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
   const { fechaDevolucion, fechaRetiro } = formData
 
   return (
-    <div className='flex justify-center items-center h-[calc(12vh-10px)] bg-[#91c0f34d]'>
+    <div className='flex justify-center items-center h-[calc(12vh-10px)] '>
       <form onSubmit={handleSubmit}>
         <div className='flex items-center space-x-4 '>
           <input

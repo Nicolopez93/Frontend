@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import Card from '../../common/card/Card';
-import styles from '../home/home.module.css';
-import Buscador from '../../common/buscador/Buscador';
-import TipoDeAuto from '../../common/tipoDeAuto/TipoDeAuto';
-import { ReservaContext } from '../../../context/ReservaContext';
-import Recomendacion from '../../common/recomendacion/Recomendacion';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import Card from "../../common/card/Card";
+import styles from "../home/home.module.css";
+import Buscador from "../../common/buscador/Buscador";
+import TipoDeAuto from "../../common/tipoDeAuto/TipoDeAuto";
+import { ReservaContext } from "../../../context/ReservaContext";
+import Recomendacion from "../../common/recomendacion/Recomendacion";
 
 const Home = () => {
   const [autos, setAutos] = useState([]);
@@ -16,12 +16,12 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:8080/autos')
+      .get("http://localhost:8080/autos")
       .then((res) => {
         setAutos(res.data);
       })
       .catch((err) => {
-        console.error('Error al obtener los autos:', err);
+        console.error("Error al obtener los autos:", err);
       });
   }, []);
 
@@ -38,10 +38,6 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        <Buscador onSearchResults={handleSearchResults} onFormSubmit={handleFormSubmit} />
-      </div>
-      
       {searchResults.length > 0 ? (
         <>
           <div className={styles.busqueda}>
@@ -57,7 +53,7 @@ const Home = () => {
               </>
             )}
           </div>
-          <div className={styles.containerCards}>
+          <div className="flex flex-wrap gap-4 justify-between items-center w-full">
             {autosToDisplay.map((auto) => (
               <Card key={auto.id} auto={auto} reserva={fecha} />
             ))}
@@ -65,21 +61,29 @@ const Home = () => {
         </>
       ) : (
         <>
-          <div className={styles.container}>
+          <div className='relative'>
+            <div>
             <TipoDeAuto />
+            </div>
+            <div className="absolute bottom-0 top-1/2 left-0 right-0">
+              <Buscador 
+                onSearchResults={handleSearchResults}
+                onFormSubmit={handleFormSubmit}
+              />
+            </div>
           </div>
           <Recomendacion />
-          <div className='bg-[#91c0f34d]'>
-            <div className='mx-[4vw] pt-8 '>
-            <h2 className='text-4xl font-bold text-center '>
-              NUESTROS AUTOS
-            </h2>
-          <div className="flex flex-wrap gap-4 justify-between items-center w-full">
-            {autos.map((auto) => (
-              <Card key={auto.id} auto={auto} />
-            ))}
-            </div >
-          </div>
+          <div className="bg-[#91c0f34d]">
+            <div className="mx-[4vw] pt-8 ">
+              <h2 className="text-4xl font-bold text-center ">
+                NUESTROS AUTOS
+              </h2>
+              <div className="flex flex-wrap gap-4 justify-between items-center w-full">
+                {autos.map((auto) => (
+                  <Card key={auto.id} auto={auto} />
+                ))}
+              </div>
+            </div>
           </div>
         </>
       )}
@@ -88,14 +92,14 @@ const Home = () => {
         icon={faWhatsapp}
         size="3x"
         style={{
-          color: '#25D366',
-          position: 'fixed',
-          bottom: '70px',
-          right: '20px',
-          cursor: 'pointer',
-          zIndex: '9999',
+          color: "#25D366",
+          position: "fixed",
+          bottom: "70px",
+          right: "20px",
+          cursor: "pointer",
+          zIndex: "9999",
         }}
-        onClick={() => window.open('https://web.whatsapp.com', '_blank')}
+        onClick={() => window.open("https://web.whatsapp.com", "_blank")}
       />
     </>
   );

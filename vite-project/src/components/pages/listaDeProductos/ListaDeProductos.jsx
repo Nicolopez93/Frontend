@@ -10,8 +10,8 @@ const ListaDeProductos = () => {
   const handleClose = () => setOpen(false)
 
   return (
-    <>
-      <div className="mx-[4vw] pt-8 h-screen mb-40 overflow-y-autoauto ">
+    <div className='bg-[#91c0f34d] min-h-screen'>
+      <div className="mx-[4vw] pt-8">
       <Link to="/PanelAdministrador">
           <Button>Volver</Button>
         </Link>
@@ -21,9 +21,11 @@ const ListaDeProductos = () => {
           open={open}
           handleClose={handleClose}
         />
+        <div className='pb-28'>
         <TablaAdministrador />
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 
