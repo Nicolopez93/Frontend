@@ -38,33 +38,31 @@ const Buscador = ({ onSearchResults, onFormSubmit }) => {
   const { fechaDevolucion, fechaRetiro } = formData
 
   return (
-    <div className='flex justify-center items-center h-[calc(12vh-10px)] '>
-      <form onSubmit={handleSubmit}>
-        <div className='flex items-center space-x-4 '>
-          <input
-            name='fechaRetiro'
-            required
-            type='date'
-            placeholder='Fecha de Retiro'
-            value={fechaRetiro}
-            onChange={handleChange}
-            className='border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500'
-          />
-          <input
-            name='fechaDevolucion'
-            required
-            type='date'
-            placeholder='Fecha de Devolución'
-            value={fechaDevolucion}
-            onChange={handleChange}
-            className='border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500'
-          />
-          <button
-            type='submit'
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
-            Buscar
-          </button>
-        </div>
+    <div className='flex justify-center items-center h-[calc(12vh-10px)]'>
+      <form onSubmit={handleSubmit} className="flex flex-col items-center md:flex-row md:space-x-4">
+        <input
+          name='fechaRetiro'
+          required
+          type='date'
+          placeholder='Fecha de Retiro'
+          value={fechaRetiro}
+          onChange={handleChange}
+          className='border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 mb-2 md:mb-0'
+        />
+        <input
+          name='fechaDevolucion'
+          required
+          type='date'
+          placeholder='Fecha de Devolución'
+          value={fechaDevolucion}
+          onChange={handleChange}
+          className='border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 mb-2 md:mb-0'
+        />
+        <button
+          type='submit'
+          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+          Buscar
+        </button>
       </form>
     </div>
   )
