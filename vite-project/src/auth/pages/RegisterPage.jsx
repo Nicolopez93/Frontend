@@ -1,4 +1,4 @@
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import imgLogo from "../../assets/logo.jpeg";
@@ -160,7 +160,7 @@ export const RegisterPage = () => {
                   Si tenes cuenta 
                 </p>
                   <Link
-                    component={RouterLink}
+                    // component={RouterLink}
                     color="inherit"
                     to="/login"
                     className="text-blue-500 focus:outline-none focus:underline hover:underline "
