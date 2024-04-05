@@ -17,7 +17,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/autos")
+      .get("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos")
       .then((res) => {
         setAutos(res.data);
       })

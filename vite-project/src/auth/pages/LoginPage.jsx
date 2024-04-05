@@ -16,7 +16,7 @@ export const LoginPage = () => {
   const { login } = useContext(AuthContext);
 
   const getUsers = async () => {
-    const response = await fetch("http://localhost:8080/usuario");
+    const response = await fetch("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/usuario");
 
     const data = await response.json();
     console.log(response);
