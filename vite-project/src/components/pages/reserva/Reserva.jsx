@@ -16,7 +16,7 @@ export const Reserva = () => {
   useEffect(() => {
     const fetchReservas = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/reservas");
+        const response = await axios.get("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/reservas");
         const data = response.data;
         const userReservas = data.filter(
           (reserva) => reserva.usuario?.id === user?.id
