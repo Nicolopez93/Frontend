@@ -27,7 +27,7 @@ const TablaAdministrador = () => {
   }, [isProductDeleted]);
 
   const fetchAutos = () => {
-    fetch("http://localhost:8080/autos")
+    fetch("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos")
       .then((response) => response.json())
       .then((data) => setAutos(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -43,7 +43,7 @@ const TablaAdministrador = () => {
   const handleSave = async (editFields) => {
     console.log(editFields);
     try {
-      const url = "http://localhost:8080/autos/actualizar";
+      const url = "http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos/actualizar";
 
       const response = await fetch(url, {
         method: "PUT",
@@ -94,7 +94,7 @@ const TablaAdministrador = () => {
 
   const eliminarProducto = (id) => {
     axios
-      .delete(`http://localhost:8080/autos/${id}`)
+      .delete(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos/${id}`)
       .then((res) => setIsProductDeleted(true))
       .catch((err) => console.error(err));
   };

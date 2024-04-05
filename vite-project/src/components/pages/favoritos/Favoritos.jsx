@@ -13,7 +13,7 @@ const Favoritos = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/favoritos/usuario/${user?.id}`)
+      .get(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/favoritos/usuario/${user?.id}`)
       .then((response) => {
         setAutos(response.data);
       })

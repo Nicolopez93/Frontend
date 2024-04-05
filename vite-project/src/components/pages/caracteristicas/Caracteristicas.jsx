@@ -10,7 +10,7 @@ const Caracteristicas = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/autos/buscar/${id}`)
+      .get(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos/buscar/${id}`)
       .then((response) => {
         setAuto(response.data);
       })

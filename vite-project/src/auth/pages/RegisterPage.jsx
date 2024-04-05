@@ -15,7 +15,7 @@ export const RegisterPage = () => {
   const { login } = useContext(AuthContext);
 
   const postUser = async (user) => {
-    const response = await fetch("http://localhost:8080/usuario", {
+    const response = await fetch("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/usuario", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
