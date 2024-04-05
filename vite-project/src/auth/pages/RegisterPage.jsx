@@ -1,6 +1,4 @@
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { Button, Grid, Link, TextField, Typography } from "@mui/material";
-import { AuthLayout } from "../layout/AuthLayout";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import imgLogo from "../../assets/logo.jpeg";
