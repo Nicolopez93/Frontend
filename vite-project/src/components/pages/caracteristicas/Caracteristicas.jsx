@@ -58,13 +58,11 @@ const Caracteristicas = () => {
           <p>Loading...</p>
         )}
         <div>
-          <div className="flex items-center justify-center px-12">
-            <div className="max-w-md rounded-3xl p-px bg-gradient-to-b from-[#0C4D9C] to-[#0C4D9C]">
+          <div className="flex items-center justify-center px-12 gap-6">
+          <div className="max-w-md rounded-3xl p-px bg-gradient-to-b from-[#0C4D9C] to-[#0C4D9C]">
               <div className="rounded-[calc(1.5rem-1px)] p-10 bg-white dark:bg-gray-900">
                 <p className="text-gray-700 dark:text-gray-300">
-                  I absolutely love Tailus! The component blocks are beautifully
-                  designed and easy to use, which makes creating a great-looking
-                  website a breeze.
+                ¡La experiencia de alquilar un auto con esta empresa fue excelente! El vehículo estaba en perfectas condiciones y fue perfecto para nuestro viaje en familia. Definitivamente volveremos a alquilar con ellos en el futuro.
                 </p>
 
                 <div className="mt-8 flex gap-4 items-center">
@@ -75,7 +73,53 @@ const Caracteristicas = () => {
                   />
                   <div>
                     <h3 className="text-lg font-medium text-gray-700 dark:text-white">
-                      Oketa Fred
+                      Nicolas Lopez
+                    </h3>
+                    <span className="text-sm tracking-wide text-gray-600 dark:text-gray-400">
+                      Fullstack Developer
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="max-w-md rounded-3xl p-px bg-gradient-to-b from-[#0C4D9C] to-[#0C4D9C]">
+              <div className="rounded-[calc(1.5rem-1px)] p-10 bg-white dark:bg-gray-900">
+                <p className="text-gray-700 dark:text-gray-300">
+                ¡El mejor servicio de alquiler de autos que he utilizado! El auto era moderno, cómodo y tenía todas las características que necesitábamos para nuestro viaje. Definitivamente volveré a elegir esta empresa para futuros alquileres.
+                </p>
+
+                <div className="mt-8 flex gap-4 items-center">
+                  <img
+                    className="h-12 w-12 rounded-full"
+                    src="https://pbs.twimg.com/profile_images/1599029039297077249/p0znhFdE_400x400.jpg"
+                    alt=""
+                  />
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-700 dark:text-white">
+                      Juan Bernardo Galardo
+                    </h3>
+                    <span className="text-sm tracking-wide text-gray-600 dark:text-gray-400">
+                      Fullstack Developer
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="max-w-md rounded-3xl p-px bg-gradient-to-b from-[#0C4D9C] to-[#0C4D9C]">
+              <div className="rounded-[calc(1.5rem-1px)] p-10 bg-white dark:bg-gray-900">
+                <p className="text-gray-700 dark:text-gray-300">
+                ¡Increíble experiencia de alquiler de autos! El auto estaba en excelentes condiciones, limpio y muy cómodo. El servicio al cliente también fue excelente. Definitivamente lo recomendaré a mis amigos y familiares.
+                </p>
+
+                <div className="mt-8 flex gap-4 items-center">
+                  <img
+                    className="h-12 w-12 rounded-full"
+                    src="https://pbs.twimg.com/profile_images/1599029039297077249/p0znhFdE_400x400.jpg"
+                    alt=""
+                  />
+                  <div>
+                    <h3 className="text-lg font-medium text-gray-700 dark:text-white">
+                      Martin
                     </h3>
                     <span className="text-sm tracking-wide text-gray-600 dark:text-gray-400">
                       Fullstack Developer
