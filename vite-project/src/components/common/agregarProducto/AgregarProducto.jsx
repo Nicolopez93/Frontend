@@ -38,7 +38,7 @@ const AgregarProducto = ({ open, handleClose }) => {
   };
 
   const handleSubmit = () => {
-    axios.post('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos', formData)
+    axios.post('http://localhost:8080/autos', formData)
       .then(res => {
         handleClose();
         window.location.reload();

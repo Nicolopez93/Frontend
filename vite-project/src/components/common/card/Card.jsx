@@ -41,7 +41,7 @@ const Card = ({ auto }) => {
     };
 
     axios
-      .post("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/favoritos/agregar-auto", updatedAuto)
+      .post("http://localhost:8080/favoritos/agregar-auto", updatedAuto)
       .then(() => {
         console.log("Auto actualizado con éxito");
         setIsFavorito(true);
@@ -59,7 +59,7 @@ const Card = ({ auto }) => {
     };
 
     axios
-      .delete("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/favoritos/eliminar-auto", {
+      .delete("http://localhost:8080/favoritos/eliminar-auto", {
         data: deleteAuto,
       })
       .then(() => {

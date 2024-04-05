@@ -21,7 +21,7 @@ const Detalle = () => {
 
   useEffect(() => {
     axios
-      .get(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos/buscar/${id}`)
+      .get(`http://localhost:8080/autos/buscar/${id}`)
       .then((response) => {
         setAuto(response.data);
       })
@@ -49,7 +49,7 @@ const Detalle = () => {
       console.log(userReserva);
 
       const response = await axios.post(
-        "http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/reservas",userReserva
+        "http://localhost:8080/reservas",userReserva
       );
 
       console.log(response.data);

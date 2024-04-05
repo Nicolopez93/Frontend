@@ -21,7 +21,7 @@ const TablaCategorias = () => {
   }, []);
 
   const fetchCategorias = () => {
-    axios.get('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/categoria') // Corregir la URL de la API
+    axios.get('http://localhost:8080/categoria') // Corregir la URL de la API
       .then(response => setCategorias(response.data))
       .catch(error => console.error('Error fetching data:', error));
   };
@@ -32,7 +32,7 @@ const TablaCategorias = () => {
   };
 
   const handleSave = (id) => {
-    axios.put(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/categoria`, { id, ...editFields }) // Corregir la URL de la API
+    axios.put(`http://localhost:8080/categoria`, { id, ...editFields }) // Corregir la URL de la API
       .then(() => {
         setEditingId(null);
         fetchCategorias();
@@ -47,7 +47,7 @@ const TablaCategorias = () => {
   const eliminarCategoria = (id) => {
     const confirmarEliminar = window.confirm("¿Estás seguro que deseas eliminar esta categoría?");
     if (confirmarEliminar) {
-      axios.delete(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/categoria/${id}`) // Corregir la URL de la API
+      axios.delete(`http://localhost:8080/categoria/${id}`) // Corregir la URL de la API
         .then(() => {
           setCategorias(categorias.filter(cat => cat.id !== id));
         })
@@ -58,7 +58,7 @@ const TablaCategorias = () => {
   const agregarCategoria = () => {
     const nuevaCategoria = { nombre: newCategoria };
 
-    axios.post('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/categoria', nuevaCategoria) // Corregir la URL de la API
+    axios.post('http://localhost:8080/categoria', nuevaCategoria) // Corregir la URL de la API
       .then(() => {
         setNewCategoria('');
         fetchCategorias();

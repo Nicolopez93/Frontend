@@ -57,7 +57,7 @@ export const Reserva = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/reservas/${id}`);
+      await axios.delete(`http://localhost:8080/reservas/${id}`);
       setReservas(reservas.filter((reserva) => reserva.id !== id));
       deleteReserva(id);
       openModal();
