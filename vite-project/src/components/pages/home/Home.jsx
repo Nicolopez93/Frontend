@@ -13,6 +13,7 @@ const Home = () => {
   const [autos, setAutos] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [fecha, setFecha] = useState(null);
+  const [autosFiltrados, setAutosFiltrados] = useState([]);
 
   useEffect(() => {
     axios
@@ -29,12 +30,18 @@ const Home = () => {
     setSearchResults(results);
   };
 
+  const handleBuscar = (nombre) => {
+    const autosFiltrados = autos.filter((auto) => auto.marca.toLowerCase() === nombre.toLowerCase());
+    setAutosFiltrados(autosFiltrados);
+    
+  };
+console.log(autosFiltrados);
   const handleFormSubmit = (formData) => {
     setFecha(formData);
   };
 
   const autosToDisplay =
-    searchResults.length > 0 ? searchResults.slice(0, 10) : autos.slice(0, 10);
+    searchResults.length > 0 ? searchResults.slice(0, 12) : autos.slice(0, 10);
 
   return (
     <>
@@ -61,14 +68,13 @@ const Home = () => {
         </>
       ) : (
         <>
-          <div className='relative'>
-            <div>
+          <div className="relative">
             <TipoDeAuto />
-            </div>
             <div className="absolute bottom-0 top-1/2 left-0 right-0">
-              <Buscador 
+              <Buscador
                 onSearchResults={handleSearchResults}
                 onFormSubmit={handleFormSubmit}
+                onBuscar={handleBuscar}
               />
             </div>
           </div>
@@ -79,9 +85,15 @@ const Home = () => {
                 NUESTROS AUTOS
               </h2>
               <div className="flex flex-wrap gap-4 justify-between items-center w-full">
-                {autos.map((auto) => (
-                  <Card key={auto.id} auto={auto} />
-                ))}
+                {autosFiltrados.length > 0 ? (
+                  autosFiltrados.map((auto) => (
+                    <Card key={auto.id} auto={auto} />
+                  ))
+                ) : (
+                  autos.map((auto) => (
+                    <Card key={auto.id} auto={auto} />
+                  ))
+                )}
               </div>
             </div>
           </div>
