@@ -34,7 +34,7 @@ const AgregarUsuario = ({ open, handleClose }) => {
   };
 
   const handleSubmit = () => {
-    axios.post('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/usuario', formData)
+    axios.post('http://localhost:8080/usuario', formData)
       .then(res => {
         handleClose();
         window.location.reload(); 

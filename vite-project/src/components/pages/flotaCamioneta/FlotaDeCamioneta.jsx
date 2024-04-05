@@ -8,7 +8,7 @@ import  Button  from '../../common/button/Button';
 const FlotaDeCamioneta = () => {
   const [autos, setAutos] = useState([]);
   useEffect(() => {
-    axios.get("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos")
+    axios.get("http://localhost:8080/autos")
       .then(response => {
         const autosCategoriaCamioneta = response.data.filter(auto => auto.categoria && auto.categoria.nombre === "Camioneta");
         setAutos(autosCategoriaCamioneta);

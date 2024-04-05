@@ -21,7 +21,7 @@ const TablaCaracteristicas = () => {
   }, []);
 
   const fetchCaracteristicas = () => {
-    axios.get('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos')
+    axios.get('http://localhost:8080/autos')
       .then(response => {
         if (response.data.length > 0) {
           const primerAuto = response.data[0];

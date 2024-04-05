@@ -16,7 +16,7 @@ export const Reserva = () => {
   useEffect(() => {
     const fetchReservas = async () => {
       try {
-        const response = await axios.get("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/reservas");
+        const response = await axios.get("http://localhost:8080/reservas");
         const data = response.data;
         const userReservas = data.filter(
           (reserva) => reserva.usuario?.id === user?.id
@@ -57,7 +57,7 @@ export const Reserva = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/reservas/${id}`);
+      await axios.delete(`http://localhost:8080/reservas/${id}`);
       setReservas(reservas.filter((reserva) => reserva.id !== id));
       deleteReserva(id);
       openModal();

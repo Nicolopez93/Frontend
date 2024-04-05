@@ -20,7 +20,7 @@ const TablaUsuarios = () => {
   }, [isUsuarioDeleted]);
 
   const fetchUsuarios = () => {
-    axios.get('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/usuario')
+    axios.get('http://localhost:8080/usuario')
       .then(response => setUsuarios(response.data))
       .catch(error => console.error('Error fetching data:', error));
   };
@@ -32,7 +32,7 @@ const TablaUsuarios = () => {
   };
 
   const handleSave = (id) => {
-    axios.put('http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/usuario', editFields) 
+    axios.put('http://localhost:8080/usuario', editFields) 
       .then(res => {
         setIsUsuarioDeleted(!isUsuarioDeleted);
         setEditingId(null);
@@ -45,7 +45,7 @@ const TablaUsuarios = () => {
   };
 
   const eliminarUsuario = (id) => {
-    axios.delete(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/usuario/${id}`)
+    axios.delete(`http://localhost:8080/usuario/${id}`)
       .then(res => setIsUsuarioDeleted(true))
       .catch(err => console.error(err));
   };

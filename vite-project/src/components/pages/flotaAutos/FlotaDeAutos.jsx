@@ -9,7 +9,7 @@ const FlotaDeAutos = () => {
 
   useEffect(() => {
     axios
-      .get("http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos")
+      .get("http://localhost:8080/autos")
       .then((response) => {
         const autosCategoriaAuto = response.data.filter(
           (auto) => auto.categoria && auto.categoria.nombre === "Auto"

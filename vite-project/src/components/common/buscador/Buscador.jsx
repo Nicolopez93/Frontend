@@ -27,7 +27,7 @@ const Buscador = ({ onSearchResults, onFormSubmit, onBuscar }) => {
   };
 
   const fetchAuto = () => {
-    fetch(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos`)
+    fetch(`http://localhost:8080/autos`)
       .then((res) => res.json())
       .then((data) => {
         setAutos(data);
@@ -42,7 +42,7 @@ const Buscador = ({ onSearchResults, onFormSubmit, onBuscar }) => {
 
   console.log(autos);
   const fetchAutos = (formData) => {
-    fetch(`http://54.174.114.93/Proyecto-0.0.1-SNAPSHOT/autos`)
+    fetch(`http://localhost:8080/autos`)
       .then((res) => res.json())
       .then((data) => {
         onSearchResults(data);
