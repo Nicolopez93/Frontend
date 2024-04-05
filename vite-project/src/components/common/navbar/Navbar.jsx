@@ -44,6 +44,9 @@ const Navbar = () => {
           className='navbar-logo'
         />
       </a>
+      <h2 className="hidden md:block text-[2.5rem] font-bold text-center text-white ">
+          ALQUILER DE AUTOS EN LATINOAMÉRICA
+        </h2>
       <div className='navbar-buttons'>
         
         <Tooltip title='Administrador de usuario'>

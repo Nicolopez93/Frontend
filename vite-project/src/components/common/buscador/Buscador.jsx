@@ -55,7 +55,7 @@ const Buscador = ({ onSearchResults, onFormSubmit, onBuscar }) => {
   const { fechaDevolucion, fechaRetiro } = formData;
 
   return (
-    <div className="flex justify-center items-center h-[calc(12vh-10px)]">
+    <div className="flex-col flex md:flex-row justify-center items-center gap-8  h-[calc(12vh-10px)]">
       <input
         name="buscar"
         type="text"

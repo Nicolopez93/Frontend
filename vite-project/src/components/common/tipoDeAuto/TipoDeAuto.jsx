@@ -7,9 +7,6 @@ const TipoDeAuto = () => {
         className="bg-cover bg-center h-[63vh] flex flex-col justify-center items-center bg-[url('https://media.kasperskydaily.com/wp-content/uploads/sites/87/2015/05/05201736/rentacar-featured.jpg')]"
       >
         <div className="h-[18rem]">
-        <h2 className="hidden md:block text-4xl font-bold text-center text-blue-600">
-          ALQUILER DE AUTOS EN LATINOAMÉRICA
-        </h2>
         <div className="flex flex-row  gap-4 justify-center items-stretch ">
           <Link to="/flotaDeAutos">
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
