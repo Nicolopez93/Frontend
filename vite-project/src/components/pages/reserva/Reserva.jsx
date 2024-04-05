@@ -22,12 +22,13 @@ export const Reserva = () => {
           (reserva) => reserva.usuario?.id === user?.id
         );
         setReservas(userReservas);
+        window.localStorage.setItem("reservas", JSON.stringify(userReservas));
       } catch (error) {
         console.error("Error fetching reservas:", error);
       }
     };
     fetchReservas();
-  }, []);
+  }, [reservas]);
 
   const calcularDias = (reservas) => {
     let totalDias = 0;
